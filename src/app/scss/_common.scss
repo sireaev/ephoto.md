@@ -1039,8 +1039,8 @@ nav.nav-menu-show {
 
       @media (min-width: 991px) and (max-width: 1200px) { font-size: 4rem; }
       @media (min-width: 768px) and (max-width: 991px)  { font-size: 34px; }
-      @media (min-width: 576px) and (max-width: 767px)  { font-size: 20px; }
-      @media (max-width: 575px)                         { font-size: 14px; margin-bottom: 23px; line-height: 1.5; }
+      @media (min-width: 576px) and (max-width: 767px)  { font-size: 32px; }
+      @media (max-width: 575px)                         { font-size: 32px; margin-bottom: 23px; line-height: 1.5; }
     }
 
     img {
@@ -1090,8 +1090,8 @@ nav.nav-menu-show {
 
   p,
   h4 span {
-    font-size: 2rem;
-    @media (max-width: 720px) { font-size: 1.2rem; }
+    font-size: 1.5rem;
+    @media (max-width: 720px) { font-size: 1rem; }
   }
 
   p {
