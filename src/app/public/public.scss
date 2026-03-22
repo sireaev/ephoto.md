@@ -1,0 +1,128 @@
+  .testimonial-card-area {
+    padding: 70px 0 70px 0;
+  }
+
+  @media screen and (max-width: 1500px) {
+    section.testimonial-card-area {
+      padding: 70px 0 420px 0;
+    }
+  }
+
+  ::ng-deep {
+    .testimonial-card-area {
+      max-width: 99%;
+        .carousel {
+          /* background: #FAFAFA; */
+          height: 643px;
+        }
+
+        blockquote.carousel-cell {
+            // min-width: max(425px, 40%);
+            // width: 40%;
+            /* height: 550px; */
+            margin-right: 10px;
+            /* background: #FFFFFF; */
+            /* border-radius: 5px; */
+            counter-increment: carousel-cell;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.2s ease;
+        }
+
+        blockquote.carousel-cell p {
+            text-align: justify;
+            padding: 50px 50px 50px 100px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            transition: background-color .2s ease;
+            -webkit-transition: background-color .2s ease;
+            quotes: "\201C" "\201D";
+            position: relative;
+
+            border-radius: 20px;
+
+            transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+            color: #b9b9b9;
+        }
+
+        blockquote.carousel-cell.is-selected {
+          transform: scale(1);
+        }
+
+        blockquote.carousel-cell.is-selected p {
+            box-shadow: rgba(0, 0, 0, 0.176) 40px 60px 60px -20px;
+            background-color: #2a2a2a;
+            color: #FFF;
+        }
+
+        blockquote.carousel-cell p:before {
+         color: white;
+         opacity: 0.3;
+         font-family: sans-serif;
+         content: open-quote;
+         font-size: 130px;
+         position: absolute;
+         left: 29px;
+         top: 50px;
+         opacity: .4;
+         line-height: 115px;
+       }
+       blockquote.carousel-cell .bottom-arrow {
+          position: absolute;
+          width: 28px;
+          height: 28px;
+          display: block;
+          border-radius: 5px;
+          overflow: hidden;
+          transform: rotate(-135deg);
+          -webkit-transform: rotate(-135deg);
+          top: 100%;
+          left: 50%;
+          margin-left: -14px;
+          margin-top: -19px;
+          opacity: 0;
+          transition: all .2s ease;
+        }
+
+        blockquote.carousel-cell.is-selected .bottom-arrow {
+          opacity: 1;
+        }
+
+        blockquote.carousel-cell .bottom-arrow:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 22px 22px 0 0;
+          border-right-color: transparent !important;
+          border-bottom-color: transparent !important;
+          border-left-color: transparent !important;
+          border-color: rgb(255 255 255 / .4) #fff0 #fff0 #fff0;
+          border-color: #2a2a2a;
+        }
+
+        blockquote.carousel-cell div {
+          letter-spacing: -.01em;
+        }
+      
+         blockquote.carousel-cell .title {
+          opacity: .6;
+        }
+        
+        /* cell number */
+      blockquote.carousel-cell:before {
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 4px;
+          content: '';
+        }
+    }
+  }  
+
+
