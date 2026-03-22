@@ -1,0 +1,591 @@
+<app-header></app-header>
+<main>
+    <!-- <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="images/logo_black.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Start slider -->
+    <div class="slider-area">
+        <div class="slider-item-active">
+            <!-- Single -->
+            <div class="slider-item">
+                <div class="slider-bg1 slider-height hero-overly slider-bg1 d-flex align-items-center ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl col-lg-10">
+                                <div class="slide-content">
+                                    <h4>Momentele importante cer să fie văzute corect</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <a href="tel:+37368035084" class="border-btn border-0 border-btn2 my-2 px-4">
+                                <i class="fas fa-phone"></i>
+                                    Verifică disponibilitatea
+                                </a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- Footer Content -->
+                <div class="slider-caption2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-4 col-md-7 col-sm-8">
+                                <div class="slide-content2">
+                                    <h4 class="d-flex justify-content-between">
+                                            <span>Fotografie autentică, lumină naturală și profesionalism</span> 
+                                    </h4>
+                                    <p class="m-0">Servicii foto pentru nuntă, botez și ședințe foto în Chișinău și Moldova</p>
+                                    <a href="tel:+37368035084" class="border-btn border-0 border-btn2 px-4 rounded-3">
+                                        <i class="fas fa-phone"></i>
+                                            Verifică disponibilitatea
+                                        </a>
+                                </div>
+                            </div>
+                            <!-- <div class="col-xl-8 col-lg-6 col-md-3 col-sm-4 col">
+                                <div class="row justify-content-center slide-content2">
+                                    <div class="col-auto">
+                                        
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dot - image -->
+
+    </div>
+    <!-- End Start slider -->
+    <!--? Gallery Area Start -->
+    <div class="gallery-area section-padding40 pb-50">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-tittle mb-50">
+                        <h2 class="text-center pr-100 mb-0">Galerie</h2>
+                        <h2>Fragmente de viață</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-tittle mb-60">
+                        <p>Calitatea fotografiei este esențială pentru a transforma momentele speciale în amintiri de durată. 
+                        De aceea, fiecare eveniment este fotografiat cu echipament profesional și cu o atenție deosebită pentru compoziție, lumină și emoție. 
+                        Rezultatul este o colecție de imagini elegante și autentice, care păstrează atmosfera evenimentului exact așa cum a fost trăită.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-7 col-md-6 col-sm-6">
+                    <div class="box snake mb-30">
+                        <div class="gallery-img small-img " (mouseenter)="addOverlay('weeding')"
+                            style="background-image: url(images/homepage-gallery/nunta.jpg);"></div>
+                        <figcaption>Cununie/Nuntă</figcaption>
+                        <div class="overlay slide-in-top" [ngClass]="{ 
+                            'd-none': !isHovered['weeding']
+                            }" (mouseleave)="removeOverlay('weeding')">
+                            <div class="overlay-content">
+                                <a href="weddings.html"><i
+                                        class="ti-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                    <div class="box snake mb-30">
+                        <div class="gallery-img small-img " (mouseenter)="addOverlay('botez')"
+                            style="background-image: url(images/homepage-gallery/cumetrie.jpg);"></div>
+                        <figcaption>Botez/Cumătrie</figcaption>
+                        <div class="overlay slide-in-top" [ngClass]="{ 
+                            'd-none': !isHovered['botez']
+                            }" (mouseleave)="removeOverlay('botez')">
+                            <div class="overlay-content">
+                                <a href="images/homepage-gallery/cumetrie.jpg" class="img-pop-up"><i
+                                        class="ti-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                    <div class="box snake mb-30">
+                        <div class="gallery-img small-img " (mouseenter)="addOverlay('photos')"
+                            style="background-image: url(images/homepage-gallery/sedinte_foto.jpg);"></div>
+                        <figcaption>Ședințe foto</figcaption>
+                        <div class="overlay slide-in-top" [ngClass]="{ 
+                            'd-none': !isHovered['photos']
+                            }" (mouseleave)="removeOverlay('photos')">
+                            <div class="overlay-content" >
+                                <a href="images/homepage-gallery/sedinte_foto.jpg" class="img-pop-up"><i
+                                        class="ti-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <div class="section-btn text-center">
+                        <a href="#" class="border-btn">Verifică disponibilitatea</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between align-items-center">
+                <div class="col">
+                    <div class="section-tittle mb-50">
+                        <h2 class="text-center mb-0">Retușare Pînă/După</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <!-- <style type="text/css">
+                            img-comparison-slider {
+                                --divider-width: 2px;
+                                --divider-color: #c0c0c0;
+                                --default-handle-opacity: 0.3;
+                            }
+                            </style> -->
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider>
+                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                            </img-comparison-slider>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider>
+                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                            </img-comparison-slider>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider value="50">
+                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                            </img-comparison-slider>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-6 col-lg-5 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider >
+                                <img slot="first" src="images/beforeafter/gallery21.jpg"/>
+                                <img slot="second" src="images/beforeafter/gallery22.jpg"/>
+                            </img-comparison-slider>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider value="50">
+                                <img slot="first" src="img/gallery/gallery3.png" />
+                                <img slot="second" src="img/gallery/gallery3.png" />
+                        </img-comparison-slider>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div class="snake mb-30">
+                        <div class="gallery-img small-img">
+                            <img-comparison-slider value="50">
+                                <img slot="first" src="img/gallery/gallery4.png" />
+                                <img slot="second" src="img/gallery/gallery4.png" />
+                            </img-comparison-slider>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Gallery Area End -->
+        <!--? Pricing Card Start -->
+    <section class="pricing-card-area bg-black" style="padding: 70px 0;">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-tittle mb-60 text-center">
+                        <h2 class="text-white">Servicii & Prețuri</h2>
+                        <p class="text-white">Fiecare eveniment are propria energie.<br>
+De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astfel încât tu să te bucuri de moment, fără griji. Fiecare ofertă este adaptată nevoilor și bugetului tău, păstrând același standard de calitate.
+</p>
+                    </div>
+                </div>
+            </div>
+            <owl-carousel-o [options]="pricingCarousel">
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                        <div class="card-top">
+                            <img src="assets/img/icon/camera.svg" alt="">
+                            <h4>Foto-Video</h4>
+                            <p>De la</p>
+                        </div>
+                        <div class="card-mid">
+                            <h4>600€</h4>
+                        </div>
+                        <div class="card-bottom">
+                            <ul>
+                                <li class="mb-2 text-dark">1 Fotograf</li>
+                                <li class="mb-2 text-dark">1 Videograf</li>
+                                <li class="mb-2 text-dark">Poze nelimitate</li>
+                                <li class="mb-2 text-dark">Video 4K/FullHD</li>
+                                <li class="mb-2 text-dark">Video scurt max. 3 min</li>
+                                <li class="mb-2 text-dark">Video full 45min-2h</li>
+                                <li class="mb-2 text-dark">Livrare 3-5 luni</li>
+                            </ul>
+                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                        <div class="card-top">
+                            <img src="assets/img/icon/camera.svg" alt="">
+                            <h4>Foto Cununie</h4>
+                            <p>Pret fix</p>
+                        </div>
+                        <div class="card-mid">
+                            <h4>170€</h4>
+                        </div>
+                        <div class="card-bottom">
+                            <ul>
+                                <li class="mb-2 text-dark">Durata: 1h-2h</li>
+                                    <li class="mb-2 text-dark">150+ poze</li>
+                                <li class="mb-2 text-dark">Selectare, editare profesională</li>
+                                <li class="mb-2 text-dark">Biserică + ședință foto</li>
+                                <li class="mb-2 text-dark">Galerie online</li>
+                                <li class="mb-2 text-dark">Livrare 1 lună</li>
+                            </ul>
+                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                                <div class="card-top">
+                                    <img src="assets/img/icon/camera.svg" alt="">
+                                    <h4>Foto Nuntă</h4>
+                                    <p>De la</p>
+                                </div>
+                                <div class="card-mid">
+                                    <h4>400€</h4>
+                                </div>
+                                <div class="card-bottom">
+                                    <ul>
+                                        <li class="mb-2 text-dark">Durata: 10h-14h</li>
+                                        <li class="mb-2 text-dark">700+ poze</li>
+                                        <li class="mb-2 text-dark">Selectare, editare profesională</li>
+                                        <li class="mb-2 text-dark">Retușare ședința foto</li>
+                                        <li class="mb-2 text-dark">Galerie online</li>
+                                        <li class="mb-2 text-dark">Livrare 3-4 luni</li>
+                                    </ul>
+                                    <a href="#" class="border-btn get-btn">Cere oferta</a>
+                                </div>
+                            </div>
+                </ng-template>
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                        <div class="card-top">
+                            <img src="assets/img/icon/camera.svg" alt="">
+                            <h4>Foto Botez</h4>
+                            <p>Pret fix</p>
+                        </div>
+                        <div class="card-mid">
+                            <h4>130€</h4>
+                        </div>
+                        <div class="card-bottom">
+                            <ul>
+                                <li class="mb-2 text-dark">Durata: 1h-2h</li>
+                                <li class="mb-2 text-dark">150+ poze</li>
+                                <li class="mb-2 text-dark">Selectare, editare profesională</li>
+                                <li class="mb-2 text-dark">Biserică + ședință foto</li>
+                                <li class="mb-2 text-dark">Galerie online</li>
+                                <li class="mb-2 text-dark">Livrare 1 lună</li>
+                            </ul>
+                            <a href="#" class="border-btn get-btn">Cere oferta</a>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                                <div class="card-top">
+                                    <img src="assets/img/icon/camera.svg" alt="">
+                                    <h4>Foto Cumătrie</h4>
+                                    <p>De la</p>
+                                </div>
+                                <div class="card-mid">
+                                    <h4>250€</h4>
+                                </div>
+                                <div class="card-bottom">
+                                    <ul>
+                                        <li class="mb-2 text-dark">Durata: 5h-8h</li>
+                                        <li class="mb-2 text-dark">300+ poze</li>
+                                        <li class="mb-2 text-dark">Selectare, editare profesională</li>
+                                        <li class="mb-2 text-dark">Galerie online</li>
+                                        <li class="mb-2 text-dark">Livrare 2-3 luni</li>
+                                    </ul>
+                                    <a href="#" class="border-btn get-btn">Cere oferta</a>
+                                </div>
+                            </div>
+                </ng-template>
+                <ng-template carouselSlide >
+                    <div class="single-card text-center mb-30 bg-white">
+                        <div class="card-top">
+                            <img src="assets/img/icon/camera.svg" alt="">
+                            <h4>Ședință Foto</h4>
+                            <p>Prețul nu include chiria studio</p>
+                        </div>
+                        <div class="card-mid">
+                            <h4>60€</h4>
+                        </div>
+                        <div class="card-bottom">
+                            <ul>
+                                <li class="mb-2 text-dark">Durata: 1h</li>
+                                <li class="mb-2 text-dark">100+ poze</li>
+                                <li class="mb-2 text-dark">Toate pozele editate </li>
+                                <li class="mb-2 text-dark"> (lumina, cadrarea, cromatica)</li>
+                                <li class="mb-2 text-dark">Retușare 10-15 poze</li>
+                                <li class="mb-2 text-dark">Galerie online</li>
+                                <li class="mb-2 text-dark">Livrare 10 zile</li>
+                            </ul>
+                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </section>
+    <!-- Pricing Card End -->
+        <!-- TESTIMONIAL START -->
+        <section class="testimonial-card-area">
+        <div class="full-container">
+            <!-- Section Tittle -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-tittle mb-60 text-center">
+                        <h2>Recenzii</h2>
+                        <p class="text-dark">Fotografiez felul în care oamenii se privesc atunci când cred că nimeni nu îi observă.
+</p>
+                    </div>
+                </div>
+            </div>
+            <owl-carousel-o [options]="testimonialCarousel" (translated)="onTranslated($event)">
+                <ng-template carouselSlide id="slide1">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide1'] ||  $any(currentReview)()['slide1-append']}">  
+                    <p>
+                        Îți mulțumim mult pentru răbdarea care ai avut-o cu noi 😘mult succes în continuare 😘 ești superbă îti cunoști meseria te recomandăm cu drag 😘pozele frumose😘
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">V&C</div>
+                        <div class="title">Eveniment: Cumetrie</div>
+                </blockquote>
+                </ng-template>
+                <ng-template carouselSlide id="slide2">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide2'] ||  $any(currentReview)()['slide2-append'] }">  
+                        <p>
+                            Un fotograf deosebit, foarte profesionist și atent la detalii! Am rămas impresionați de felul în care a reușit să surprindă emoțiile și momentele importante, într-un mod natural și plin de căldură. Pozele sunt superbe, iar colaborarea a fost una ușoară și plăcută. Recomand cu încredere tuturor celor care își doresc amintiri frumoase și de calitate!🤍🤍🤍
+                                <span role="none" class="bottom-arrow"></span>
+                            </p>
+                            <div class="testimonial-name">V&L</div>
+                            <div class="title">Eveniment: Nuntă</div>
+                    </blockquote>
+                </ng-template>
+                <ng-template carouselSlide id="slide3">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide3'] ||  $any(currentReview)()['slide3-append'] }">  
+                        <p>
+                            Am avut marele noroc de a o avea pe Elena alături de noi la botezul și cumetria fetiței noastre. Pe lângă faptul ca este o profesionistă în domeniu, care își cunoaște foarte bine munca, este foarte implicată și depune mult suflet în tot ceea ce face, mai este și o persoană care te cucerește prin simplitate, căldură, pozitivism și bunătate. Ședința foto a fost o adevărată plăcere, iar rezultatele sunt excepționale. Datorită ei, avem imortalizate cele mai frumoase și speciale momente de la eveniment, căci a reușit să surprindă niște cadre unice. Pozele au fost gata la timp, Elena a avut grijă să monitorizăm procesul pas cu pas și a ținut cont de toate preferințele noastre. Un mare mulțumesc pentru munca și dedicația depusă și o recomandare din suflet pentru toți cei în căutare de un specialist cu adevărat bun!
+                                <span role="none" class="bottom-arrow"></span>
+                            </p>
+                            <div class="testimonial-name">Diana M.</div>
+                            <div class="title">Eveniment: Ședințe foto</div>
+                    </blockquote>
+                </ng-template>
+                <ng-template carouselSlide id="slide4">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide4'] ||  $any(currentReview)()['slide4-append'] }">  
+                        <p>
+                            Îți mulțumim pentru fotografiile deosebite! Fiecare imagine transmite emoția și frumusețea momentului — o amintire prețioasă pentru noi. 😍😍😍
+    Recomand cu toată încrederea ❤️
+    
+                                <span role="none" class="bottom-arrow"></span>
+                            </p>
+                            <div class="testimonial-name">S&R</div>
+                            <div class="title">Eveniment: Ședințe foto</div>
+                    </blockquote>
+                </ng-template>
+                <ng-template carouselSlide id="slide5">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide5'] ||  $any(currentReview)()['slide5-append'] }">  
+                        <p>
+                            Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️ Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️ La următoarea noastră ocazie o să apelăm din start la tine ☺️
+    
+                                <span role="none" class="bottom-arrow"></span>
+                            </p>
+                            <div class="testimonial-name">T&A</div>
+                            <div class="title">Eveniment: Nuntă</div>
+                    </blockquote>
+                </ng-template>
+                <ng-template carouselSlide id="slide6">
+                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide6'] ||  $any(currentReview)()['slide6-append'] }">  
+                        <p>
+                            O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!  Aliona B. Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
+    
+                                <span role="none" class="bottom-arrow"></span>
+                            </p>
+                            <div class="testimonial-name">Doina M.</div>
+                            <div class="title">Eveniment: Nuntă</div>
+                    </blockquote>
+                </ng-template>
+            </owl-carousel-o>
+            <!-- <div class="carousel" data-flickity='{"fullscreen": true, "wrapAround": true, "pageDots": false, "prevNextButtons": false, "autoPlay": 5000 }'>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        Îți mulțumim mult pentru răbdarea care ai avut-o cu noi 😘mult succes în continuare 😘 ești superbă îti cunoști meseria te recomandăm cu drag 😘pozele frumose😘
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">V&C</div>
+                        <div class="title">Eveniment: Cumetrie</div>
+                </blockquote>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        Un fotograf deosebit, foarte profesionist și atent la detalii! Am rămas impresionați de felul în care a reușit să surprindă emoțiile și momentele importante, într-un mod natural și plin de căldură. Pozele sunt superbe, iar colaborarea a fost una ușoară și plăcută. Recomand cu încredere tuturor celor care își doresc amintiri frumoase și de calitate!🤍🤍🤍
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">V&L</div>
+                        <div class="title">Eveniment: Nuntă</div>
+                </blockquote>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        Am avut marele noroc de a o avea pe Elena alături de noi la botezul și cumetria fetiței noastre. Pe lângă faptul ca este o profesionistă în domeniu, care își cunoaște foarte bine munca, este foarte implicată și depune mult suflet în tot ceea ce face, mai este și o persoană care te cucerește prin simplitate, căldură, pozitivism și bunătate. Ședința foto a fost o adevărată plăcere, iar rezultatele sunt excepționale. Datorită ei, avem imortalizate cele mai frumoase și speciale momente de la eveniment, căci a reușit să surprindă niște cadre unice. Pozele au fost gata la timp, Elena a avut grijă să monitorizăm procesul pas cu pas și a ținut cont de toate preferințele noastre. Un mare mulțumesc pentru munca și dedicația depusă și o recomandare din suflet pentru toți cei în căutare de un specialist cu adevărat bun!
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">Diana M.</div>
+                        <div class="title">Eveniment: Ședințe foto</div>
+                </blockquote>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        Îți mulțumim pentru fotografiile deosebite! Fiecare imagine transmite emoția și frumusețea momentului — o amintire prețioasă pentru noi. 😍😍😍
+Recomand cu toată încrederea ❤️
+
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">S&R</div>
+                        <div class="title">Eveniment: Ședințe foto</div>
+                </blockquote>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️ Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️ La următoarea noastră ocazie o să apelăm din start la tine ☺️
+
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">T&A</div>
+                        <div class="title">Eveniment: Nuntă</div>
+                </blockquote>
+                <blockquote class="carousel-cell">  
+                    <p>
+                        O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!  Aliona B. Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
+
+                            <span role="none" class="bottom-arrow"></span>
+                        </p>
+                        <div class="testimonial-name">Doina M.</div>
+                        <div class="title">Eveniment: Nuntă</div>
+                </blockquote>
+            </div> -->
+        </div>
+    </section>
+    <!-- TESTIMONIAL END -->
+    <!--? All startups Start -->
+    <div class="all-starups-area fix">
+        <!-- left Contents -->
+        <div class="starups">
+            <div class="starups-details">
+                <h3>Sunt gata să depășesc așteptările</h3>
+                <p>Stilul meu este simplu: lumină naturală, compoziții curate și momente reale. Fiecare fotografie este editată manual, cu atenție la detalii și într-un stil discret, cât mai natural. Aleg să nu folosesc inteligență artificială (AI) sau editare automată, pentru că fiecare imagine merită timp, precizie și o abordare personală.</p>
+            </div>
+        </div>
+        <!--Right Contents  -->
+        <div class="starups-img"></div>
+    </div>
+    <!--All startups End -->
+        <!--? Form Area Start -->
+    <div class="categories-area section-padding40">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-tittle mb-60 text-center">
+                        <h2>Spune-mi povestea ta</h2>
+                        <form action="#">
+                            <div class="input-group-icon mt-10">
+                                <!-- <i class="fas fa-glass-cheers"></i> -->
+                                <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                                <input type="text" name="first_name" placeholder="Nume Prenume"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nume Prenume'" required
+                                class="single-input">
+                            </div>
+                            <div class="input-group-icon mt-10">
+                                <div class="icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
+                                <input type="text" name="last_name" placeholder="Tipul Evenimentului"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tipul Evenimentului'" required
+                                class="single-input">
+                            </div>
+                            <div class="input-group-icon mt-10">
+                                <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                <input type="text" name="last_name" placeholder="Data"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data'" required
+                                data-provide="datepicker"
+                                class="single-input">
+                            </div>
+                            <div class="input-group-icon mt-10">
+                                <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                                <input type="email" name="EMAIL" placeholder="Locatia evenimentului"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Locatia evenimentului'"
+                                class="single-input">
+                            </div>
+                            <div class="input-group-icon mt-10">
+                                <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                                <input type="email" name="EMAIL" placeholder="Contact"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact'"
+                                class="single-input">
+                            </div>
+                            <div class="input-group-icon mt-10">
+                                <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                                <textarea maxlength="250" class="single-textarea homepage-contact" placeholder="Notite" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Notite'" required></textarea>
+                            </div>
+                            <div class="row mt-30">
+                                <div class="col-lg-12 mb-30">
+                                    <div class="section-btn text-center">
+                                        <a href="#" class="border-btn">Trimite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form Area End -->
+</main>
+<app-footer></app-footer>

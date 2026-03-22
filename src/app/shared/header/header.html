@@ -1,0 +1,60 @@
+<header class="sticky-top shadow-sm bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light py-2">
+    <div class="container">
+ 
+      <!-- Logo -->
+      <a class="navbar-brand" routerLink="/">
+        <img height="50" src="images/logo_black.png" alt="Logo">
+      </a>
+ 
+      <!-- Mobile: phone button + toggler -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <a href="tel:+37368035084" class="btn btn-outline-dark btn-sm px-3 rounded-3">
+          <i class="fas fa-phone"></i>
+        </a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+ 
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+        <ul class="navbar-nav align-items-lg-center gap-lg-1 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Acasă</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">Galerie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/pricing" routerLinkActive="active">Prețuri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reviews" routerLinkActive="active">Recenzii</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">Despre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contacte</a>
+          </li>
+          <!-- Phone CTA — desktop only -->
+          <li class="nav-item d-none d-lg-block ms-2">
+            <a href="tel:+37368035084" class="btn border-btn medium border-0 border-btn2 px-4 rounded-3">
+              <i class="fas fa-phone me-2 fs-5"></i>+373 68035084
+            </a>
+          </li>
+        </ul>
+      </div>
+ 
+    </div>
+  </nav>
+</header>

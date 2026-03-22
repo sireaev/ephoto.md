@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+// Variable overrides first
+$primary: #900;
+$enable-shadows: true;
+$font-size-root: 16px;
+// $prefix: "mo-";
+
+// Then import Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+@import './app/scss/variables';
+@import './app/scss/color';
+// @import "./app/scss/common";
+@import './app/scss/contact';
+@import './app/scss/contact_form';
+@import './app/scss/elements';
+@import './app/scss/extend';
+@import './app/scss/footer';
+@import './app/scss/gallery';
+@import './app/scss/h1-hero';
+@import './app/scss/headerMenu';
+@import './app/scss/mixins';
+@import './app/scss/pricing';
+@import './app/scss/services';
+@import './app/scss/services_section';
+@import './app/scss/team';
+@import './app/scss/testimonial';
+@import './app/scss/style.scss';
+
+@import 'animations';
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
