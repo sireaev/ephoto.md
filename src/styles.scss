@@ -31,3 +31,9 @@ $font-size-root: 16px;
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+button:focus-visible,
+button:focus,
+:focus {
+    outline-style: none;
+}

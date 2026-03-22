@@ -11,7 +11,7 @@
         </div>
     </div> -->
     <!-- Start slider -->
-    <div class="slider-area">
+    <div class="slider-area" id="home">
         <div class="slider-item-active">
             <!-- Single -->
             <div class="slider-item">
@@ -67,7 +67,7 @@
     </div>
     <!-- End Start slider -->
     <!--? Gallery Area Start -->
-    <div class="gallery-area section-padding40 pb-50">
+    <div class="gallery-area section-padding40 pb-50" id="gallery">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
@@ -89,7 +89,7 @@
                 <div class="col-xl-4 col-lg-7 col-md-6 col-sm-6">
                     <div class="box snake mb-30">
                         <div class="gallery-img small-img " (mouseenter)="addOverlay('weeding')"
-                            style="background-image: url(images/homepage-gallery/nunta.jpg);"></div>
+                            style="background-image: url(assets/images/homepage-gallery/nunta.jpg);"></div>
                         <figcaption>Cununie/Nuntă</figcaption>
                         <div class="overlay slide-in-top" [ngClass]="{ 
                             'd-none': !isHovered['weeding']
@@ -104,13 +104,13 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                     <div class="box snake mb-30">
                         <div class="gallery-img small-img " (mouseenter)="addOverlay('botez')"
-                            style="background-image: url(images/homepage-gallery/cumetrie.jpg);"></div>
+                            style="background-image: url('assets/images/homepage-gallery/cumetrie.jpg');"></div>
                         <figcaption>Botez/Cumătrie</figcaption>
                         <div class="overlay slide-in-top" [ngClass]="{ 
                             'd-none': !isHovered['botez']
                             }" (mouseleave)="removeOverlay('botez')">
                             <div class="overlay-content">
-                                <a href="images/homepage-gallery/cumetrie.jpg" class="img-pop-up"><i
+                                <a href="assets/images/homepage-gallery/cumetrie.jpg" class="img-pop-up"><i
                                         class="ti-plus"></i></a>
                             </div>
                         </div>
@@ -119,13 +119,13 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                     <div class="box snake mb-30">
                         <div class="gallery-img small-img " (mouseenter)="addOverlay('photos')"
-                            style="background-image: url(images/homepage-gallery/sedinte_foto.jpg);"></div>
+                            style="background-image: url(assets/images/homepage-gallery/sedinte_foto.jpg);"></div>
                         <figcaption>Ședințe foto</figcaption>
                         <div class="overlay slide-in-top" [ngClass]="{ 
                             'd-none': !isHovered['photos']
                             }" (mouseleave)="removeOverlay('photos')">
                             <div class="overlay-content" >
-                                <a href="images/homepage-gallery/sedinte_foto.jpg" class="img-pop-up"><i
+                                <a href="assets/images/homepage-gallery/sedinte_foto.jpg" class="img-pop-up"><i
                                         class="ti-plus"></i></a>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="section-btn text-center">
-                        <a href="#" class="border-btn">Verifică disponibilitatea</a>
+                        <a href="#" class="border-btn rounded-3">Verifică disponibilitatea</a>
                     </div>
                 </div>
             </div>
@@ -149,17 +149,10 @@
             <div class="row justify-content-between">
                 <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
                     <div class="snake mb-30">
-                        <!-- <style type="text/css">
-                            img-comparison-slider {
-                                --divider-width: 2px;
-                                --divider-color: #c0c0c0;
-                                --default-handle-opacity: 0.3;
-                            }
-                            </style> -->
                         <div class="gallery-img small-img">
                             <img-comparison-slider>
-                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
-                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                                <img slot="first"  src="assets/images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="assets/images/beforeafter/gallery12.jpg"/>
                             </img-comparison-slider>
                         </div>
                     </div>
@@ -169,8 +162,8 @@
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
                             <img-comparison-slider>
-                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
-                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                                <img slot="first"  src="assets/images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="assets/images/beforeafter/gallery12.jpg"/>
                             </img-comparison-slider>
                         </div>
                     </div>
@@ -180,8 +173,8 @@
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
                             <img-comparison-slider value="50">
-                                <img slot="first"  src="images/beforeafter/gallery11.jpg"/>
-                                <img slot="second"  src="images/beforeafter/gallery12.jpg"/>
+                                <img slot="first"  src="assets/images/beforeafter/gallery11.jpg"/>
+                                <img slot="second"  src="assets/images/beforeafter/gallery12.jpg"/>
                             </img-comparison-slider>
                         </div>
                     </div>
@@ -191,8 +184,8 @@
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
                             <img-comparison-slider >
-                                <img slot="first" src="images/beforeafter/gallery21.jpg"/>
-                                <img slot="second" src="images/beforeafter/gallery22.jpg"/>
+                                <img slot="first" src="assets/images/beforeafter/gallery21.jpg"/>
+                                <img slot="second" src="assets/images/beforeafter/gallery22.jpg"/>
                             </img-comparison-slider>
                         </div>
                     </div>
@@ -201,8 +194,8 @@
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
                             <img-comparison-slider value="50">
-                                <img slot="first" src="img/gallery/gallery3.png" />
-                                <img slot="second" src="img/gallery/gallery3.png" />
+                                <img slot="first" src="assets/img/gallery/gallery3.png" />
+                                <img slot="second" src="assets/img/gallery/gallery3.png" />
                         </img-comparison-slider>
                         </div>
                     </div>
@@ -222,7 +215,7 @@
     </div>
     <!-- Gallery Area End -->
         <!--? Pricing Card Start -->
-    <section class="pricing-card-area bg-black" style="padding: 70px 0;">
+    <section class="pricing-card-area section-padding40 bg-black" id="prices">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row justify-content-center">
@@ -239,7 +232,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                         <div class="card-top">
-                            <img src="assets/img/icon/camera.svg" alt="">
+                            <img height="50" src="assets/img/icon/camera.svg" alt="">
                             <h4>Foto-Video</h4>
                             <p>De la</p>
                         </div>
@@ -256,14 +249,14 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                 <li class="mb-2 text-dark">Video full 45min-2h</li>
                                 <li class="mb-2 text-dark">Livrare 3-5 luni</li>
                             </ul>
-                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                            <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
                         </div>
                     </div>
                 </ng-template>
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                         <div class="card-top">
-                            <img src="assets/img/icon/camera.svg" alt="">
+                            <img height="50" src="assets/img/icon/camera.svg" alt="">
                             <h4>Foto Cununie</h4>
                             <p>Pret fix</p>
                         </div>
@@ -279,14 +272,14 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                 <li class="mb-2 text-dark">Galerie online</li>
                                 <li class="mb-2 text-dark">Livrare 1 lună</li>
                             </ul>
-                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                            <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
                         </div>
                     </div>
                 </ng-template>
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                                 <div class="card-top">
-                                    <img src="assets/img/icon/camera.svg" alt="">
+                                    <img height="50" src="assets/img/icon/camera.svg" alt="">
                                     <h4>Foto Nuntă</h4>
                                     <p>De la</p>
                                 </div>
@@ -302,14 +295,14 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                         <li class="mb-2 text-dark">Galerie online</li>
                                         <li class="mb-2 text-dark">Livrare 3-4 luni</li>
                                     </ul>
-                                    <a href="#" class="border-btn get-btn">Cere oferta</a>
+                                    <a href="#" class="border-btn rounded-3 get-btn">Cere oferta</a>
                                 </div>
                             </div>
                 </ng-template>
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                         <div class="card-top">
-                            <img src="assets/img/icon/camera.svg" alt="">
+                            <img height="50" src="assets/img/icon/camera.svg" alt="">
                             <h4>Foto Botez</h4>
                             <p>Pret fix</p>
                         </div>
@@ -325,14 +318,14 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                 <li class="mb-2 text-dark">Galerie online</li>
                                 <li class="mb-2 text-dark">Livrare 1 lună</li>
                             </ul>
-                            <a href="#" class="border-btn get-btn">Cere oferta</a>
+                            <a href="#" class="border-btn rounded-3 get-btn">Cere oferta</a>
                         </div>
                     </div>
                 </ng-template>
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                                 <div class="card-top">
-                                    <img src="assets/img/icon/camera.svg" alt="">
+                                    <img height="50" src="assets/img/icon/camera.svg" alt="">
                                     <h4>Foto Cumătrie</h4>
                                     <p>De la</p>
                                 </div>
@@ -347,14 +340,14 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                         <li class="mb-2 text-dark">Galerie online</li>
                                         <li class="mb-2 text-dark">Livrare 2-3 luni</li>
                                     </ul>
-                                    <a href="#" class="border-btn get-btn">Cere oferta</a>
+                                    <a href="#" class="border-btn rounded-3 get-btn">Cere oferta</a>
                                 </div>
                             </div>
                 </ng-template>
                 <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                         <div class="card-top">
-                            <img src="assets/img/icon/camera.svg" alt="">
+                            <img height="50" src="assets/img/icon/camera.svg" alt="">
                             <h4>Ședință Foto</h4>
                             <p>Prețul nu include chiria studio</p>
                         </div>
@@ -371,7 +364,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                 <li class="mb-2 text-dark">Galerie online</li>
                                 <li class="mb-2 text-dark">Livrare 10 zile</li>
                             </ul>
-                            <a href="#" class="border-btn get-btn gallery-img">Cere oferta</a>
+                            <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
                         </div>
                     </div>
                 </ng-template>
@@ -380,7 +373,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
     </section>
     <!-- Pricing Card End -->
         <!-- TESTIMONIAL START -->
-        <section class="testimonial-card-area">
+    <section class="testimonial-card-area" id="testimonial">
         <div class="full-container">
             <!-- Section Tittle -->
             <div class="row justify-content-center">
@@ -438,7 +431,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 <ng-template carouselSlide id="slide5">
                     <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide5'] ||  $any(currentReview)()['slide5-append'] }">  
                         <p>
-                            Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️ Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️ La următoarea noastră ocazie o să apelăm din start la tine ☺️
+                            Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️La următoarea noastră ocazie o să apelăm din start la tine ☺️
     
                                 <span role="none" class="bottom-arrow"></span>
                             </p>
@@ -449,7 +442,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 <ng-template carouselSlide id="slide6">
                     <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide6'] ||  $any(currentReview)()['slide6-append'] }">  
                         <p>
-                            O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!  Aliona B. Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
+                            O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!Aliona B.Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
     
                                 <span role="none" class="bottom-arrow"></span>
                             </p>
@@ -495,7 +488,7 @@ Recomand cu toată încrederea ❤️
                 </blockquote>
                 <blockquote class="carousel-cell">  
                     <p>
-                        Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️ Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️ La următoarea noastră ocazie o să apelăm din start la tine ☺️
+                        Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️La următoarea noastră ocazie o să apelăm din start la tine ☺️
 
                             <span role="none" class="bottom-arrow"></span>
                         </p>
@@ -504,7 +497,7 @@ Recomand cu toată încrederea ❤️
                 </blockquote>
                 <blockquote class="carousel-cell">  
                     <p>
-                        O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!  Aliona B. Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
+                        O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!Aliona B.Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
 
                             <span role="none" class="bottom-arrow"></span>
                         </p>
@@ -516,12 +509,12 @@ Recomand cu toată încrederea ❤️
     </section>
     <!-- TESTIMONIAL END -->
     <!--? All startups Start -->
-    <div class="all-starups-area fix">
+    <div class="all-starups-area fix" id="about">
         <!-- left Contents -->
         <div class="starups">
             <div class="starups-details">
                 <h3>Sunt gata să depășesc așteptările</h3>
-                <p>Stilul meu este simplu: lumină naturală, compoziții curate și momente reale. Fiecare fotografie este editată manual, cu atenție la detalii și într-un stil discret, cât mai natural. Aleg să nu folosesc inteligență artificială (AI) sau editare automată, pentru că fiecare imagine merită timp, precizie și o abordare personală.</p>
+                <p>Stilul meu este simplu: lumină naturală, compoziții curate și momente reale.Fiecare fotografie este editată manual, cu atenție la detalii și într-un stil discret, cât mai natural. Aleg să nu folosesc inteligență artificială (AI) sau editare automată, pentru că fiecare imagine merită timp, precizie și o abordare personală.</p>
             </div>
         </div>
         <!--Right Contents  -->
@@ -529,7 +522,7 @@ Recomand cu toată încrederea ❤️
     </div>
     <!--All startups End -->
         <!--? Form Area Start -->
-    <div class="categories-area section-padding40">
+    <div class="categories-area" id="form">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -573,10 +566,10 @@ Recomand cu toată încrederea ❤️
                                 <textarea maxlength="250" class="single-textarea homepage-contact" placeholder="Notite" onfocus="this.placeholder = ''"
                                 onblur="this.placeholder = 'Notite'" required></textarea>
                             </div>
-                            <div class="row mt-30">
-                                <div class="col-lg-12 mb-30">
+                            <div class="row mt-4">
+                                <div class="col-lg-12">
                                     <div class="section-btn text-center">
-                                        <a href="#" class="border-btn">Trimite</a>
+                                        <a href="#" class="border-btn rounded-3">Trimite</a>
                                     </div>
                                 </div>
                             </div>

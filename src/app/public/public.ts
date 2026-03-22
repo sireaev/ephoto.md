@@ -1,9 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Signal, signal, WritableSignal } from '@angular/core';
 import { Header } from '../shared/header/header';
 import { Footer } from '../shared/footer/footer';
 import { NgClass } from '@angular/common'; 
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ScreenSizeService } from '../shared/screen-size.service';
+import { BehaviorSubject, map, of } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 type IHover = {
   [key: string]: boolean
@@ -19,7 +22,7 @@ type IHover = {
 export class Public {
   currentReview = signal({'slide2': true});
   isHovered: IHover = {};
-
+  
   pricingCarousel: OwlOptions = {
     loop: false,
     margin: 20,
@@ -69,6 +72,12 @@ export class Public {
         }
     }
   }
+  isMobile;
+
+  constructor(private screenSizeService: ScreenSizeService) {
+    this.isMobile = toSignal(this.screenSizeService.isMobile$, { initialValue: false });
+    this.currentReview.update(() => ({[this.isMobile() ? 'slide1' : 'slide2']: true  } as any));
+  }
 
   addOverlay(element: any): void {
     this.isHovered[element] = true;
@@ -81,8 +90,12 @@ export class Public {
   onTranslated(data: SlidesOutputData) {
     // console.log('data', data);
     // this.currentReview[data.slides![1].id] = true;
-    this.currentReview.update((x: any) => ({[data.slides![1].id]: true  } as any));
+    if (this.isMobile()) {
+      this.currentReview.update((x: any) => ({[data.slides![0].id]: true  } as any));
+    } else {
+      this.currentReview.update((x: any) => ({[data.slides![1].id]: true  } as any));
+    }
     // this.currentReview = this.currentReview;
-    console.log('currentReview set to ', data.slides![1].id)
+    console.log('currentReview set to ', data.slides![ this.isMobile() ? 0 : 1].id)
   }
 }
