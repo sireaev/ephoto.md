@@ -4,13 +4,13 @@
  
       <!-- Logo -->
       <a class="navbar-brand" routerLink="/">
-        <img height="50" src="images/logo_black.png" alt="Logo">
+        <img height="50" src="assets/images/logo_black.png" alt="Logo">
       </a>
- 
+
       <!-- Mobile: phone button + toggler -->
       <div class="d-flex align-items-center gap-2 d-lg-none">
-        <a href="tel:+37368035084" class="btn btn-outline-dark btn-sm px-3 rounded-3">
-          <i class="fas fa-phone"></i>
+        <a href="tel:+37368035084" class="btn btn-outline-dark btn-sm px-md-3  rounded-3">
+          <i class="fas fa-phone pe-lg-2 pe-0"></i>
         </a>
         <button
           class="navbar-toggler border-0"
@@ -29,31 +29,32 @@
       <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
         <ul class="navbar-nav align-items-lg-center gap-lg-1 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Acasă</a>
+            <a class="nav-link" href="#home">Acasă</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">Galerie</a>
+            <a class="nav-link" href="#gallery">Galerie</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/pricing" routerLinkActive="active">Prețuri</a>
+            <a class="nav-link" href="#prices">Prețuri</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reviews" routerLinkActive="active">Recenzii</a>
+            <a class="nav-link" href="#testimonial">Recenzii</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active">Despre</a>
+            <a class="nav-link" href="#about">Despre</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contacte</a>
+            <a class="nav-link" href="#form">Contacte</a>
           </li>
           <!-- Phone CTA — desktop only -->
           <li class="nav-item d-none d-lg-block ms-2">
-            <a href="tel:+37368035084" class="btn border-btn medium border-0 border-btn2 px-4 rounded-3">
-              <i class="fas fa-phone me-2 fs-5"></i>+373 68035084
+            <a href="tel:+37368035084" class="btn border-btn medium border-0 border-btn2 px-3 rounded-3">
+              <i class="fas fa-phone pe-1"></i>+373 68035084
             </a>
           </li>
         </ul>
       </div>
+ 
  
     </div>
   </nav>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLinkActive],
+  imports: [RouterLink, NgbDropdownModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

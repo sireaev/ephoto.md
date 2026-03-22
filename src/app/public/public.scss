@@ -1,14 +1,13 @@
-  .testimonial-card-area {
-    padding: 70px 0 70px 0;
-  }
-
-  @media screen and (max-width: 1500px) {
-    section.testimonial-card-area {
-      padding: 70px 0 420px 0;
-    }
-  }
-
   ::ng-deep {
+    img-comparison-slider {
+      max-width: 100%;
+    }
+    // img-comparison-slider {
+    //                             --divider-width: 2px;
+    //                             --divider-color: #c0c0c0;
+    //                             --default-handle-opacity: 0.3;
+    //                         }
+
     .testimonial-card-area {
       max-width: 99%;
         .carousel {

@@ -47,6 +47,7 @@
               "includePaths": ["src", "public"]
             },
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -80,11 +81,6 @@
                 "bundleName": "vendor"
               },
               {
-                "input": "public/css/style.css",
-                "inject": true,
-                "bundleName": "vendor"
-              },
-              {
                 "input": "public/css/themify-icons.css",
                 "inject": true,
                 "bundleName": "vendor"
@@ -98,6 +94,8 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
             ],
+
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"],
             "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
