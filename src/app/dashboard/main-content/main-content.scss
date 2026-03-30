@@ -1,0 +1,385 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #c5cee0;
+    border-radius: 4px;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222b45;
+    margin: 0 0 4px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.breadcrumb {
+    margin: 0;
+    font-size: 12px;
+}
+
+.breadcrumb-item a {
+    color: #3366ff;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #8f9bb3;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #c5cee0;
+}
+
+.page-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-nebula {
+    display: flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #3366ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-nebula:hover {
+    background: #274bdb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
+}
+
+.btn-outline-nebula {
+    display: flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #fff;
+    color: #3366ff;
+    border: 1px solid #3366ff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-outline-nebula:hover {
+    background: #f0f4ff;
+}
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.kpi-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s;
+}
+
+.kpi-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.kpi-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.kpi-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kpi-label {
+    font-size: 12px;
+    color: #8f9bb3;
+    font-weight: 500;
+}
+
+.kpi-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222b45;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.kpi-change {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.kpi-change.up {
+    color: #00d68f;
+}
+
+.kpi-change.down {
+    color: #ff3d71;
+}
+
+/* Card */
+.card-nebula {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.card-header-nebula {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.card-title-nebula {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222b45;
+    margin: 0;
+}
+
+.card-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.chip {
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #e4e9f2;
+    background: transparent;
+    font-size: 12px;
+    color: #8f9bb3;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.chip.active,
+.chip:hover {
+    background: #3366ff;
+    border-color: #3366ff;
+    color: #fff;
+}
+
+/* Content Row */
+.content-row {
+    display: flex;
+    gap: 16px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+/* Chart */
+.chart-area {
+    padding: 8px 0 0;
+}
+
+.bar-chart {
+    width: 100%;
+}
+
+.chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #8f9bb3;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-dot.blue {
+    background: #3366ff;
+}
+
+.legend-dot.green {
+    background: #00d68f;
+}
+
+.legend-label {
+    margin-left: 4px;
+}
+
+/* Donut */
+.donut-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.donut-chart {
+    width: 140px;
+}
+
+.donut-legend {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.donut-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.donut-legend-label {
+    flex: 1;
+    color: #222b45;
+}
+
+.donut-legend-pct {
+    color: #8f9bb3;
+    font-weight: 600;
+}
+
+/* Table */
+.view-all {
+    font-size: 13px;
+    font-weight: 600;
+    color: #3366ff;
+    text-decoration: none;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.nebula-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+}
+
+.nebula-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #8f9bb3;
+    border-bottom: 2px solid #edf1f7;
+}
+
+.nebula-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f7f9fc;
+    color: #222b45;
+    vertical-align: middle;
+}
+
+.nebula-table tr:last-child td {
+    border-bottom: none;
+}
+
+.nebula-table tr:hover td {
+    background: #f7f9fc;
+}
+
+.table-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.text-muted {
+    color: #8f9bb3 !important;
+}
+
+.fw-semibold {
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-badge.completed {
+    background: #e8fdf5;
+    color: #00b887;
+}
+
+.status-badge.pending {
+    background: #fff8e1;
+    color: #d68100;
+}
+
+.status-badge.cancelled {
+    background: #fff2f2;
+    color: #d61f3c;
+}
+
+.status-badge.processing {
+    background: #e9f5ff;
+    color: #0077cc;
+}

@@ -1,0 +1,26 @@
+.login-wrapper {
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #e4e9f2);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 4px;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-control {
+  border-radius: 4px;
+}
+
+.btn {
+  height: 58px;
+  background-color: #3366ff;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.5rem;
+}

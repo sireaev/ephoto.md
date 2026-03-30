@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 // Variable overrides first
-$primary: #900;
+$primary: #3366ff;
 $enable-shadows: true;
 $font-size-root: 16px;
 // $prefix: "mo-";
 
 // Then import Bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
 @import './app/scss/variables';
 @import './app/scss/color';
@@ -29,11 +29,15 @@ $font-size-root: 16px;
 
 @import 'animations';
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
 button:focus-visible,
 button:focus,
 :focus {
     outline-style: none;
+}
+
+app-dashboard,
+app-login {
+    h1,h2,h3,h4,h5,h6,p,span, button.btn, form, div {
+       font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+   }
 }

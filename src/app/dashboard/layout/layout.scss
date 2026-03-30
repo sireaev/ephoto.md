@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap');
+
+:host {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    color: #222b45;
+    background: #edf1f7;
+    -webkit-font-smoothing: antialiased;
+}
+
+app-main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #edf1f7;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Bootstrap overrides */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+}
+
+/* Scrollbar global */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c5cee0; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #8f9bb3; }
+
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.layout-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}

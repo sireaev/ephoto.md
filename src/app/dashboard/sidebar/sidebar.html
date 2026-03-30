@@ -1,0 +1,64 @@
+<aside class="sidebar">
+    <div class="sidebar-section">
+        <h6 class="section-label">Recent Activity</h6>
+        <div class="activity-feed">
+            <div class="activity-item" *ngFor="let item of activities">
+                <div class="activity-icon" [ngClass]="item.type">
+                    <i class="bi" [ngClass]="item.icon"></i>
+                </div>
+                <div class="activity-content">
+                    <p class="activity-text">{{ item.text }}</p>
+                    <span class="activity-time">{{ item.time }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+        <h6 class="section-label">Team Members</h6>
+        <div class="team-list">
+            <div class="team-member" *ngFor="let member of team">
+                <img [src]="member.avatar" [alt]="member.name" class="member-avatar" />
+                <div class="member-info">
+                    <span class="member-name">{{ member.name }}</span>
+                    <span class="member-status" [ngClass]="member.status">{{ member.statusLabel }}</span>
+                </div>
+                <div class="member-badge" [ngClass]="member.status"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+        <h6 class="section-label">Storage</h6>
+        <div class="storage-card">
+            <div class="storage-icon">
+                <i class="bi bi-cloud-fill"></i>
+            </div>
+            <div class="storage-info">
+                <div class="storage-bar">
+                    <div class="storage-fill" style="width: 68%"></div>
+                </div>
+                <div class="storage-labels">
+                    <span>34 GB used</span>
+                    <span>50 GB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+        <h6 class="section-label">Quick Links</h6>
+        <div class="quick-links">
+            <a class="quick-link" href="#" *ngFor="let link of quickLinks">
+                <i class="bi" [ngClass]="link.icon"></i>
+                <span>{{ link.label }}</span>
+            </a>
+        </div>
+    </div>
+</aside>
