@@ -1,0 +1,69 @@
+<main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Evenimente</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Evenimente</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openEventModal()">
+                <i class="fas fa-plus"></i>Adaugă eveniment
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Evenimente recente</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Client</th>
+                        <th>Eveniment</th>
+                        <th>Status</th>
+                        <th>Descriere</th>
+                        <th>Categorie</th>
+                        <th>Data eveniment</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(e of events()?.data; track e.id) {
+                        <tr>
+                            <td class="text-muted">{{ e.id }}</td>
+                            <td>
+                               User
+                            </td>
+                            <td>{{ e.title }}</td>
+                            <td>
+                                <span class="status-badge" [ngClass]="e.status">{{ e.status || 'nedefinit' }}</span>
+                            </td>
+                            <td class="fw-semibold">{{ e.description }}</td>
+                            <td>
+                                {{categories().data | propById : e.categoryId : 'name' }}
+                            </td>
+                            <td class="text-muted">{{ e.eventDate | date: 'dd.MM.yyyy'}}</td>
+                            <td class="d-flex gap-2">
+                                <i (click)="openEventModal(e)" placement="top" ngbTooltip="Editează" role="button" class="text-primary fas fa-pen fs-6"></i>
+                                <i [routerLink]="'../photo-management/'+e.id" placement="top" ngbTooltip="Foto" role="button" class="text-primary fas fa-camera-retro fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

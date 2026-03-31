@@ -1,0 +1,61 @@
+<main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Categorii</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Categorii</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openCategoryModal()">
+                <i class="fas fa-plus"></i>Adaugă categorie
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Categorii recente</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nume</th>
+                        <th>Link</th>
+                        <th>Status</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(category of categories()?.data; track category.id) {
+                        <tr>
+                            <td class="text-muted">{{ category.id }}</td>
+                            <td>
+                               {{ category.name }}
+                            </td>
+                            <td>{{ category.slug }}</td>
+                            <td>
+                                <span class="status-badge" [ngClass]="category.status">{{ category.status || 'nedefinit' }}</span>
+                            </td>
+                            <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Editează" (click)="openCategoryModal(category)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(category.id!)" role="button" class="fas fa-times text-danger fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

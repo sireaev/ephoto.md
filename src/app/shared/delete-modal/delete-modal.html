@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ștergere {{modul}}</h4>
+</div>
+
+<div class="modal-body">
+    Ești sigur că dorești să ștergi {{modul}} {{name}}?
+</div>
+
+<div class="modal-footer">
+    <button
+    type="button"
+    class="btn-nebula bg-secondary"
+    (click)="delete()"
+  >
+    Nu
+  </button>
+  <button
+    type="button"
+    class="btn-nebula bg-danger"
+    (click)="delete(true)"
+  >
+    Da
+  </button>
+</div>

@@ -11,14 +11,18 @@
     -webkit-font-smoothing: antialiased;
 }
 
-app-main-content {
-    flex: 1;
-    overflow-y: auto;
-    background: #edf1f7;
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+::ng-deep {
+    app-categories,
+    app-events,
+    app-main-content {
+        flex: 1;
+        overflow-y: auto;
+        background: #edf1f7;
+        padding: 24px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 *, *::before, *::after {

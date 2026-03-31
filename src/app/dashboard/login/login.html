@@ -6,59 +6,60 @@
       </a>
     </div>
     <div class="card-body p-4">
-
-      <div class="text-center mb-4">
-        <h2 class="fw-bold">Sign In</h2>
-        <p class="text-muted">Enter your email and password</p>
-      </div>
-      <form (ngSubmit)="login()" #form="ngForm">
-
-        <!-- Email -->
-        <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="name@example.com"
-            name="email"
-            [(ngModel)]="user.email"
-            required
-          />
-          <label for="email">Email address</label>
+      <div class="auth-block">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Login</h2>
+          <p class="text-muted">Enter your email and password</p>
         </div>
-
-        <!-- Password -->
-        <div class="form-floating mb-3">
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-            name="password"
-            [(ngModel)]="user.password"
-            required
-          />
-          <label for="password">Password</label>
-        </div>
-
-        <!-- Options -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="remember" />
-            <label class="form-check-label" for="remember">
-              Remember me
-            </label>
+        <form (ngSubmit)="login()" #form="ngForm">
+  
+          <!-- Email -->
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="name@example.com"
+              name="email"
+              [(ngModel)]="user.email"
+              required
+            />
+            <label for="email">Email address</label>
           </div>
-
-          <a href="#" class="small text-decoration-none">Forgot password?</a>
-        </div>
-
-        <!-- Submit -->
-        <button class="btn btn-primary w-100 py-2" [disabled]="form.invalid">
-          Sign In
-        </button>
-
-      </form>
+  
+          <!-- Password -->
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              name="password"
+              [(ngModel)]="user.password"
+              required
+            />
+            <label for="password">Password</label>
+          </div>
+  
+          <!-- Options -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="remember" />
+              <label class="form-check-label" for="remember">
+                Remember me
+              </label>
+            </div>
+  
+            <a href="#" class="small text-decoration-none">Forgot password?</a>
+          </div>
+  
+          <!-- Submit -->
+          <button class="btn btn-primary w-100 py-2" [disabled]="form.invalid">
+            LOG IN
+          </button>
+  
+        </form>
+      </div>
 
       <!-- Footer -->
       <!-- <div class="text-center mt-4">
@@ -68,6 +69,9 @@
         </small>
       </div> -->
 
+    </div>
+    <div class="card-footer">
+      <p class="text-center"><b>Ephoto.md ©</b>.Toate drepturile sunt rezervate. <br>Dezvoltat de SIREAEV DEVELOPMENT FZE-LLC</p>
     </div>
   </div>
 </div>

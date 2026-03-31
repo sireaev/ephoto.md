@@ -35,9 +35,14 @@ button:focus,
     outline-style: none;
 }
 
+ngb-modal-window,
 app-dashboard,
 app-login {
     h1,h2,h3,h4,h5,h6,p,span, button.btn, form, div {
        font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
    }
+}
+
+div.modal-content {
+    border: 0;
 }

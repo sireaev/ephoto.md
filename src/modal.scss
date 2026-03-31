@@ -1,0 +1,43 @@
+
+.btn-nebula {
+    display: flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #3366ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-nebula:hover {
+    background: #274bdb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
+}
+
+.btn-nebula.bg-secondary:hover,
+.btn-nebula.bg-danger:hover {
+    box-shadow: 0 4px 12px rgba(187, 187, 187, 0.438);
+}
+
+.btn-outline-nebula {
+    display: flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #fff;
+    color: #3366ff;
+    border: 1px solid #3366ff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-outline-nebula:hover {
+    background: #f0f4ff;
+}

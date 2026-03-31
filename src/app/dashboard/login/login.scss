@@ -1,16 +1,26 @@
 .login-wrapper {
   height: 100vh;
+  padding: 2.5rem;
   background: linear-gradient(135deg, #f5f7fa, #e4e9f2);
 }
 
 .login-card {
   width: 100%;
-  max-width: 420px;
+  // max-width: 420px;
+  height: calc(100vh - 5rem);
   border-radius: 4px;
 }
 
 .card-body {
   padding: 2rem;
+  display: flex;
+  flex: 1;
+
+  .auth-block {
+    max-width: 25rem;
+    width: 100%;
+    margin: auto;
+  }
 }
 
 .form-control {
@@ -22,5 +32,6 @@
   background-color: #3366ff;
   border-radius: 4px;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: normal;
 }

@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 import { Public } from './public/public';
-import { Dashboard } from './dashboard/dashboard';
-import { Layout } from './dashboard/layout/layout';
-import { Login } from './dashboard/login/login';
 import { authGuard } from './dashboard/auth-guard';
 
 export const routes: Routes = [
@@ -14,16 +11,19 @@ export const routes: Routes = [
   {
     path: 'admin',
     children: [
-      { path: 'login', component: Login },
+      { path: 'login', loadComponent: () => import('./dashboard/login/login').then((m) => m.Login) },
 
 
 
       {
         path: '',
-        component: Dashboard, 
+        loadComponent: () => import('./dashboard/dashboard').then((m) => m.Dashboard),
         canActivateChild: [authGuard],
         children: [
-          { path: '', component: Layout }
+          { path: '',  loadComponent: () => import('./dashboard/main-content/main-content').then((m) => m.MainContent), },
+          { path: 'events',  loadComponent: () => import('./dashboard/events/events').then((m) => m.Events), },
+          { path: 'categories',  loadComponent: () => import('./dashboard/categories/categories').then((m) => m.Categories), },
+          { path: 'photo-management/:eventId',  loadComponent: () => import('./dashboard/photo-management/photo-management').then((m) => m.PhotoManagement), }
         ]
       },
     ]

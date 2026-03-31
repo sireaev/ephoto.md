@@ -1,0 +1,128 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{initialData ? 'Actualizează' : 'Adaugă'}} eveniment</h4>
+</div>
+
+<div class="modal-body">
+  <form
+    [formGroup]="eventForm"
+    (ngSubmit)="submit()"
+    class="needs-validation"
+    [class.was-validated]="submitted()"
+    novalidate
+  >
+
+    <!-- CLIENT -->
+    <div class="mb-3">
+      <label class="form-label">Client</label>
+      <select
+        formControlName="clientId"
+        class="form-select"
+        [ngClass]="controlClasses(f.clientId)"
+      >
+        <option disabled [value]="null">Alege client</option>
+        <option [value]="1">Client 1</option>
+        <option [value]="2">Client 2</option>
+      </select>
+
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Client is required</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Categorie<sup class="text-danger">*</sup></label>
+      <select
+        formControlName="categoryId"
+        class="form-select"
+        [ngClass]="controlClasses(f.clientId)"
+      >
+      <option disabled [value]="null">Alege categorie</option>
+        @for(category of categories; track category.id) {
+          <option [ngValue]="category.id">{{category.name}}</option>
+
+        }
+      </select>
+
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Client is required</div>
+    </div>
+
+    <!-- TITLE -->
+    <div class="mb-3">
+      <label class="form-label">Titlu eveniment<sup class="text-danger">*</sup></label>
+      <input
+        formControlName="title"
+        class="form-control"
+        type="text"
+        [ngClass]="controlClasses(f.title)"
+      />
+
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">
+        <span *ngIf="f.title.errors?.['required']">Title is required</span>
+        <span *ngIf="f.title.errors?.['minlength']">Min 3 characters</span>
+        <span *ngIf="f.title.errors?.['maxlength']">Max 100 characters</span>
+      </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="mb-3">
+      <label class="form-label">Descriere eveniment<sup class="text-danger">*</sup></label>
+      <textarea
+        formControlName="description"
+        class="form-control"
+        [ngClass]="controlClasses(f.description)"
+      ></textarea>
+
+      <div class="valid-feedback">Nice description!</div>
+      <div class="invalid-feedback">
+        @if(f.description.errors?.['required']) {
+          <span>Required</span>
+        }
+        @if(f.description.errors?.['minlength']) {
+          <span>Min 10 characters</span>
+        }
+      </div>
+    </div>
+
+    <!-- DATE -->
+    <div class="mb-3">
+      <label class="form-label">Data eveniment<sup class="text-danger">*</sup></label>
+
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          formControlName="eventDate"
+          ngbDatepicker
+          (dateSelect)="test($event)"
+          #d="ngbDatepicker"
+          (click)="d.toggle()"
+          [ngClass]="controlClasses(f.eventDate)"
+        />
+        <button
+          class="btn-nebula"
+          (click)="d.toggle()"
+          type="button"
+        >
+          📅
+        </button>
+      </div>
+
+      <div class="valid-feedback">Valid date!</div>
+      <div class="invalid-feedback">
+        Event date is required
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{initialData ? 'Actualizează' : 'Adaugă'}}
+  </button>
+</div>

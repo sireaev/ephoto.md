@@ -1,9 +1,10 @@
 import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-content',
-  imports: [NgClass, NgStyle, CommonModule],
+  imports: [NgClass, NgStyle, CommonModule, RouterLink],
   templateUrl: './main-content.html',
   styleUrl: './main-content.scss',
 })
