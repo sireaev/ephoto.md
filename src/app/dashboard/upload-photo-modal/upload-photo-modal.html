@@ -1,1 +1,39 @@
-<p>upload-photo-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Încarcă fișier</h4>
+</div>
+
+<div class="modal-body">
+  <ngx-dropzone>
+    <input type="file" fileInput [formControl]="fileCtrl" multiple />
+
+    @if (fileCtrl.value?.length) {
+      <div class="mt-2">
+        {{ fileCtrl.value?.length }} file(s) selected
+      </div>
+
+      <div class="preview-container mt-3">
+        @for (file of fileCtrl?.value; track file.name) {
+          <div class="preview-item">
+            @if (isImage(file)) {
+              <img height="100" [src]="getPreview(file)" alt="preview" />
+            } @else {
+              <div class="file-placeholder">
+                {{ file.name }}
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <small class="fw-bold text-muted">
+      Trageți sau plasați fișierul
+    </small>
+  </ngx-dropzone>
+</div>
+
+<div class="modal-footer">
+  <button [disabled]="!fileCtrl.value?.length" type="button" class="btn-nebula" (click)="submit()">
+    Încarcă
+  </button>
+</div>

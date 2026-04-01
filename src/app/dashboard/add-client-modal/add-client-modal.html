@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ initialData ? 'Actualizează' : 'Creează' }} categorie</h4>
+</div>
+
+<div class="modal-body">
+  <form
+  [formGroup]="clientForm"
+  (ngSubmit)="submit()"
+  class="needs-validation"
+  [class.was-validated]="submitted()"
+  novalidate
+>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Nume Client (afisare)</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="displayName"
+      [ngClass]="controlClasses(f.displayName)"
+    />
+
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+</form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{ initialData ? 'Actualizează' : 'Creează' }}
+  </button>
+</div>

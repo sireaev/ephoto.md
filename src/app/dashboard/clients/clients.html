@@ -1,0 +1,55 @@
+<main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Clienți</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Clienți</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openClientModal()">
+                <i class="fas fa-plus"></i>Adaugă client
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Clienți recenți</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nume</th>
+                        <th>Id referinta extern</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(client of clients()?.data; track client.id) {
+                        <tr>
+                            <td class="text-muted">{{ client.id }}</td>
+                            <td>{{ client.displayName }}</td>
+                            <td>{{ client.externalId }}</td>
+                            <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Editează" (click)="openClientModal(client)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(client.id!)" role="button" class="fas fa-times text-danger fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

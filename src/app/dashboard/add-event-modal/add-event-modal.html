@@ -20,12 +20,12 @@
         [ngClass]="controlClasses(f.clientId)"
       >
         <option disabled [value]="null">Alege client</option>
-        <option [value]="1">Client 1</option>
-        <option [value]="2">Client 2</option>
+        @for(client of clients; track client.id) {
+          <option [value]="client.id">{{client?.displayName || 'Anonim '+client.id}}</option>
+        }
       </select>
 
       <div class="valid-feedback">Looks good!</div>
-      <div class="invalid-feedback">Client is required</div>
     </div>
 
     <div class="mb-3">
@@ -94,7 +94,6 @@
           placeholder="yyyy-mm-dd"
           formControlName="eventDate"
           ngbDatepicker
-          (dateSelect)="test($event)"
           #d="ngbDatepicker"
           (click)="d.toggle()"
           [ngClass]="controlClasses(f.eventDate)"

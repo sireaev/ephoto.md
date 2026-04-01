@@ -5,6 +5,7 @@ import { NgbActiveModal, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { IEvent } from '../interfaces/event.interface';
 import { ICategory } from '../interfaces/category.interface';
 import { toNgbDate } from '../../shared/date.util';
+import { IClient } from '../interfaces/client.interface';
 
 @Component({
   selector: 'app-add-event-modal',
@@ -17,6 +18,7 @@ export class AddEventModal implements OnInit {
   private fb = inject(FormBuilder);
   @Input() initialData?: IEvent;
   @Input() categories?: ICategory[] = [];
+  @Input() clients?: IClient[] = [];
   submitted = signal(false);
 
   submit() {
@@ -43,7 +45,7 @@ export class AddEventModal implements OnInit {
     if (this.initialData) {
       this.eventForm.patchValue({
         ...this.initialData, 
-        eventDate: toNgbDate(this.initialData.eventDate) 
+        eventDate: toNgbDate(<Date>this.initialData.eventDate) 
       } as any)
     }
   }
@@ -53,18 +55,5 @@ export class AddEventModal implements OnInit {
       'is-valid': this.submitted() && control.valid,
       'is-invalid': this.submitted() && control.invalid,
       };
-  }
-
-  test(date: any): void {
-    console.log('date', date);
-  }
-
-  onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
-
-    if (file) {
-      console.log('Selected file:', file);
-    }
   }
 }

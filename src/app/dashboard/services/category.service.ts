@@ -11,7 +11,6 @@ export class CategoryService {
   private http = inject(HttpClient);
   private API = '/api/admin/category';
 
-
   create(category: ICategory): Observable<Response<ICategory>> {
     return this.http.post<Response<ICategory>>(`${this.API}`, category);
   }
@@ -25,10 +24,6 @@ export class CategoryService {
   }
 
   list(): Observable<ResponseArray<ICategory>> {
-        return this.http.get<ResponseArray<ICategory>>(`${this.API}/list`).pipe(
-          map((eventResponse: ResponseArray<ICategory>) => {
-            return eventResponse;
-          })
-        )
-      }
+    return this.http.get<ResponseArray<ICategory>>(`${this.API}/list`)
+  }
 }

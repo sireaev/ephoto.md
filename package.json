@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@ng-bootstrap/ng-bootstrap": "^20.0.0",
+    "@ngx-dropzone/cdk": "^21.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8",
     "date-fns": "^4.1.0",

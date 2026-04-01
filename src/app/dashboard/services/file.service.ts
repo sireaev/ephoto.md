@@ -7,9 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
   http = inject(HttpClient);
-  private API = '/api/admin/event';
+  private API = '/api/admin/event-upload';
 
-  list(): Observable<any> {
-    return this.http.get<any>(`${this.API}/list`)
+  upload(eventId: number, file: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.API}/${eventId}`, formData);
   }
 }

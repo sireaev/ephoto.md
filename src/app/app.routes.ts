@@ -23,7 +23,8 @@ export const routes: Routes = [
           { path: '',  loadComponent: () => import('./dashboard/main-content/main-content').then((m) => m.MainContent), },
           { path: 'events',  loadComponent: () => import('./dashboard/events/events').then((m) => m.Events), },
           { path: 'categories',  loadComponent: () => import('./dashboard/categories/categories').then((m) => m.Categories), },
-          { path: 'photo-management/:eventId',  loadComponent: () => import('./dashboard/photo-management/photo-management').then((m) => m.PhotoManagement), }
+          { path: 'photo-management/:eventId',  loadComponent: () => import('./dashboard/photo-management/photo-management').then((m) => m.PhotoManagement), },
+          { path: 'clients',  loadComponent: () => import('./dashboard/clients/clients').then((m) => m.Clients), }
         ]
       },
     ]

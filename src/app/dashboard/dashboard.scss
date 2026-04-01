@@ -12,8 +12,10 @@
 }
 
 ::ng-deep {
+    app-clients,
     app-categories,
     app-events,
+    app-photo-management,
     app-main-content {
         flex: 1;
         overflow-y: auto;

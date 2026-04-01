@@ -15,6 +15,10 @@ export class EventService {
     return this.http.post<Response<IEvent>>(`${this.API}`, event);
   }
 
+  get(id: number): Observable<Response<IEvent>> {
+    return this.http.get<Response<IEvent>>(`${this.API}/${id}`);
+  }
+
   update(event: IEvent): Observable<Response<IEvent>> {
     return this.http.patch<Response<IEvent>>(`${this.API}/${event.id}`, event);
   }

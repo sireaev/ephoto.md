@@ -1,40 +1,90 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { UploadPhotoModal } from '../upload-photo-modal/upload-photo-modal';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ToastService } from '../services/toast.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FileService } from '../services/file.service';
-import { startWith, Subject, switchMap } from 'rxjs';
+import { combineLatest, concatMap, from, map, of, startWith, Subject, switchMap, tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { EventService } from '../services/event.service';
+import { ActivatedRoute } from '@angular/router';
+import { IEvent } from '../interfaces/event.interface';
+import { GetMBPipe } from '../pipes/get-mb-pipe';
 
 @Component({
   selector: 'app-photo-management',
-  imports: [],
+  imports: [CommonModule, NgbTooltip, GetMBPipe],
   templateUrl: './photo-management.html',
   styleUrl: './photo-management.scss',
 })
 export class PhotoManagement {
+  private route = inject(ActivatedRoute);
   modalService = inject(NgbModal);
   toast = inject(ToastService);
   fileService = inject(FileService);
+  eventService = inject(EventService);
 
   private refresh$ = new Subject<void>();
 
-  photos = toSignal(
-    this.refresh$.pipe(
-      startWith(void 0), // initial load
-      switchMap(() => this.fileService.list())
-    ),
-    { initialValue: { data: [], pagination: {}, success: true } }
+  private eventId$ = this.route.paramMap.pipe(
+    map((params) => Number(params.get('eventId')))
   );
+
+  event = signal<IEvent|null>(null);
+
+  files = toSignal(
+    combineLatest([
+      this.eventId$,
+      this.refresh$.pipe(startWith(void 0)) // trigger reloads
+    ]).pipe(
+      switchMap(([id]) => {
+        if (!id) return of([]);
+        return this.eventService.get(id).pipe(
+          map((event) => {
+            this.event.set(event.data);
+            return event?.data.files || [];
+          })
+        );
+      })
+    ),
+    { initialValue: [] }
+  );
+
+  constructor() {
+    console.log(this.files());
+  }
 
   openUploadPhotoModal(): void {
     const modalRef = this.modalService.open(UploadPhotoModal);
     modalRef.closed.subscribe((response) => {
-      
+      this.uploadFilesInSeries(response);
     })
   }
 
-
+  uploadFilesInSeries(files: File[]) {
+    from(files)
+    .pipe(
+      concatMap((file, index) =>
+        this.fileService.upload(this.route.snapshot.params['eventId'] ,file).pipe(
+          tap(() => {
+            console.log(`Uploaded ${index + 1}/${files.length}`);
+          })
+        )
+      )
+    )
+    .subscribe({
+      next: (res) => {
+        // handle each response if needed
+      },
+      error: (err) => {
+        console.error('Upload failed:', err);
+      },
+      complete: () => {
+        this.toast.success('Success', 'Fișiere încărcate cu succces!')
+        this.reload();
+      }
+    });
+}
 
   reload() {
     this.refresh$.next();
