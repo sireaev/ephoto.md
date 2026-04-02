@@ -14,4 +14,8 @@ export class FileService {
     formData.append('file', file);
     return this.http.post(`${this.API}/${eventId}`, formData);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.API}/${id}`);
+  }
 }

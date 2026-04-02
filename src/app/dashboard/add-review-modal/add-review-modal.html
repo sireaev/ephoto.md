@@ -1,0 +1,154 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ initialData ? 'Actualizează' : 'Creează' }} categorie</h4>
+</div>
+
+<div class="modal-body">
+  <form
+  [formGroup]="reviewForm"
+  (ngSubmit)="submit()"
+  class="needs-validation"
+  [class.was-validated]="submitted()"
+  novalidate
+>
+
+        <!-- CLIENT -->
+    <div class="mb-3">
+      <label class="form-label">Client</label>
+      <select
+        formControlName="clientId"
+        class="form-select"
+        [ngClass]="controlClasses(f.clientId)"
+      >
+        <option disabled [value]="null">Alege client</option>
+        @for(client of clients; track client.id) {
+          <option [value]="client.id">{{client?.displayName || 'Anonim '+client.id}}</option>
+        }
+      </select>
+
+      <div class="valid-feedback">Validat!</div>
+    </div>
+
+
+    <!-- CATEGORY -->
+    <div class="mb-3">
+      <label class="form-label">Categorie<sup class="text-danger">*</sup></label>
+      <select
+        formControlName="categoryId"
+        class="form-select"
+        [ngClass]="controlClasses(f.categoryId)"
+      >
+      <option disabled [value]="null">Alege categorie</option>
+        @for(category of categories; track category.id) {
+          <option [ngValue]="category.id">{{category.name}}</option>
+
+        }
+      </select>
+
+      <div class="valid-feedback">Validat!</div>
+      <div class="invalid-feedback">Categoria este obligatorie</div>
+    </div>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Nume</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      [ngClass]="controlClasses(f.name)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.name.errors?.['required']">Nume este obligatoriu</span>
+    </div>
+  </div>
+
+    <!-- MESSAGE -->
+  <div class="mb-3">
+    <label class="form-label">Mesaj</label>
+    <textarea
+      class="form-control"
+      formControlName="message"
+      [ngClass]="controlClasses(f.message)"
+    ></textarea>
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.message.errors?.['required']">Mesaj este obligatoriu</span>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="mb-3">
+    <label class="form-label">Statut</label>
+
+    <select
+      class="form-select"
+      formControlName="status"
+      [ngClass]="controlClasses(f.status)"
+    >
+      <option value="pending">În așteptare</option>
+      <option value="approved">Aprobat</option>
+      <option value="rejected">Respins</option>
+    </select>
+
+    <div class="valid-feedback">Validat!</div>
+    <div *ngIf="f.status.errors?.['required']" class="invalid-feedback">
+      Statut este obligatoriu
+    </div>
+  </div>
+
+    <!-- RATING -->
+  <div class="mb-3">
+    <label class="form-label">Scor</label>
+    <select
+      class="form-select"
+      formControlName="rating"
+      [ngClass]="controlClasses(f.rating)"
+    >
+      <option [value]="5">5</option>
+      <option [value]="4">4</option>
+      <option [value]="3">3</option>
+      <option [value]="2">2</option>
+      <option [value]="1">1</option>
+    </select>
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.rating.errors?.['required']">Scor este obligatoriu</span>
+      <span *ngIf="f.rating.errors?.['maxlength']">Scorul este alcătuit dintr-o cifră</span>
+      <span *ngIf="f.rating.errors?.['max']">Scorul maxim este 5</span>
+      <span *ngIf="f.rating.errors?.['min']">Scorul minim este 1</span>
+    </div>
+  </div>
+
+   <!-- moderationReason -->
+    @if(initialData) {
+    <div class="mb-3">
+        <label class="form-label">Motiv editare</label>
+        <textarea
+        class="form-control"
+        formControlName="moderationReason"
+        [ngClass]="controlClasses(f.moderationReason)"
+        ></textarea>
+    
+        <div class="valid-feedback">Validat!</div>
+        <div class="invalid-feedback">
+        <span *ngIf="f.moderationReason.errors?.['required']">Motivul este obligatoriu</span>
+        </div>
+    </div>
+    }
+
+</form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{ initialData ? 'Actualizează' : 'Creează' }}
+  </button>
+</div>

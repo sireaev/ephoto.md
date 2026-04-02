@@ -21,7 +21,7 @@
       [ngClass]="controlClasses(f.name)"
     />
 
-    <div class="valid-feedback">Looks good!</div>
+    <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
       <span *ngIf="f.name.errors?.['required']">Name is required</span>
       <span *ngIf="f.name.errors?.['minlength']">Min 3 characters</span>
@@ -42,7 +42,7 @@
       URL-friendly (auto-generated, you can edit)
     </div>
 
-    <div class="valid-feedback">Looks good!</div>
+    <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
       <span *ngIf="f.slug.errors?.['required']">Slug is required</span>
       <span *ngIf="f.slug.errors?.['pattern']">
@@ -64,7 +64,7 @@
       <option value="inactive">Inactive</option>
     </select>
 
-    <div class="valid-feedback">Looks good!</div>
+    <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
       Status is required
     </div>

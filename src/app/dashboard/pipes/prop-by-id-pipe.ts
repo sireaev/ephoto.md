@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'propById',
 })
 export class PropByIdPipe implements PipeTransform {
-  transform(array: any[], id: number | string, propName: string): any {
+  transform(array: any[], id: number | string | undefined, propName: string): any {
     if (!array || !id || !propName) {
       return null;
     }

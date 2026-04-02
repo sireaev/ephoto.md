@@ -1,0 +1,67 @@
+<main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Recenzii</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Recenzii</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openReviewModal()">
+                <i class="fas fa-plus"></i>Adaugă recenzie
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Recenzii recente</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Client</th>
+                        <th>Categorie</th>
+                        <th>Nume</th>
+                        <th>Mesaj</th>
+                        <th>Scor</th>
+                        <th>Status</th>
+                        <th>Motiv moderare</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(review of reviews()?.data; track review.id) {
+                        <tr>
+                            <td class="text-muted">{{ review.id }}</td>
+                            <td>{{ clients().data | propById : review.clientId : 'displayName' }}</td>
+                            <td>{{ categories().data | propById : review.categoryId : 'name' }}</td>
+                            <td>{{ review.name }}</td>
+                            <td>{{ review.message }}</td>
+                            <td>{{ review.rating }}</td>
+                            <td>
+                                <span class="status-badge" [ngClass]="review.status">{{ review.status | reviewStatus }}</span>
+                            </td>
+                            <td>{{ review.moderationReason || '-' }}</td>
+                            <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Editează" (click)="openReviewModal(review)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(review.id!)" role="button" class="fas fa-times text-danger fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

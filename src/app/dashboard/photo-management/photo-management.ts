@@ -10,6 +10,7 @@ import { EventService } from '../services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent } from '../interfaces/event.interface';
 import { GetMBPipe } from '../pipes/get-mb-pipe';
+import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 
 @Component({
   selector: 'app-photo-management',
@@ -50,8 +51,22 @@ export class PhotoManagement {
     { initialValue: [] }
   );
 
-  constructor() {
-    console.log(this.files());
+  openDeleteModal(id: number): void {
+    const modalRef = this.modalService.open(DeleteModal);
+    modalRef.componentInstance.modul = 'fișier';
+    modalRef.componentInstance.name = id;
+    modalRef.closed.subscribe(() => {
+     this.deleteFile(id);
+    })
+  }
+
+  deleteFile(id: number): void {
+    this.fileService.delete(id).subscribe({
+      next: () => {
+        this.toast.success('Success', 'Ștergere fișier cu succes!');
+        this.reload();
+      }
+    })
   }
 
   openUploadPhotoModal(): void {

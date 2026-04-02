@@ -3,8 +3,8 @@
 </div>
 
 <div class="modal-body">
-  <ngx-dropzone>
-    <input type="file" fileInput [formControl]="fileCtrl" multiple />
+  <ngx-dropzone (click)="fileInputRef.click()">
+    <input #fileInputRef type="file" fileInput [formControl]="fileCtrl" multiple />
 
     @if (fileCtrl.value?.length) {
       <div class="mt-2">
