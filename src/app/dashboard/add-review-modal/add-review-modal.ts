@@ -29,7 +29,7 @@ export class AddReviewModal {
     message: ['', [Validators.required]],
     rating: ['', [Validators.max(5), Validators.min(1), Validators.maxLength(1)]],
     status: ['', [Validators.required]],
-    moderationReason: ['', this.initialData ? [Validators.required] : []],
+    moderationReason: ['', []],
   });
 
   get f() {
@@ -39,6 +39,7 @@ export class AddReviewModal {
   ngOnInit() {
     if (this.initialData) {
       this.reviewForm.patchValue(this.initialData as any);
+      this.reviewForm.get('moderationReason')?.addValidators([Validators.required]);
     }
   }
 

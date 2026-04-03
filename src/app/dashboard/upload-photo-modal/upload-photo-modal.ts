@@ -5,7 +5,6 @@ import {
   DropzoneComponent,
   FileInputDirective,
   FileInputValidators,
-  FileInputValue
 } from '@ngx-dropzone/cdk';
 
 @Component({

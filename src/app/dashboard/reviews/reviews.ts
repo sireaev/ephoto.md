@@ -13,6 +13,7 @@ import { CategoryService } from '../services/category.service';
 import { ClientService } from '../services/client.service';
 import { ReviewStatusPipe } from '../pipes/review-status-pipe';
 import { PropByIdPipe } from '../pipes/prop-by-id-pipe';
+import { ApproveReviewModal } from '../approve-review-modal/approve-review-modal';
 
 @Component({
   selector: 'app-reviews',
@@ -65,6 +66,14 @@ export class Reviews {
     })
   }
 
+  openActionReviewModal(id: number, action: string): void {
+    const modalRef = this.modalService.open(ApproveReviewModal);
+    modalRef.componentInstance.action = action;
+    modalRef.closed.subscribe(() => {
+      this.updateReview({ id, status: action })
+    })
+  }
+
   createReview(review: IReview): void {
     this.reviewService.create(review).subscribe({
       next: () => {
@@ -75,7 +84,7 @@ export class Reviews {
     })
   }
 
-  updateReview(review: IReview): void {
+  updateReview(review: Partial<IReview>): void {
     this.reviewService.update(review).subscribe({
       next: () => {
         this.reload();

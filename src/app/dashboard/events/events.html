@@ -59,6 +59,7 @@
                             <td class="d-flex gap-2">
                                 <i (click)="openEventModal(e)" placement="top" ngbTooltip="Editează" role="button" class="text-primary fas fa-pen fs-6"></i>
                                 <i [routerLink]="'../photo-management/'+e.id" placement="top" ngbTooltip="Foto" role="button" class="text-primary fas fa-camera-retro fs-6"></i>
+                                <i (click)="openDeleteModal(e.id!)" placement="top" ngbTooltip="Șterge" role="button" class="text-danger fas fa-trash fs-6"></i>
                             </td>
                         </tr>
                     }

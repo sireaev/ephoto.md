@@ -1,12 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { Header } from '../shared/header/header';
 import { Footer } from '../shared/footer/footer';
 import { NgClass } from '@angular/common'; 
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ScreenSizeService } from '../shared/screen-size.service';
-import { BehaviorSubject, map, of } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { PublicService } from './services/public.service';
 
 type IHover = {
   [key: string]: boolean
@@ -20,8 +20,17 @@ type IHover = {
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Public {
+  publicService = inject(PublicService);
   currentReview = signal({'slide2': true});
   isHovered: IHover = {};
+  reviews = toSignal(
+      this.publicService.reviewList(),
+      { initialValue: { data: [], pagination: {}, success: true } }
+    );
+  prices = toSignal(
+      this.publicService.pricesList(),
+      { initialValue: { data: [], pagination: {}, success: true } }
+    );
   
   pricingCarousel: OwlOptions = {
     loop: false,

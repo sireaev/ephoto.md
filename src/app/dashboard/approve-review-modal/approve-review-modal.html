@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ action === 'approved' ? 'Aprobare recenzie' : 'Respinge recenzia' }}</h4>
+</div>
+
+<div class="modal-body">
+    Ești sigur că dorești să {{ action === 'approved' ? 'aprobi' : 'respingi' }} recenzia?
+</div>
+
+<div class="modal-footer">
+    <button
+    type="button"
+    class="btn-nebula bg-secondary"
+    (click)="handleReview()"
+  >
+    Nu
+  </button>
+  <button
+    type="button"
+    class="btn-nebula bg-success"
+    [ngClass]="{
+        'bg-success': action === 'approved',
+        'bg-danger': action === 'rejected'
+    }"
+    (click)="handleReview(true)"
+  >
+    Da
+  </button>
+</div>

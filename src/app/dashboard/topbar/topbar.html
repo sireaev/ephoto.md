@@ -29,9 +29,23 @@
             <i class="far fa-user"></i>
             <span>Clienti</span>
         </a>
-        <a class="nav-item" routerLink="/admin/reviews" routerLinkActive="active">
-            <i class="far fa-comment-dots"></i>
-            <span>Recenzii</span>
+        <a ngbDropdown class="nav-item" role="button">
+            <i class="far fa-file-alt"></i>
+            <span ngbDropdownToggle>Pagini</span>
+            <div class="dropdown-menu" ngbDropdownMenu style="transition:none;">
+                <button ngbDropdownItem class="px-0">
+                    <a class="nav-item w-100" routerLink="/admin/reviews">
+                        <i class="far fa-comment-dots"></i>
+                        <span>Recenzii</span>
+                    </a>
+                </button>
+                <button ngbDropdownItem class="px-0">
+                    <a class="nav-item w-100" routerLink="/admin/prices">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Preturi</span>
+                    </a>
+                </button>
+            </div>
         </a>
         <!-- <a class="nav-item" href="#">
             <i class="bi bi-gear-fill"></i>

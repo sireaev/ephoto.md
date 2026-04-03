@@ -226,31 +226,29 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 </div>
             </div>
             <owl-carousel-o [options]="pricingCarousel">
-                <ng-template carouselSlide >
-                    <div class="single-card text-center mb-30 bg-white">
-                        <div class="card-top">
-                            <img height="50" src="assets/img/icon/camera.svg" alt="">
-                            <h4>Foto-Video</h4>
-                            <p>De la</p>
+                @for(price of prices().data; track price.id) {
+                    <ng-template carouselSlide >
+                        <div class="single-card text-center mb-30 bg-white">
+                            <div class="card-top">
+                                <img height="50" src="assets/img/icon/camera.svg" alt="">
+                                <h4>{{price.name}}</h4>
+                                <p>De la</p>
+                            </div>
+                            <div class="card-mid">
+                                <h4>{{price.price}}</h4>
+                            </div>
+                            <div class="card-bottom">
+                                <ul>
+                                    @for(option of price.options; track option) {
+                                        <li class="mb-2 text-dark">{{option}}</li>
+                                    }
+                                </ul>
+                                <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
+                            </div>
                         </div>
-                        <div class="card-mid">
-                            <h4>600€</h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li class="mb-2 text-dark">1 Fotograf</li>
-                                <li class="mb-2 text-dark">1 Videograf</li>
-                                <li class="mb-2 text-dark">Poze nelimitate</li>
-                                <li class="mb-2 text-dark">Video 4K/FullHD</li>
-                                <li class="mb-2 text-dark">Video scurt max. 3 min</li>
-                                <li class="mb-2 text-dark">Video full 45min-2h</li>
-                                <li class="mb-2 text-dark">Livrare 3-5 luni</li>
-                            </ul>
-                            <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template carouselSlide >
+                    </ng-template>
+                }
+                <!-- <ng-template carouselSlide >
                     <div class="single-card text-center mb-30 bg-white">
                         <div class="card-top">
                             <img height="50" src="assets/img/icon/camera.svg" alt="">
@@ -364,7 +362,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                             <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
                         </div>
                     </div>
-                </ng-template>
+                </ng-template> -->
             </owl-carousel-o>
         </div>
     </section>
@@ -383,125 +381,19 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 </div>
             </div>
             <owl-carousel-o [options]="testimonialCarousel" (translated)="onTranslated($event)">
-                <ng-template carouselSlide id="slide1">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide1'] ||  $any(currentReview)()['slide1-append']}">  
-                    <p>
-                        Îți mulțumim mult pentru răbdarea care ai avut-o cu noi 😘mult succes în continuare 😘 ești superbă îti cunoști meseria te recomandăm cu drag 😘pozele frumose😘
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">V&C</div>
-                        <div class="title">Eveniment: Cumetrie</div>
-                </blockquote>
-                </ng-template>
-                <ng-template carouselSlide id="slide2">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide2'] ||  $any(currentReview)()['slide2-append'] }">  
+                @for(review of reviews().data; track review.id; let i = $index) {
+                    <ng-template carouselSlide [id]="'slide'+(i+1)">
+                        <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide'+(i+1)] ||  $any(currentReview)()['slide'+(i+1)+'-append']}">  
                         <p>
-                            Un fotograf deosebit, foarte profesionist și atent la detalii! Am rămas impresionați de felul în care a reușit să surprindă emoțiile și momentele importante, într-un mod natural și plin de căldură. Pozele sunt superbe, iar colaborarea a fost una ușoară și plăcută. Recomand cu încredere tuturor celor care își doresc amintiri frumoase și de calitate!🤍🤍🤍
+                            {{review.message}}
                                 <span role="none" class="bottom-arrow"></span>
                             </p>
-                            <div class="testimonial-name">V&L</div>
-                            <div class="title">Eveniment: Nuntă</div>
+                            <div class="testimonial-name">{{review.name}}</div>
+                            <div class="title">Eveniment: {{review.categoryName}}</div>
                     </blockquote>
-                </ng-template>
-                <ng-template carouselSlide id="slide3">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide3'] ||  $any(currentReview)()['slide3-append'] }">  
-                        <p>
-                            Am avut marele noroc de a o avea pe Elena alături de noi la botezul și cumetria fetiței noastre. Pe lângă faptul ca este o profesionistă în domeniu, care își cunoaște foarte bine munca, este foarte implicată și depune mult suflet în tot ceea ce face, mai este și o persoană care te cucerește prin simplitate, căldură, pozitivism și bunătate. Ședința foto a fost o adevărată plăcere, iar rezultatele sunt excepționale. Datorită ei, avem imortalizate cele mai frumoase și speciale momente de la eveniment, căci a reușit să surprindă niște cadre unice. Pozele au fost gata la timp, Elena a avut grijă să monitorizăm procesul pas cu pas și a ținut cont de toate preferințele noastre. Un mare mulțumesc pentru munca și dedicația depusă și o recomandare din suflet pentru toți cei în căutare de un specialist cu adevărat bun!
-                                <span role="none" class="bottom-arrow"></span>
-                            </p>
-                            <div class="testimonial-name">Diana M.</div>
-                            <div class="title">Eveniment: Ședințe foto</div>
-                    </blockquote>
-                </ng-template>
-                <ng-template carouselSlide id="slide4">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide4'] ||  $any(currentReview)()['slide4-append'] }">  
-                        <p>
-                            Îți mulțumim pentru fotografiile deosebite! Fiecare imagine transmite emoția și frumusețea momentului — o amintire prețioasă pentru noi. 😍😍😍
-    Recomand cu toată încrederea ❤️
-    
-                                <span role="none" class="bottom-arrow"></span>
-                            </p>
-                            <div class="testimonial-name">S&R</div>
-                            <div class="title">Eveniment: Ședințe foto</div>
-                    </blockquote>
-                </ng-template>
-                <ng-template carouselSlide id="slide5">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide5'] ||  $any(currentReview)()['slide5-append'] }">  
-                        <p>
-                            Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️La următoarea noastră ocazie o să apelăm din start la tine ☺️
-    
-                                <span role="none" class="bottom-arrow"></span>
-                            </p>
-                            <div class="testimonial-name">T&A</div>
-                            <div class="title">Eveniment: Nuntă</div>
-                    </blockquote>
-                </ng-template>
-                <ng-template carouselSlide id="slide6">
-                    <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide6'] ||  $any(currentReview)()['slide6-append'] }">  
-                        <p>
-                            O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!Aliona B.Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
-    
-                                <span role="none" class="bottom-arrow"></span>
-                            </p>
-                            <div class="testimonial-name">Doina M.</div>
-                            <div class="title">Eveniment: Nuntă</div>
-                    </blockquote>
-                </ng-template>
+                    </ng-template>
+                }
             </owl-carousel-o>
-            <!-- <div class="carousel" data-flickity='{"fullscreen": true, "wrapAround": true, "pageDots": false, "prevNextButtons": false, "autoPlay": 5000 }'>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        Îți mulțumim mult pentru răbdarea care ai avut-o cu noi 😘mult succes în continuare 😘 ești superbă îti cunoști meseria te recomandăm cu drag 😘pozele frumose😘
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">V&C</div>
-                        <div class="title">Eveniment: Cumetrie</div>
-                </blockquote>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        Un fotograf deosebit, foarte profesionist și atent la detalii! Am rămas impresionați de felul în care a reușit să surprindă emoțiile și momentele importante, într-un mod natural și plin de căldură. Pozele sunt superbe, iar colaborarea a fost una ușoară și plăcută. Recomand cu încredere tuturor celor care își doresc amintiri frumoase și de calitate!🤍🤍🤍
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">V&L</div>
-                        <div class="title">Eveniment: Nuntă</div>
-                </blockquote>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        Am avut marele noroc de a o avea pe Elena alături de noi la botezul și cumetria fetiței noastre. Pe lângă faptul ca este o profesionistă în domeniu, care își cunoaște foarte bine munca, este foarte implicată și depune mult suflet în tot ceea ce face, mai este și o persoană care te cucerește prin simplitate, căldură, pozitivism și bunătate. Ședința foto a fost o adevărată plăcere, iar rezultatele sunt excepționale. Datorită ei, avem imortalizate cele mai frumoase și speciale momente de la eveniment, căci a reușit să surprindă niște cadre unice. Pozele au fost gata la timp, Elena a avut grijă să monitorizăm procesul pas cu pas și a ținut cont de toate preferințele noastre. Un mare mulțumesc pentru munca și dedicația depusă și o recomandare din suflet pentru toți cei în căutare de un specialist cu adevărat bun!
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">Diana M.</div>
-                        <div class="title">Eveniment: Ședințe foto</div>
-                </blockquote>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        Îți mulțumim pentru fotografiile deosebite! Fiecare imagine transmite emoția și frumusețea momentului — o amintire prețioasă pentru noi. 😍😍😍
-Recomand cu toată încrederea ❤️
-
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">S&R</div>
-                        <div class="title">Eveniment: Ședințe foto</div>
-                </blockquote>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        Cum suntem noi tare fotogenici 😅, în genere ne gîndeam că o să iasă ceva mai rău, totul e foarte frumos, suntem mulțumiți ☺️Îți mulțumesc mult pentru participare și efort, și pentru lucrări ❤️La următoarea noastră ocazie o să apelăm din start la tine ☺️
-
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">T&A</div>
-                        <div class="title">Eveniment: Nuntă</div>
-                </blockquote>
-                <blockquote class="carousel-cell">  
-                    <p>
-                        O experiență absolut minunată! Profesionalism, răbdare și o energie pozitivă care ne-a făcut să ne simțim în largul nostru din prima clipă. Fotografiile au surprins perfect emoția și naturalețea momentelor petrecute în familie. Le vom prețui mereu! Mulțumim pentru amintirile frumoase!Aliona B.Pozele noastre sunt superbe. Culoare,zimbet, emoții și fericire pe toate le-ai surprins și le-ai redat în poze. Multumim mult!
-
-                            <span role="none" class="bottom-arrow"></span>
-                        </p>
-                        <div class="testimonial-name">Doina M.</div>
-                        <div class="title">Eveniment: Nuntă</div>
-                </blockquote>
-            </div> -->
         </div>
     </section>
     <!-- TESTIMONIAL END -->

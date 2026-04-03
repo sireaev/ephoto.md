@@ -15,7 +15,7 @@ export class ReviewService {
     return this.http.post<Response<IReview>>(`${this.API}`, category);
   }
 
-  update(category: IReview): Observable<any> {
+  update(category: Partial<IReview>): Observable<any> {
     return this.http.patch(`${this.API}/${category.id}`, category);
   }
 

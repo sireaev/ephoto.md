@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 export class FileService {
   http = inject(HttpClient);
   private API = '/api/admin/event-upload';
+  private categoryPreviewAPI = '/api/admin/category/upload-preview'
 
   upload(eventId: number, file: any): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(`${this.API}/${eventId}`, formData);
+  }
+
+  uploadCategoryPreview(categoryId: number, file: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.categoryPreviewAPI}/${categoryId}`, formData);
   }
 
   delete(id: number): Observable<any> {

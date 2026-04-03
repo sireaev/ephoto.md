@@ -55,8 +55,10 @@
                             </td>
                             <td>{{ review.moderationReason || '-' }}</td>
                             <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Aprobă" (click)="openActionReviewModal(review.id!, 'approved')" role="button" class="fas fa-check text-success fs-6"></i>
+                                <i placement="top" ngbTooltip="Respinge" (click)="openActionReviewModal(review.id!, 'rejected')" role="button" class="fas fa-times text-danger fs-6"></i>
                                 <i placement="top" ngbTooltip="Editează" (click)="openReviewModal(review)" role="button" class="fas fa-pen text-primary fs-6"></i>
-                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(review.id!)" role="button" class="fas fa-times text-danger fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(review.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
                             </td>
                         </tr>
                     }

@@ -2,11 +2,11 @@
     <!-- Page Header -->
     <div class="page-header">
         <div>
-            <h1 class="page-title">Categorii</h1>
+            <h1 class="page-title">Blocuri de prețuri</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
-                    <li class="breadcrumb-item active">Categorii</li>
+                    <li class="breadcrumb-item active">Blocuri de prețuri</li>
                 </ol>
             </nav>
         </div>
@@ -14,8 +14,8 @@
             <button class="btn-outline-nebula gap-2">
                 <i class="far fa-file-excel"></i>Export
             </button>
-            <button class="btn-nebula gap-2" (click)="openCategoryModal()">
-                <i class="fas fa-plus"></i>Adaugă categorie
+            <button class="btn-nebula gap-2" (click)="openPriceModal()">
+                <i class="fas fa-plus"></i>Adaugă bloc de preț
             </button>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <!-- Table -->
     <div class="card-nebula">
         <div class="card-header-nebula">
-            <h5 class="card-title-nebula">Categorii recente</h5>
+            <h5 class="card-title-nebula">Blocuri de prețuri recente</h5>
             <a class="view-all">View all</a>
         </div>
         <div class="table-wrapper">
@@ -32,26 +32,27 @@
                     <tr>
                         <th>#</th>
                         <th>Nume</th>
-                        <th>Link</th>
+                        <th>Preț</th>
                         <th>Status</th>
+                        <th>Opțiuni</th>
                         <th>Acțiuni</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for(category of categories()?.data; track category.id) {
+                    @for(price of prices()?.data; track price.id) {
                         <tr>
-                            <td class="text-muted">{{ category.id }}</td>
+                            <td class="text-muted">{{ price.id }}</td>
                             <td>
-                               {{ category.name }}
+                               {{ price.name }}
                             </td>
-                            <td>{{ category.slug }}</td>
+                            <td>{{ price.price }}</td>
                             <td>
-                                <span class="status-badge" [ngClass]="category.status">{{ category.status || 'nedefinit' }}</span>
+                                <span class="status-badge" [ngClass]="price.status">{{ price.status || 'nedefinit' }}</span>
                             </td>
+                            <td> {{price.options}} </td>
                             <td class="d-flex gap-2">
-                                <i placement="top" ngbTooltip="Editează" (click)="openCategoryModal(category)" role="button" class="fas fa-pen text-primary fs-6"></i>
-                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(category.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
-                                <i placement="top" ngbTooltip="Foto" (click)="openUploadPreviewModal(category.id!)" role="button" class="fas fa-camera-retro text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Editează" (click)="openPriceModal(price)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(price.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
                             </td>
                         </tr>
                     }

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Response, ResponseArray } from '../interfaces/response.interface';
 import { ICategory } from '../interfaces/category.interface';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, shareReplay, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryService {
   private http = inject(HttpClient);
   private API = '/api/admin/category';
+  private list$ = new BehaviorSubject<ResponseArray<ICategory> | null>(null);
 
   create(category: ICategory): Observable<Response<ICategory>> {
     return this.http.post<Response<ICategory>>(`${this.API}`, category);
@@ -24,6 +25,14 @@ export class CategoryService {
   }
 
   list(): Observable<ResponseArray<ICategory>> {
-    return this.http.get<ResponseArray<ICategory>>(`${this.API}/list`)
+    if (this.list$.getValue() !== null) {
+      return of(<ResponseArray<ICategory>>this.list$.getValue());
+    }
+
+    return this.http.get<ResponseArray<ICategory>>(`${this.API}/list`).pipe(
+      tap((list) => {
+        this.list$.next(list);
+      })
+    )
   }
 }

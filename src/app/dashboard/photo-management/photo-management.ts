@@ -31,7 +31,7 @@ export class PhotoManagement {
     map((params) => Number(params.get('eventId')))
   );
 
-  event = signal<IEvent|null>(null);
+  event = signal<IEvent | null>(null);
 
   files = toSignal(
     combineLatest([
@@ -56,7 +56,7 @@ export class PhotoManagement {
     modalRef.componentInstance.modul = 'fișier';
     modalRef.componentInstance.name = id;
     modalRef.closed.subscribe(() => {
-     this.deleteFile(id);
+      this.deleteFile(id);
     })
   }
 
@@ -78,28 +78,28 @@ export class PhotoManagement {
 
   uploadFilesInSeries(files: File[]) {
     from(files)
-    .pipe(
-      concatMap((file, index) =>
-        this.fileService.upload(this.route.snapshot.params['eventId'] ,file).pipe(
-          tap(() => {
-            console.log(`Uploaded ${index + 1}/${files.length}`);
-          })
+      .pipe(
+        concatMap((file, index) =>
+          this.fileService.upload(this.route.snapshot.params['eventId'], file).pipe(
+            tap(() => {
+              console.log(`Uploaded ${index + 1}/${files.length}`);
+            })
+          )
         )
       )
-    )
-    .subscribe({
-      next: (res) => {
-        // handle each response if needed
-      },
-      error: (err) => {
-        console.error('Upload failed:', err);
-      },
-      complete: () => {
-        this.toast.success('Success', 'Fișiere încărcate cu succces!')
-        this.reload();
-      }
-    });
-}
+      .subscribe({
+        next: (res) => {
+          // handle each response if needed
+        },
+        error: (err) => {
+          console.error('Upload failed:', err);
+        },
+        complete: () => {
+          this.toast.success('Success', 'Fișiere încărcate cu succces!')
+          this.reload();
+        }
+      });
+  }
 
   reload() {
     this.refresh$.next();

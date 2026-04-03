@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IClient } from '../interfaces/client.interface';
 import { Response, ResponseArray } from '../interfaces/response.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ClientService {
   private http = inject(HttpClient);
   private API = '/api/admin/client';
+  private list$ = new BehaviorSubject<ResponseArray<IClient> | null>(null);
 
   create(client: IClient): Observable<Response<IClient>> {
     return this.http.post<Response<IClient>>(`${this.API}`, client);
@@ -24,6 +25,14 @@ export class ClientService {
   }
 
   list(): Observable<ResponseArray<IClient>> {
-    return this.http.get<ResponseArray<IClient>>(`${this.API}/list`);
+    if (this.list$.getValue() !== null) {
+      return of(<ResponseArray<IClient>>this.list$.getValue());
+    }
+
+    return this.http.get<ResponseArray<IClient>>(`${this.API}/list`).pipe(
+      tap((list) => {
+        this.list$.next(list);
+      })
+    )
   }
 }

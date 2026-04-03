@@ -25,7 +25,8 @@ export const routes: Routes = [
           { path: 'categories',  loadComponent: () => import('./dashboard/categories/categories').then((m) => m.Categories), },
           { path: 'photo-management/:eventId',  loadComponent: () => import('./dashboard/photo-management/photo-management').then((m) => m.PhotoManagement), },
           { path: 'clients',  loadComponent: () => import('./dashboard/clients/clients').then((m) => m.Clients), },
-          { path: 'reviews',  loadComponent: () => import('./dashboard/reviews/reviews').then((m) => m.Reviews), }
+          { path: 'reviews',  loadComponent: () => import('./dashboard/reviews/reviews').then((m) => m.Reviews), },
+          { path: 'prices',  loadComponent: () => import('./dashboard/prices/prices').then((m) => m.Prices), }
         ]
       },
     ]

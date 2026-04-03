@@ -1,0 +1,115 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ initialData ? 'Actualizează' : 'Creează' }} bloc</h4>
+</div>
+
+<div class="modal-body">
+  <form
+  [formGroup]="priceForm"
+  (ngSubmit)="submit()"
+  class="needs-validation"
+  [class.was-validated]="submitted()"
+  novalidate
+>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Titlu</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      [ngClass]="controlClasses(f.name)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.name.errors?.['required']">Titlu este obligatoriu</span>
+    </div>
+  </div>
+
+    <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Preț (copy-paste at the end -> €, $, MDL)</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="price"
+      placeholder="100€"
+      [ngClass]="controlClasses(f.price)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.price.errors?.['required']">Preț este obligatoriu</span>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="mb-3">
+    <label class="form-label">Statut</label>
+
+    <select
+      class="form-select"
+      formControlName="status"
+      [ngClass]="controlClasses(f.status)"
+    >
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      Status is required
+    </div>
+  </div>
+
+  <!-- OPTIONS -->
+<div class="mb-3">
+  <label class="form-label">Opțiuni</label>
+
+  <div formArrayName="options">
+    @for (option of options.controls; track $index; let i = $index) {
+      <div class="d-flex gap-2 mb-2">
+        <input
+          type="text"
+          class="form-control"
+          [formControlName]="i"
+          placeholder="Ex: Small, Medium, Large"
+        />
+
+        <button
+          type="button"
+          class="btn-nebula"
+          (click)="removeOption(i)"
+        >
+          ✕
+        </button>
+      </div>
+    }
+  </div>
+
+  <button
+    type="button"
+    class="btn-nebula mt-2"
+    (click)="addOption()"
+  >
+    + Adaugă opțiune
+  </button>
+
+  <div class="invalid-feedback d-block" *ngIf="options.invalid && submitted()">
+    Cel puțin o opțiune este necesară
+  </div>
+</div>
+
+</form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{ initialData ? 'Actualizează' : 'Creează' }}
+  </button>
+</div>

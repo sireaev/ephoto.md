@@ -1,4 +1,4 @@
-import { startWith, Subject, switchMap } from 'rxjs';
+import { shareReplay, startWith, Subject, switchMap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
@@ -15,6 +15,7 @@ import { ToastService } from '../services/toast.service';
 import { CategoryService } from '../services/category.service';
 import { ClientService } from '../services/client.service';
 import { fromNgbDate } from '../../shared/date.util';
+import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 
 @Component({
   selector: 'app-events',
@@ -33,7 +34,7 @@ export class Events {
   events = toSignal(
     this.refresh$.pipe(
           startWith(void 0),
-          switchMap(() => this.eventService.list())
+          switchMap(() => this.eventService.list().pipe(shareReplay()))
         ),
         { initialValue: { data: [], pagination: {}, success: true } }
   );
@@ -54,6 +55,15 @@ export class Events {
     });
 	}
 
+  openDeleteModal(id: number): void {
+    const modalRef = this.modalService.open(DeleteModal);
+    modalRef.componentInstance.modul = 'eveniment';
+    modalRef.componentInstance.id = id;
+    modalRef.closed.subscribe(() => {
+      this.deleteEvent(id);
+    })
+  }
+
   createEvent(event: IEvent & { eventDate: NgbDateStruct}): void {
     this.eventService.create(this.parseEvent(event)).subscribe({
       next: () => {
@@ -68,6 +78,15 @@ export class Events {
       next: () => {
         this.reload();
         this.toast.success('Actualizare eveniment', 'Success');
+      }
+    })
+  }
+
+  deleteEvent(id: number): void {
+    this.eventService.delete(id).subscribe({
+      next: () => {
+        this.reload();
+        this.toast.success('Ștergere eveniment', 'Success');
       }
     })
   }
