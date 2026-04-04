@@ -31,6 +31,10 @@ export class Public {
       this.publicService.pricesList(),
       { initialValue: { data: [], pagination: {}, success: true } }
     );
+  categories = toSignal(
+      this.publicService.categoryList(),
+      { initialValue: { data: [], pagination: {}, success: true } }
+    );
   
   pricingCarousel: OwlOptions = {
     loop: false,

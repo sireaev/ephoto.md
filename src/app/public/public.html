@@ -86,21 +86,23 @@
                 </div>
             </div>
             <div class="row justify-content-between">
-                <div class="col-xl-4 col-lg-7 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img small-img " (mouseenter)="addOverlay('weeding')"
-                            style="background-image: url(assets/images/homepage-gallery/nunta.jpg);"></div>
-                        <figcaption>Cununie/Nuntă</figcaption>
-                        <div class="overlay slide-in-top" [ngClass]="{ 
-                            'd-none': !isHovered['weeding']
-                            }" (mouseleave)="removeOverlay('weeding')">
-                            <div class="overlay-content">
-                                <a href="#home"><i class="ti-plus"></i></a>
+                @for(category of categories().data; track category.name) {
+                    <div class="col-xl-4 col-lg-7 col-md-6 col-sm-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img small-img " (mouseenter)="addOverlay(category.name)"
+                                style="background-image: url({{category.previewFile}});"></div>
+                            <figcaption>{{category.name}}</figcaption>
+                            <div class="overlay slide-in-top" [ngClass]="{ 
+                                'd-none': !isHovered[category.name]
+                                }" (mouseleave)="removeOverlay(category.name)">
+                                <div class="overlay-content">
+                                    <a [href]="'/'+category.slug"><i class="ti-plus"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                }
+                <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                     <div class="box snake mb-30">
                         <div class="gallery-img small-img " (mouseenter)="addOverlay('botez')"
                             style="background-image: url('assets/images/homepage-gallery/cumetrie.jpg');"></div>
@@ -127,7 +129,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-lg-12 mb-30">
@@ -212,7 +214,7 @@
     </div>
     <!-- Gallery Area End -->
         <!--? Pricing Card Start -->
-    <section class="pricing-card-area section-padding40 bg-black" id="prices">
+    <section class="pricing-card-area section-padding40" id="prices">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row justify-content-center">
@@ -381,7 +383,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 </div>
             </div>
             <owl-carousel-o [options]="testimonialCarousel" (translated)="onTranslated($event)">
-                @for(review of reviews().data; track review.id; let i = $index) {
+                @for(review of reviews().data; track review.name; let i = $index) {
                     <ng-template carouselSlide [id]="'slide'+(i+1)">
                         <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide'+(i+1)] ||  $any(currentReview)()['slide'+(i+1)+'-append']}">  
                         <p>

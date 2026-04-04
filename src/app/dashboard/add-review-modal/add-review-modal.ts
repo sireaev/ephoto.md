@@ -23,11 +23,11 @@ export class AddReviewModal {
   submitted = signal(false);
 
   reviewForm = this.fb.nonNullable.group({
-    clientId: ['', []],
+    clientId: [null, []],
     categoryId: ['', [Validators.required]],
     name: ['', [Validators.required]],
     message: ['', [Validators.required]],
-    rating: ['', [Validators.max(5), Validators.min(1), Validators.maxLength(1)]],
+    rating: [null, [Validators.max(5), Validators.min(1), Validators.maxLength(1)]],
     status: ['', [Validators.required]],
     moderationReason: ['', []],
   });

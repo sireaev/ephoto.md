@@ -89,6 +89,7 @@ export class Categories {
   createCategory(category: ICategory): void {
     this.categoryService.create(category).subscribe({
       next: () => {
+        this.categoryService.list$.next(null);
         this.reload();
         this.toast.success('Creare categorie', 'Success');
       },
@@ -99,6 +100,7 @@ export class Categories {
   updateCategory(category: ICategory): void {
     this.categoryService.update(category).subscribe({
       next: () => {
+        this.categoryService.list$.next(null);
         this.reload();
         this.toast.success('Actualizare categorie', 'Success');
       },
@@ -109,6 +111,7 @@ export class Categories {
   deleteCategory(id: number): void {
     this.categoryService.delete(id).subscribe({
       next: () => {
+        this.categoryService.list$.next(null);
         this.reload();
         this.toast.success('Ștergere categorie', 'Success');
       },

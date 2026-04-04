@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { Public } from './public/public';
 import { authGuard } from './dashboard/auth-guard';
+import { CategoryEvents } from './public/category-events/category-events';
+import { Event } from './public/event/event';
 
 export const routes: Routes = [
   {
@@ -12,9 +14,6 @@ export const routes: Routes = [
     path: 'admin',
     children: [
       { path: 'login', loadComponent: () => import('./dashboard/login/login').then((m) => m.Login) },
-
-
-
       {
         path: '',
         loadComponent: () => import('./dashboard/dashboard').then((m) => m.Dashboard),
@@ -30,5 +29,7 @@ export const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+  { path: ':slug', component: CategoryEvents },
+  { path: ':slug/:eventId', component: Event },
 ];

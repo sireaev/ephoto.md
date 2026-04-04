@@ -76,6 +76,15 @@ export class PhotoManagement {
     })
   }
 
+  setMainPreviewFile(id: number): void {
+    this.eventService.update({ id: this.event()!.id, previewFileId: id }).subscribe({
+      next: () => {
+        this.reload();
+        this.toast.success('Success', 'Setare poza principală cu success!');
+      }
+    })
+  }
+
   uploadFilesInSeries(files: File[]) {
     from(files)
       .pipe(

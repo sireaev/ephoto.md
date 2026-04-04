@@ -10,6 +10,9 @@ export class PublicService {
   private http = inject(HttpClient);
   private reviewAPI = '/api/reviews';
   private pricesAPI = '/api/prices';
+  private categoryAPI = '/api/categories';
+  private categoryEventsAPI = '/api/events';
+  private eventAPI = '/api/event';
 
   createReview(review: any): Observable<any> {
     return this.http.post<any>(`${this.reviewAPI}`, review);
@@ -22,4 +25,16 @@ export class PublicService {
   pricesList(): Observable<ResponseArray<any>> {
     return this.http.get<ResponseArray<any>>(`${this.pricesAPI}/list`);
   }
+
+  categoryList(): Observable<ResponseArray<any>> {
+    return this.http.get<ResponseArray<any>>(`${this.categoryAPI}/list`);
+  }
+
+  categoryEvents(slug: string): Observable<ResponseArray<any>> {
+    return this.http.get<ResponseArray<any>>(`${this.categoryEventsAPI}/${slug}`);
+  }
+
+  eventFiles(eventId: number): Observable<ResponseArray<any>> {
+    return this.http.get<ResponseArray<any>>(`${this.eventAPI}/${eventId}`);
+  } 
 }

@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryService {
   private http = inject(HttpClient);
   private API = '/api/admin/category';
-  private list$ = new BehaviorSubject<ResponseArray<ICategory> | null>(null);
+  list$ = new BehaviorSubject<ResponseArray<ICategory> | null>(null);
 
   create(category: ICategory): Observable<Response<ICategory>> {
     return this.http.post<Response<ICategory>>(`${this.API}`, category);

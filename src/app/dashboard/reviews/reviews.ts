@@ -104,6 +104,13 @@ export class Reviews {
     })
   }
 
+  parseReview(review: Partial<IReview>): Partial<IReview> {
+    return {
+      ...review,
+      rating: +review.rating!,
+    }
+  }
+
   reload() {
     this.refresh$.next();
   }

@@ -19,7 +19,7 @@ export class EventService {
     return this.http.get<Response<IEvent>>(`${this.API}/${id}`);
   }
 
-  update(event: IEvent): Observable<Response<IEvent>> {
+  update(event: Partial<IEvent>): Observable<Response<IEvent>> {
     return this.http.patch<Response<IEvent>>(`${this.API}/${event.id}`, event);
   }
 

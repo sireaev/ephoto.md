@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-family: "Libre Baskerville", sans-serif;
-  color: #10285d;
+  color: #071112;
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 15px;
@@ -1336,6 +1336,7 @@ nav.nav-menu-show {
    Pricing cards
    ============================================================ */
 .pricing-card-area {
+  background: #071112;
   .single-card {
     padding: 40px 0;
     border: 1px solid #DBDBDB;
@@ -1368,7 +1369,7 @@ nav.nav-menu-show {
       padding: 0 25px;
 
       ul {
-        min-height: 210px;
+        min-height: 280px;
 
         li {
           color: #717081;

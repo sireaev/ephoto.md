@@ -1,0 +1,31 @@
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem; /* matches Bootstrap rounded */
+}
+
+.image-wrapper img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Zoom effect */
+.image-wrapper:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1); /* slight whitening */
+}
+
+/* White overlay */
+.image-wrapper .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0); /* transparent initially */
+  transition: background 0.4s ease;
+}
+
+/* On hover → soft white fade */
+.image-wrapper:hover .overlay {
+  background: rgba(255, 255, 255, 0.2);
+}
