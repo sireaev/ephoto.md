@@ -1,23 +1,31 @@
 <aside class="sidebar">
     <div class="sidebar-section">
-        <h6 class="section-label">Recent Activity</h6>
+        <h6 class="section-label">Activități recente</h6>
         <div class="activity-feed">
-            <div class="activity-item" *ngFor="let item of activities">
-                <div class="activity-icon" [ngClass]="item.type">
-                    <i class="bi" [ngClass]="item.icon"></i>
+            @for(log of logs().data; track log.id) {
+                <div class="activity-item">
+                    <div class="activity-icon"
+                    [ngClass]="{
+                        'success': log.action === 'create',
+                        'warning': log.action === 'update',
+                        'danger': log.action === 'remove' || log.action === 'removeUpload',
+                        'info': log.action === 'upload' || log.action === 'login',
+                    }">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text">{{ log | parseLog }}</p>
+                        <span class="activity-time">{{ log.createdAt | timeAgo  }}</span>
+                    </div>
                 </div>
-                <div class="activity-content">
-                    <p class="activity-text">{{ item.text }}</p>
-                    <span class="activity-time">{{ item.time }}</span>
-                </div>
-            </div>
+            }
         </div>
     </div>
 
     <div class="sidebar-divider"></div>
 
     <div class="sidebar-section">
-        <h6 class="section-label">Team Members</h6>
+        <h6 class="section-label">Utilizatori</h6>
         <div class="team-list">
             <div class="team-member" *ngFor="let member of team">
                 <img [src]="member.avatar" [alt]="member.name" class="member-avatar" />

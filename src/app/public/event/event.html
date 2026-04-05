@@ -1,22 +1,14 @@
 <app-header></app-header>
-<main class="container">
-  <div data-masonry='{"percentPosition": true }' class="row">
+<main class="full-container">
+  <div class="masonry-container m-3">
     @for (event of events().data; track event.id) {
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-        
-        <div class="image-wrapper" role="button">
-          <img
-            srcset="{{event.mobileUrl}} 1x, {{event.webUrl}} 3x"
-            [alt]="event.previewFile"
-            width="500"
-            height="700"
-            class="img-fluid rounded"
-            loading="lazy"
-            priority
-          />
-          <div class="overlay"></div>
-        </div>
+    <div class="masonry-item">
+      <div class="image-wrapper" role="button">
+        <img srcset="{{event.mobileUrl}} 1x, {{event.webUrl}} 3x" width="500" height="700"
+          class="img-fluid" loading="lazy" priority />
+        <div class="overlay"></div>
       </div>
+    </div>
     }
   </div>
 </main>

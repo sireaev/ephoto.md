@@ -192,17 +192,17 @@
     font-weight: 700;
 }
 
-.status-badge.completed {
+.status-badge.active {
     background: #e8fdf5;
     color: #00b887;
 }
 
-.status-badge.pending {
+.status-badge.nedefinit {
     background: #fff8e1;
     color: #d68100;
 }
 
-.status-badge.cancelled {
+.status-badge.inactive {
     background: #fff2f2;
     color: #d61f3c;
 }

@@ -7,6 +7,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ScreenSizeService } from '../shared/screen-size.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PublicService } from './services/public.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddPublicReviewModal } from './add-public-review-modal/add-public-review-modal';
+import { IReview } from '../dashboard/interfaces/review.interface';
+import { ToastService } from '../dashboard/services/toast.service';
 
 type IHover = {
   [key: string]: boolean
@@ -20,6 +24,8 @@ type IHover = {
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Public {
+  private modalService = inject(NgbModal);
+  toast = inject(ToastService);
   publicService = inject(PublicService);
   currentReview = signal({'slide2': true});
   isHovered: IHover = {};
@@ -101,14 +107,28 @@ export class Public {
   }
 
   onTranslated(data: SlidesOutputData) {
-    // console.log('data', data);
-    // this.currentReview[data.slides![1].id] = true;
     if (this.isMobile()) {
       this.currentReview.update((x: any) => ({[data.slides![0].id]: true  } as any));
-    } else {
+    } else if (data.slides![1]) {
       this.currentReview.update((x: any) => ({[data.slides![1].id]: true  } as any));
+    } else {
+      this.currentReview.update((x: any) => ({[data.slides![0].id]: true  } as any));
     }
-    // this.currentReview = this.currentReview;
-    console.log('currentReview set to ', data.slides![ this.isMobile() ? 0 : 1].id)
+  }
+
+  openAddPublicReviewModal(): void {
+    const modalRef = this.modalService.open(AddPublicReviewModal);
+    modalRef.componentInstance.categories = [...this.categories()!.data];
+    modalRef.closed.subscribe((response) => {
+      this.createReview(response);
+    });
+  }
+
+  createReview(review: IReview): void {
+    this.publicService.createReview({...review, rating: +review.rating!}).subscribe({
+      next: () => {
+        this.toast.success('Success', 'Recenzia a fost trimisă cu success!');
+      }
+    })
   }
 }

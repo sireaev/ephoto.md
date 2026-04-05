@@ -8,7 +8,7 @@ import { ResponseArray } from '../../dashboard/interfaces/response.interface';
 })
 export class PublicService {
   private http = inject(HttpClient);
-  private reviewAPI = '/api/reviews';
+  private reviewAPI = '/api/review';
   private pricesAPI = '/api/prices';
   private categoryAPI = '/api/categories';
   private categoryEventsAPI = '/api/events';
@@ -19,7 +19,7 @@ export class PublicService {
   }
 
   reviewList(): Observable<ResponseArray<any>> {
-    return this.http.get<ResponseArray<any>>(`${this.reviewAPI}/list`);
+    return this.http.get<ResponseArray<any>>(`${this.reviewAPI}s/list`);
   }
 
   pricesList(): Observable<ResponseArray<any>> {
@@ -36,5 +36,5 @@ export class PublicService {
 
   eventFiles(eventId: number): Observable<ResponseArray<any>> {
     return this.http.get<ResponseArray<any>>(`${this.eventAPI}/${eventId}`);
-  } 
+  }
 }

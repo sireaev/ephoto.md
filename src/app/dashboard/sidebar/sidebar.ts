@@ -1,13 +1,32 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ToastService } from '../services/toast.service';
+import { LogsService } from '../services/logs.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { startWith, Subject, switchMap } from 'rxjs';
+import { ParseLogPipe } from '../pipes/parse-log-pipe';
+import { TimeAgoPipe } from '../pipes/time-ago-pipe';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [NgClass, CommonModule],
+  imports: [NgClass, CommonModule, ParseLogPipe, TimeAgoPipe],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
 export class Sidebar {
+  toast = inject(ToastService);
+  logsService = inject(LogsService);
+
+  private refresh$ = new Subject<void>();
+
+  logs = toSignal(
+    this.refresh$.pipe(
+      startWith(void 0), // initial load
+      switchMap(() => this.logsService.list())
+    ),
+    { initialValue: { data: [], pagination: {}, success: true } }
+  );
+
     activities = [
     { type: 'success', icon: 'bi-check-circle-fill', text: 'Ai editat evenimentul ID#101', time: '2 min ago' },
     { type: 'warning', icon: 'bi-exclamation-triangle-fill', text: 'Ai adaugat recenzia ID#44', time: '15 min ago' },
