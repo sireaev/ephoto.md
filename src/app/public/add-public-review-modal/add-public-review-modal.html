@@ -11,7 +11,7 @@
 >
     <!-- CATEGORY -->
     <div class="mb-3">
-      <label for="categoryId" class="form-label">Categorie<sup class="text-danger">*</sup></label>
+      <label for="categoryId" class="form-label">Serviciu<sup class="text-danger">*</sup></label>
       <select
         name="categoryId"
         formControlName="categoryId"
@@ -25,19 +25,20 @@
       </select>
 
       @if (f.name.errors?.['required']) {
-          <div class="invalid-feedback">Categoria este obligatorie</div>
-        } @else {
-            <div class="valid-feedback">Validat!</div>
-        }
+          <div class="invalid-feedback">Serviciul este obligatoriu</div>
+      } @else {
+          <div class="valid-feedback">Validat!</div>
+      }
     </div>
 
   <!-- NAME -->
   <div class="mb-3">
-    <label class="form-label">Nume</label>
+    <label class="form-label">Nume<sup class="text-danger">*</sup></label>
     <input
       type="text"
       class="form-control"
       formControlName="name"
+      placeholder="Nume"
       [ngClass]="controlClasses(f.name)"
     />
 
@@ -49,16 +50,19 @@
 
     <!-- MESSAGE -->
   <div class="mb-3">
-    <label class="form-label">Mesaj</label>
+    <label class="form-label">Mesaj<sup class="text-danger">*</sup></label>
     <textarea
       class="form-control"
       formControlName="message"
+      placeholder="Mesaj..."
       [ngClass]="controlClasses(f.message)"
     ></textarea>
 
     <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
-      <span *ngIf="f.message.errors?.['required']">Mesaj este obligatoriu</span>
+      @if (f.message.errors?.['required']) {
+        <span>Mesaj este obligatoriu</span>
+      }
     </div>
   </div>
 
@@ -68,8 +72,10 @@
     <select
       class="form-select"
       formControlName="rating"
+      placeholder=""
       [ngClass]="controlClasses(f.rating)"
     >
+      <option disabled [value]="null">Alege cifra, unde 1 - Nesatisfăcător, 5 - Excelent</option>
       <option [value]="5">5</option>
       <option [value]="4">4</option>
       <option [value]="3">3</option>
@@ -79,10 +85,18 @@
 
     <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
-      <span *ngIf="f.rating.errors?.['required']">Scor este obligatoriu</span>
-      <span *ngIf="f.rating.errors?.['maxlength']">Scorul este alcătuit dintr-o cifră</span>
-      <span *ngIf="f.rating.errors?.['max']">Scorul maxim este 5</span>
-      <span *ngIf="f.rating.errors?.['min']">Scorul minim este 1</span>
+      @if (f.rating.errors?.['required']) {
+        <span *ngIf="f.rating.errors?.['required']">Scor este obligatoriu</span>
+      }
+      @if (f.rating.errors?.['maxlength']) {
+        <span>Scorul este alcătuit dintr-o cifră</span>
+      }
+      @if (f.rating.errors?.['max']) {
+        <span>Scorul maxim este 5</span>
+      }
+      @if (f.rating.errors?.['min']) {
+        <span>Scorul minim este 1</span>
+      }
     </div>
   </div>
 
@@ -92,7 +106,7 @@
 <div class="modal-footer">
   <button
     type="button"
-    class="btn-nebula"
+    class="btn border-btn medium"
     (click)="submit()"
   >
     Trimite

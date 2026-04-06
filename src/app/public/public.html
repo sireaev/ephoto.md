@@ -426,48 +426,71 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                 <div class="col-lg-10">
                     <div class="section-tittle mb-60 text-center">
                         <h2>Spune-mi povestea ta</h2>
-                        <form action="#">
+                        <form [formGroup]="requestForm" (ngSubmit)="submitRequest()">
                             <div class="input-group-icon mt-10">
                                 <!-- <i class="fas fa-glass-cheers"></i> -->
                                 <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                                <input type="text" name="first_name" placeholder="Nume Prenume"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nume Prenume'" required
+                                <input type="text" name="name" placeholder="Nume Prenume"
+                                formControlName="name"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nume Prenume'"
                                 class="single-input">
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
-                                <input type="text" name="last_name" placeholder="Tipul Evenimentului"
+                                <!-- <input type="text" name="slug" formControlName="slug" placeholder="Tipul Evenimentului"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tipul Evenimentului'" required
-                                class="single-input">
+                                class="single-input"> -->
+                                <select name="slug" formControlName="slug" class="form-select single-input">
+                                    <option [value]="null">Alege tipul evenimentului</option>
+                                    @for(category of categories()?.data; track category.name;) {
+                                        <option [value]="category.slug">{{category.name}}</option>
+                                    }
+                                </select>
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-                                <input type="text" name="last_name" placeholder="Data"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data'" required
-                                data-provide="datepicker"
+                                <input 
+                                type="text"
+                                onfocus="this.placeholder = ''" 
+                                onblur="this.placeholder = 'yyyy-mm-dd'" 
+                                ngbDatepicker
+                                formControlName="eventDate"
+                                placeholder="yyyy-mm-dd"
+                                #d="ngbDatepicker"
+                                (click)="d.toggle()"
                                 class="single-input">
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                                <input type="email" name="EMAIL" placeholder="Locatia evenimentului"
+                                <input type="text" formControlName="location"
+                                name="location" placeholder="Locatia evenimentului"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Locatia evenimentului'"
                                 class="single-input">
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                                <input type="email" name="EMAIL" placeholder="Contact"
+                                <input type="text" name="contact" placeholder="Contact"
+                                formControlName="contact"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact'"
                                 class="single-input">
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                                <textarea maxlength="250" class="single-textarea homepage-contact" placeholder="Notite" onfocus="this.placeholder = ''"
+                                <textarea maxlength="250" 
+                                class="single-textarea homepage-contact" 
+                                formControlName="notices"
+                                placeholder="Notite" onfocus="this.placeholder = ''"
                                 onblur="this.placeholder = 'Notite'" required></textarea>
                             </div>
+
+                            <fieldset class="mt-4 mx-auto" style="max-width: 270px;">
+                                <app-altcha formControlName="altcha" />
+                            </fieldset>
+
                             <div class="row mt-4">
                                 <div class="col-lg-12">
                                     <div class="section-btn text-center">
-                                        <a href="#" class="border-btn rounded-3">Trimite</a>
+                                        <button type="submit" [disabled]="requestForm.invalid" class="border-btn rounded-3">Trimite</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { Header } from '../shared/header/header';
 import { Footer } from '../shared/footer/footer';
 import { NgClass } from '@angular/common'; 
@@ -7,10 +7,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ScreenSizeService } from '../shared/screen-size.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PublicService } from './services/public.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbInputDatepicker, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddPublicReviewModal } from './add-public-review-modal/add-public-review-modal';
 import { IReview } from '../dashboard/interfaces/review.interface';
 import { ToastService } from '../dashboard/services/toast.service';
+import { AltchaComponent } from '../shared/altcha/altcha';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { fromNgbDate } from '../shared/date.util';
+import { IMail } from '../dashboard/interfaces/mail.interface';
 
 type IHover = {
   [key: string]: boolean
@@ -18,7 +22,7 @@ type IHover = {
 
 @Component({
   selector: 'app-public',
-  imports: [Header, Footer, NgClass, CarouselModule],
+  imports: [Header, NgbInputDatepicker, Footer, NgClass, CarouselModule, ReactiveFormsModule, AltchaComponent],
   templateUrl: './public.html',
   styleUrl: './public.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -92,6 +96,16 @@ export class Public {
     }
   }
   isMobile;
+  private fb = inject(FormBuilder);
+  requestForm = this.fb.nonNullable.group({
+    altcha: [],
+    name: ['', [Validators.required]],
+    slug: [null, [Validators.required]],
+    eventDate: ['', [Validators.required]],
+    location: ['', [Validators.required]],
+    contact: ['', [Validators.required]],
+    notices: ['', [Validators.required]],
+  });
 
   constructor(private screenSizeService: ScreenSizeService) {
     this.isMobile = toSignal(this.screenSizeService.isMobile$, { initialValue: false });
@@ -130,5 +144,23 @@ export class Public {
         this.toast.success('Success', 'Recenzia a fost trimisă cu success!');
       }
     })
+  }
+
+  submitRequest(): void {
+    const form = this.requestForm.getRawValue();
+    const body: IMail = {
+      name: form.name.trim(),
+      slug: `${form.slug}`,
+      eventDate: fromNgbDate(form.eventDate as any),
+      contact: form.contact.trim(),
+      location: form.location.trim(),
+      notices: form.notices.trim()
+    }
+    this.publicService.sendEmail(body).subscribe({
+      next: () => {
+        this.requestForm.reset();
+        this.toast.success('Success', 'Cererea a fost trimisă cu succes!');
+      }
+    });
   }
 }

@@ -42,7 +42,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                     catchError(err => {
                         // Refresh failed → logout
                         auth.logout();
-                        console.log('request failed navigating to login')
                         router.navigate(['/admin/login']);
                         return throwError(() => err);
                     })
