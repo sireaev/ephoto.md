@@ -15,6 +15,7 @@ export class PublicService {
   private categoryEventsAPI = '/api/events';
   private eventAPI = '/api/event';
   private mailAPI = '/api/mail';
+  private pagesAPI = '/api/pages';
 
   createReview(review: any): Observable<any> {
     return this.http.post<any>(`${this.reviewAPI}`, review);
@@ -30,6 +31,10 @@ export class PublicService {
 
   categoryList(): Observable<ResponseArray<any>> {
     return this.http.get<ResponseArray<any>>(`${this.categoryAPI}/list`);
+  }
+
+  pages(): Observable<ResponseArray<any>> {
+    return this.http.get<ResponseArray<any>>(`${this.pagesAPI}/list`);
   }
 
   categoryEvents(slug: string): Observable<ResponseArray<any>> {

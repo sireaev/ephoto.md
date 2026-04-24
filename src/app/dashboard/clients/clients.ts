@@ -8,10 +8,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { IClient } from '../interfaces/client.interface';
 import { AddClientModal } from '../add-client-modal/add-client-modal';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
-  imports: [CommonModule, NgbTooltip],
+  imports: [CommonModule, NgbTooltip, RouterLink],
   templateUrl: './clients.html',
   styleUrl: './clients.scss',
 })

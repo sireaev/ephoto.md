@@ -8,10 +8,11 @@ import { IPrice } from '../interfaces/price.interface';
 import { AddPriceModal } from '../add-price-modal/add-price-modal';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-prices',
-  imports: [CommonModule, NgbTooltip],
+  imports: [CommonModule, NgbTooltip, RouterLink],
   templateUrl: './prices.html',
   styleUrl: './prices.scss',
 })

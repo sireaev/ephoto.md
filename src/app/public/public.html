@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-xl col-lg-10">
                                 <div class="slide-content">
-                                    <h4>Momentele importante cer să fie văzute corect</h4>
+                                    <h4 [class]="homepage()?.headerTextClass">{{homepage()?.headerText}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -40,13 +40,13 @@
                         <div class="row">
                             <div class="col-xl-5 col-lg-4 col-md-7 col-sm-8">
                                 <div class="slide-content2">
-                                    <h4 class="d-flex justify-content-between">
-                                            <span>Fotografie autentică, lumină naturală și profesionalism</span> 
+                                    <h4 [class]="'d-flex justify-content-between'+homepage()?.paragraph1Class">
+                                        <span>{{homepage()?.paragraph1}}</span> 
                                     </h4>
-                                    <p class="m-0">Servicii foto pentru nuntă, botez și ședințe foto în Chișinău și Moldova</p>
-                                    <a href="tel:+37368035084" class="border-btn border-0 border-btn2 px-4 rounded-3">
+                                    <p [class]="'m-0'+homepage()?.paragraph2Class">{{homepage()?.paragraph2}}</p>
+                                    <a [href]="homepage()?.buttonLink" class="border-btn border-0 border-btn2 px-4 rounded-3">
                                         <i class="fas fa-phone"></i>
-                                            Verifică disponibilitatea
+                                            {{homepage()?.buttonText}}
                                         </a>
                                 </div>
                             </div>
@@ -72,16 +72,13 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
                     <div class="section-tittle mb-50">
-                        <h2 class="text-center text-md-auto pe-lg-5 pe-0 mb-0">Galerie</h2>
-                        <h2 class="text-center text-md-auto">Fragmente de viață</h2>
+                        <h2 class="text-center text-md-auto pe-lg-5 pe-0 mb-0">{{galleryPage()?.headerText}}</h2>
+                        <h2 class="text-center text-md-auto">{{galleryPage()?.paragraph1}}</h2>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="section-tittle mb-60">
-                        <p>Calitatea fotografiei este esențială pentru a transforma momentele speciale în amintiri de durată. 
-                        De aceea, fiecare eveniment este fotografiat cu echipament profesional și cu o atenție deosebită pentru compoziție, lumină și emoție. 
-                        Rezultatul este o colecție de imagini elegante și autentice, care păstrează atmosfera evenimentului exact așa cum a fost trăită.
-                        </p>
+                        <p>{{galleryPage()?.paragraph2}}</p>
                     </div>
                 </div>
             </div>
@@ -134,14 +131,14 @@
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="section-btn text-center">
-                        <a href="#" class="border-btn rounded-3">Verifică disponibilitatea</a>
+                        <a href="#" class="border-btn rounded-3">{{galleryPage()?.buttonText}}</a>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-between align-items-center">
                 <div class="col">
                     <div class="section-tittle mb-50">
-                        <h2 class="text-center mb-0">Retușare Pînă/După</h2>
+                        <h2 class="text-center mb-0">{{retouchPage()?.headerText}}</h2>
                     </div>
                 </div>
             </div>
@@ -220,9 +217,9 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-tittle mb-60 text-center">
-                        <h2 class="text-white">Servicii & Prețuri</h2>
-                        <p class="text-white">Fiecare eveniment are propria energie.<br>
-De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astfel încât tu să te bucuri de moment, fără griji. Fiecare ofertă este adaptată nevoilor și bugetului tău, păstrând același standard de calitate.
+                        <h2 class="text-white">{{servicesPage()?.headerText}}</h2>
+                        <p class="text-white">{{servicesPage()?.paragraph1}}<br>
+{{servicesPage()?.paragraph2}}
 </p>
                     </div>
                 </div>
@@ -245,7 +242,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                                         <li class="mb-2 text-dark">{{option}}</li>
                                     }
                                 </ul>
-                                <a href="#" class="border-btn rounded-3 get-btn gallery-img">Cere oferta</a>
+                                <a href="#" class="border-btn rounded-3 get-btn gallery-img">{{servicesPage()?.buttonText}}</a>
                             </div>
                         </div>
                     </ng-template>
@@ -376,9 +373,9 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-tittle mb-60 text-center">
-                        <h2>Recenzii</h2>
-                        <p class="text-dark">Fotografiez felul în care oamenii se privesc atunci când cred că nimeni nu îi observă.
-</p>
+                        <h2>{{testimonialPage()?.headerText}}</h2>
+                        <p class="text-dark">{{testimonialPage()?.paragraph1}}</p>
+                        <p class="text-dark">{{testimonialPage()?.paragraph2}}</p>
                     </div>
                 </div>
             </div>
@@ -399,7 +396,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="section-btn text-center">
-                        <a (click)="openAddPublicReviewModal()" class="border-btn rounded-3">Lasă-ne o recenzie</a>
+                        <a (click)="openAddPublicReviewModal()" class="border-btn rounded-3">{{testimonialPage()?.buttonText}}</a>
                     </div>
                 </div>
             </div>
@@ -411,8 +408,9 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
         <!-- left Contents -->
         <div class="starups">
             <div class="starups-details">
-                <h3>Sunt gata să depășesc așteptările</h3>
-                <p>Stilul meu este simplu: lumină naturală, compoziții curate și momente reale.Fiecare fotografie este editată manual, cu atenție la detalii și într-un stil discret, cât mai natural. Aleg să nu folosesc inteligență artificială (AI) sau editare automată, pentru că fiecare imagine merită timp, precizie și o abordare personală.</p>
+                <h3 [class]="aboutPage()?.headerTextClass">{{aboutPage()?.headerText}}</h3>
+                <p [class]="aboutPage()?.paragraph1Class">{{aboutPage()?.paragraph1}}</p>
+                <p [class]="aboutPage()?.paragraph2Class">{{aboutPage()?.paragraph2}}</p>
             </div>
         </div>
         <!--Right Contents  -->
@@ -425,7 +423,9 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-tittle mb-60 text-center">
-                        <h2>Spune-mi povestea ta</h2>
+                        <h2 [class]="contactPage()?.headerTextClass">{{contactPage()?.headerText}}</h2>
+                        <p [class]="contactPage()?.paragraph1Class">{{contactPage()?.paragraph1}}</p>
+                        <p [class]="contactPage()?.paragraph2Class">{{contactPage()?.paragraph2}}</p>
                         <form [formGroup]="requestForm" (ngSubmit)="submitRequest()">
                             <div class="input-group-icon mt-10">
                                 <!-- <i class="fas fa-glass-cheers"></i> -->
@@ -490,7 +490,7 @@ De aceea, ofertele sunt gândite individual, într-un mod simplu și clar - astf
                             <div class="row mt-4">
                                 <div class="col-lg-12">
                                     <div class="section-btn text-center">
-                                        <button type="submit" [disabled]="requestForm.invalid" class="border-btn rounded-3">Trimite</button>
+                                        <button type="submit" [disabled]="requestForm.invalid" class="border-btn rounded-3">{{contactPage()?.buttonText}}</button>
                                     </div>
                                 </div>
                             </div>

@@ -10,10 +10,11 @@ import { concatMap, from, startWith, Subject, switchMap, tap } from 'rxjs';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { UploadPhotoModal } from '../upload-photo-modal/upload-photo-modal';
 import { FileService } from '../services/file.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
-  imports: [CommonModule, NgbTooltip],
+  imports: [CommonModule, NgbTooltip, RouterLink],
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })

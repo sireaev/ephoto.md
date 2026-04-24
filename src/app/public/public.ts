@@ -15,6 +15,7 @@ import { AltchaComponent } from '../shared/altcha/altcha';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { fromNgbDate } from '../shared/date.util';
 import { IMail } from '../dashboard/interfaces/mail.interface';
+import { tap } from 'rxjs';
 
 type IHover = {
   [key: string]: boolean
@@ -31,20 +32,63 @@ export class Public {
   private modalService = inject(NgbModal);
   toast = inject(ToastService);
   publicService = inject(PublicService);
-  currentReview = signal({'slide2': true});
   isHovered: IHover = {};
   reviews = toSignal(
-      this.publicService.reviewList(),
-      { initialValue: { data: [], pagination: {}, success: true } }
-    );
+    this.publicService.reviewList(),
+    { initialValue: { data: [], pagination: {}, success: true } }
+  );
   prices = toSignal(
-      this.publicService.pricesList(),
-      { initialValue: { data: [], pagination: {}, success: true } }
+    this.publicService.pricesList(),
+    { initialValue: { data: [], pagination: {}, success: true } }
     );
   categories = toSignal(
-      this.publicService.categoryList(),
-      { initialValue: { data: [], pagination: {}, success: true } }
-    );
+    this.publicService.categoryList(),
+    { initialValue: { data: [], pagination: {}, success: true } }
+  );
+  homepage = signal<any>(null);
+  galleryPage = signal<any>(null);
+  retouchPage = signal<any>(null);
+  servicesPage = signal<any>(null);
+  testimonialPage = signal<any>(null);
+  aboutPage = signal<any>(null);
+  contactPage = signal<any>(null);
+  pages = toSignal(
+    this.publicService.pages().pipe(
+      tap((response) => {
+        const homePage = response.data.find((page) => page.type === 'homepage');
+        if (homePage) {
+          this.homepage.set(homePage);
+        }
+        const galleryPage = response.data.find((page) => page.type === 'gallery');
+        if (galleryPage) {
+          this.galleryPage.set(galleryPage);
+        }
+        const retouchPage = response.data.find((page) => page.type === 'retouch');
+        if (retouchPage) {
+          this.retouchPage.set(retouchPage);
+        }
+        const servicesPage = response.data.find((page) => page.type === 'services');
+        if (servicesPage) {
+          this.servicesPage.set(servicesPage);
+        }
+        const testimonialPage = response.data.find((page) => page.type === 'testimonial');
+        if (testimonialPage) {
+          this.testimonialPage.set(testimonialPage);
+        }
+        const aboutPage = response.data.find((page) => page.type === 'about');
+        if (aboutPage) {
+          this.aboutPage.set(aboutPage);
+        }
+        const contactPage = response.data.find((page) => page.type === 'contact');
+        if (contactPage) {
+          this.contactPage.set(contactPage);
+        }
+
+      })
+    ),
+    { initialValue: { data: [], pagination: {}, success: true } }
+  );
+  currentReview = signal({[this.reviews().data.length > 1 ? 'slide2' : 'slide1']: true});
   
   pricingCarousel: OwlOptions = {
     loop: false,

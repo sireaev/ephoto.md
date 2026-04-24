@@ -14,10 +14,11 @@ import { ClientService } from '../services/client.service';
 import { ReviewStatusPipe } from '../pipes/review-status-pipe';
 import { PropByIdPipe } from '../pipes/prop-by-id-pipe';
 import { ApproveReviewModal } from '../approve-review-modal/approve-review-modal';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-reviews',
-  imports: [CommonModule, NgbTooltip, ReviewStatusPipe, PropByIdPipe],
+  imports: [CommonModule, NgbTooltip, ReviewStatusPipe, PropByIdPipe, RouterLink],
   templateUrl: './reviews.html',
   styleUrl: './reviews.scss',
 })

@@ -1,0 +1,164 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ initialData ? 'Actualizează' : 'Creează' }} bloc</h4>
+</div>
+
+<div class="modal-body">
+  <form
+  [formGroup]="pageForm"
+  (ngSubmit)="submit()"
+  class="needs-validation"
+  [class.was-validated]="submitted()"
+  novalidate
+>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Tip pagină</label>
+    <select [ngClass]="controlClasses(f.type)" class="form-select" name="type" formControlName="type">
+        <option disabled [value]="''">Selectează tipul paginii</option>
+        <option value="topbar">Topbar</option>
+        <option value="homepage">Pagina principală</option>
+        <option value="gallery">Galerie</option>
+        <option value="retouch">Retușare</option>
+        <option value="services">Servicii si preturi</option>
+        <option value="testimonial">Recenzii</option>
+        <option value="about">About</option>
+        <option value="contact">Contact form</option>
+    </select>
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.type.errors?.['required']">Tipul paginii este obligatoriu</span>
+    </div>
+  </div>
+
+    <!-- HEADER TEXT -->
+  <div class="mb-3">
+    <label class="form-label">Textul principal</label>
+    <textarea
+       class="form-control"
+       formControlName="headerText"
+       placeholder="Introduceți textul principal"
+       [ngClass]="controlClasses(f.headerText)"
+       rows="3"
+    ></textarea>
+
+    <div class="valid-feedback">Validat!</div>
+    <div class="invalid-feedback">
+      <span *ngIf="f.headerText.errors?.['required']">Textul principal este obligatoriu</span>
+    </div>
+  </div>
+
+   <!-- HEADER CLASS -->
+  <div class="mb-3">
+    <label class="form-label">Clasa text principal</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="headerTextClass"
+      placeholder="Introduceți clasa textului principal"
+      [ngClass]="controlClasses(f.headerTextClass)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- PARAGRAPH1 Text -->
+  <div class="mb-3">
+    <label class="form-label">Text paragraf 1</label>
+    <textarea
+       class="form-control"
+       formControlName="paragraph1"
+       placeholder="Introduceți text paragraf 1"
+       [ngClass]="controlClasses(f.paragraph1)"
+       rows="3"
+    ></textarea>
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- PARAGRAPH1 CLASS -->
+  <div class="mb-3">
+    <label class="form-label">Clasa text paragraf 1</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="paragraph1Class"
+      placeholder="Introduceți clasa textului paragraf 1"
+      [ngClass]="controlClasses(f.paragraph1Class)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- PARAGRAPH2 TEXT -->
+  <div class="mb-3">
+    <label class="form-label">Text paragraf 2</label>
+    <textarea
+       class="form-control"
+       formControlName="paragraph2"
+       placeholder="Introduceți text paragraf 2"
+       [ngClass]="controlClasses(f.paragraph2)"
+       rows="3"
+    ></textarea>
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- PARAGRAPH2 CLASS -->
+  <div class="mb-3">
+    <label class="form-label">Clasa text paragraf 2</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="paragraph2Class"
+      placeholder="Introduceți clasa textului paragraf 2"
+      [ngClass]="controlClasses(f.paragraph2Class)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- Button text -->
+  <div class="mb-3">
+    <label class="form-label">Text buton</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="buttonText"
+      placeholder="Introduceți textul butonului"
+      [ngClass]="controlClasses(f.buttonText)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+  <!-- Button link -->
+  <div class="mb-3">
+    <label class="form-label">Text link 
+      <br>
+      <span class="text-muted">(ex: <i>tel:+37368035084</i> sau <i>https://www.exemplu.com</i>)</span>
+    </label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="buttonLink"
+      placeholder="Introduceți textul linkului"
+      [ngClass]="controlClasses(f.buttonLink)"
+    />
+
+    <div class="valid-feedback">Validat!</div>
+  </div>
+
+</form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{ initialData ? 'Actualizează' : 'Creează' }}
+  </button>
+</div>

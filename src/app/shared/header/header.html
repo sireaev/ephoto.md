@@ -9,7 +9,7 @@
 
       <!-- Mobile: phone button + toggler -->
       <div class="d-flex align-items-center gap-2 d-lg-none">
-        <a href="tel:+37368035084" class="btn btn-outline-dark btn-sm px-md-3  rounded-3">
+        <a [href]="topbarPage()?.buttonLink" class="btn btn-outline-dark btn-sm px-md-3  rounded-3">
           <i class="fas fa-phone pe-lg-2 pe-0"></i>
         </a>
         <button
@@ -48,8 +48,8 @@
           </li>
           <!-- Phone CTA — desktop only -->
           <li class="nav-item d-none d-lg-block ms-2">
-            <a href="tel:+37368035084" class="btn border-btn medium border-0 border-btn2 px-3 rounded-3">
-              <i class="fas fa-phone pe-1"></i>+373 68035084
+            <a [href]="topbarPage()?.buttonLink" class="btn border-btn medium border-0 border-btn2 px-3 rounded-3">
+              <i class="fas fa-phone pe-1"></i>{{topbarPage()?.buttonText}}
             </a>
           </li>
         </ul>

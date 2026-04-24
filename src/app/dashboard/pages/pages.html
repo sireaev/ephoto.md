@@ -1,0 +1,63 @@
+<main class="main-content">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Pagini</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Pagini</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openPageModal()">
+                <i class="fas fa-plus"></i>Adaugă pagină
+            </button>
+        </div>
+    </div>
+
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Pagini recente</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tip</th>
+                        <th>Text principal</th>
+                        <th>Clasa text principal</th>
+                        <th>Paragraf 1</th>
+                        <th>Clasa paragraf 1</th>
+                        <th>Paragraf 2</th>
+                        <th>Clasa paragraf 2</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(page of pages()?.data; track page.id) {
+                        <tr>
+                            <td class="text-muted">{{ page.id }}</td>
+                            <td>{{ page.type }}</td>
+                            <td>{{ page.headerText }}</td>
+                            <td>{{ page.headerTextClass }}</td>
+                            <td>{{ page.paragraph1 }}</td>
+                            <td>{{ page.paragraph1Class }}</td>
+                            <td>{{ page.paragraph2 }}</td>
+                            <td>{{ page.paragraph2Class }}</td>
+                            <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Editează" (click)="openPageModal(page)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(page.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
