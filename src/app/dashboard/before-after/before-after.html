@@ -1,0 +1,62 @@
+<main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Before-After</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item active">Before-After</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="page-header-actions">
+            <button class="btn-outline-nebula gap-2">
+                <i class="far fa-file-excel"></i>Export
+            </button>
+            <button class="btn-nebula gap-2" (click)="openUploadPreviewModal()">
+                <i class="fas fa-plus"></i>Adaugă before-after
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card-nebula">
+        <div class="card-header-nebula">
+            <h5 class="card-title-nebula">Before-After recente</h5>
+            <a class="view-all">View all</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="nebula-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>BeforeFileId</th>
+                        <th>AfterFileId</th>
+                        <th>Rand</th>
+                        <th>Ordinea</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(beforeAfter of beforeAfter()?.data; track beforeAfter.id) {
+                        <tr>
+                            <td class="text-muted">{{ beforeAfter.id }}</td>
+                            <td>
+                               {{ beforeAfter.beforeFileId }}
+                            </td>
+                            <td>{{ beforeAfter.afterFileId }}</td>
+                            <td>{{ beforeAfter.row }}</td>
+                            <td>{{ beforeAfter.order }}</td>
+                            <td class="d-flex gap-2">
+                                <i placement="top" ngbTooltip="Editează" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(beforeAfter.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
+                                <i placement="top" ngbTooltip="Foto" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-camera-retro text-primary fs-6"></i>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

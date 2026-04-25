@@ -31,8 +31,8 @@ export class AddEventModal implements OnInit {
 
   eventForm = this.fb.nonNullable.group({
     clientId: [null],
-    title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-    description: ['', [Validators.required, Validators.minLength(10)]],
+    title: ['', [Validators.required]],
+    description: [''],
     eventDate: [null, [Validators.required]],
     categoryId: [null, [Validators.required]],
   });

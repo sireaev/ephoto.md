@@ -86,6 +86,7 @@ export class PhotoManagement {
   }
 
   uploadFilesInSeries(files: File[]) {
+    this.toast.isLoading.set(true);
     from(files)
       .pipe(
         concatMap((file, index) =>
@@ -104,6 +105,7 @@ export class PhotoManagement {
           console.error('Upload failed:', err);
         },
         complete: () => {
+          this.toast.isLoading.set(false);
           this.toast.success('Success', 'Fișiere încărcate cu succces!')
           this.reload();
         }

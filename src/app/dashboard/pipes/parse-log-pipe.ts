@@ -37,7 +37,7 @@ export class ParseLogPipe implements PipeTransform {
             return `${log.userName} a actualizată recenzia cu ID#${log.domainId}.`;
           case 'price':
             return `${log.userName} a actualizat blocul de preț cu ID#${log.domainId}.`;
-            default: return `S-a creat cu ID#${log.domainId}`;
+            default: return `S-a actualizat cu ID#${log.domainId}`;
         }
       }
       case 'remove': {
@@ -50,7 +50,7 @@ export class ParseLogPipe implements PipeTransform {
             return `${log.userName} a șters recenzia cu ID#${log.domainId}.`;
           case 'price':
             return `${log.userName} a șters blocul de preț cu ID#${log.domainId}.`;
-            default: return `S-a creat cu ID#${log.domainId}`;
+            default: return `A fost șters cu ID#${log.domainId}`;
         }
       }
       case 'upload': {
@@ -64,7 +64,11 @@ export class ParseLogPipe implements PipeTransform {
           default: return 'A încărcat o imagine';
         }
       }
-        
+
+      case 'send': {
+        return 'Ai primit o cerere nouă.';
+      }
+
       default: return 'O actiune neidentificata!';
     }
   }

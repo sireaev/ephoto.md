@@ -55,6 +55,7 @@ export class Categories {
   }
 
   uploadFilesInSeries(files: File[], id: number) {
+    this.toast.isLoading.set(true);
     from(files)
       .pipe(
         concatMap((file, index) =>
@@ -71,8 +72,10 @@ export class Categories {
         },
         error: (err) => {
           console.error('Upload failed:', err);
+          this.toast.isLoading.set(false);
         },
         complete: () => {
+          this.toast.isLoading.set(false);
           this.toast.success('Success', 'Fișiere încărcate cu succces!')
         }
       });

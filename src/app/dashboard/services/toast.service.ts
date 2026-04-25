@@ -11,6 +11,7 @@ export interface Toast {
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
+  isLoading = signal(false);
   private _toasts = signal<Toast[]>([]);
 
   toasts = this._toasts.asReadonly();

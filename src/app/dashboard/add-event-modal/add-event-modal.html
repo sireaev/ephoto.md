@@ -75,14 +75,6 @@
       ></textarea>
 
       <div class="valid-feedback">Nice description!</div>
-      <div class="invalid-feedback">
-        @if(f.description.errors?.['required']) {
-          <span>Required</span>
-        }
-        @if(f.description.errors?.['minlength']) {
-          <span>Min 10 characters</span>
-        }
-      </div>
     </div>
 
     <!-- DATE -->

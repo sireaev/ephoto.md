@@ -54,6 +54,7 @@ export class Clients {
   }
 
   createCategory(client: IClient): void {
+    this.clientService.list$.next(null);
     this.clientService.create(client).subscribe({
       next: () => {
         this.reload();
@@ -64,6 +65,7 @@ export class Clients {
   }
 
   updateCategory(client: IClient): void {
+    this.clientService.list$.next(null);
     this.clientService.update(client).subscribe({
       next: () => {
         this.reload();
@@ -74,6 +76,7 @@ export class Clients {
   }
 
   deleteCategory(id: number): void {
+    this.clientService.list$.next(null);
     this.clientService.delete(id).subscribe({
       next: () => {
         this.reload();

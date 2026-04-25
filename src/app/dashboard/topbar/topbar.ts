@@ -7,6 +7,7 @@ import {
 	NgbDropdownItem,
 	NgbDropdownButtonItem,
 } from '@ng-bootstrap/ng-bootstrap/dropdown';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-topbar',
@@ -14,4 +15,6 @@ import {
   templateUrl: './topbar.html',
   styleUrl: './topbar.scss',
 })
-export class Topbar {}
+export class Topbar {
+	constructor(public loadingService: ToastService) {}
+}

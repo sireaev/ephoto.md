@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 export class ClientService {
   private http = inject(HttpClient);
   private API = '/api/admin/client';
-  private list$ = new BehaviorSubject<ResponseArray<IClient> | null>(null);
+  list$ = new BehaviorSubject<ResponseArray<IClient> | null>(null);
 
   create(client: IClient): Observable<Response<IClient>> {
     return this.http.post<Response<IClient>>(`${this.API}`, client);
