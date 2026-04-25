@@ -483,14 +483,14 @@
                                 onblur="this.placeholder = 'Notite'" required></textarea>
                             </div>
 
-                            <fieldset class="mt-4 mx-auto" style="max-width: 270px;">
+                            <!-- <fieldset class="mt-4 mx-auto" style="max-width: 270px;">
                                 <app-altcha formControlName="altcha" />
-                            </fieldset>
+                            </fieldset> -->
 
                             <div class="row mt-4">
                                 <div class="col-lg-12">
                                     <div class="section-btn text-center">
-                                        <button type="submit" [disabled]="requestForm.invalid" class="border-btn rounded-3">{{contactPage()?.buttonText}}</button>
+                                        <button type="submit" [disabled]="requestForm.invalid || isSent()" class="border-btn btn rounded-3">{{contactPage()?.buttonText}}</button>
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@ import { NgbInputDatepicker, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddPublicReviewModal } from './add-public-review-modal/add-public-review-modal';
 import { IReview } from '../dashboard/interfaces/review.interface';
 import { ToastService } from '../dashboard/services/toast.service';
-import { AltchaComponent } from '../shared/altcha/altcha';
+// import { AltchaComponent } from '../shared/altcha/altcha';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { fromNgbDate } from '../shared/date.util';
 import { IMail } from '../dashboard/interfaces/mail.interface';
@@ -23,12 +23,13 @@ type IHover = {
 
 @Component({
   selector: 'app-public',
-  imports: [Header, NgbInputDatepicker, Footer, NgClass, CarouselModule, ReactiveFormsModule, AltchaComponent],
+  imports: [Header, NgbInputDatepicker, Footer, NgClass, CarouselModule, ReactiveFormsModule],
   templateUrl: './public.html',
   styleUrl: './public.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Public {
+  isSent = signal(false);
   private modalService = inject(NgbModal);
   toast = inject(ToastService);
   publicService = inject(PublicService);
@@ -142,7 +143,7 @@ export class Public {
   isMobile;
   private fb = inject(FormBuilder);
   requestForm = this.fb.nonNullable.group({
-    altcha: [],
+    // altcha: [],
     name: ['', [Validators.required]],
     slug: [null, [Validators.required]],
     eventDate: ['', [Validators.required]],
@@ -192,6 +193,8 @@ export class Public {
 
   submitRequest(): void {
     const form = this.requestForm.getRawValue();
+    this.toast.success('Success', 'Cererea a fost trimisă cu succes!');
+    this.isSent.set(true);
     const body: IMail = {
       name: form.name.trim(),
       slug: `${form.slug}`,
@@ -203,7 +206,6 @@ export class Public {
     this.publicService.sendEmail(body).subscribe({
       next: () => {
         this.requestForm.reset();
-        this.toast.success('Success', 'Cererea a fost trimisă cu succes!');
       }
     });
   }
