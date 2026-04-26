@@ -33,6 +33,6 @@ export class BeforeAfterService {
   }
 
   list(): Observable<ResponseArray<IBeforeAfter>> {
-    return this.http.get<ResponseArray<IBeforeAfter>>(`${this.API}/list`);
+    return this.http.get<ResponseArray<IBeforeAfter>>(`${this.API}`);
   }
 }

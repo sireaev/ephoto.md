@@ -106,7 +106,8 @@ export class PhotoManagement {
         },
         complete: () => {
           this.toast.isLoading.set(false);
-          this.toast.success('Success', 'Fișiere încărcate cu succces!')
+          this.toast.success('Success', 'Fișiere încărcate cu succces!');
+          
           this.reload();
         }
       });

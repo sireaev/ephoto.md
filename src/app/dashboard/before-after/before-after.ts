@@ -41,7 +41,7 @@ export class BeforeAfter {
 
   uploadFile(files: File[], id?: number) {
     this.toast.isLoading.set(true);
-    this.beforeAfterService.create({ file: files [0], type: 'before', beforeAfterId: id }).subscribe({
+    this.beforeAfterService.create({ file: files [0], type: id ? 'after' : 'before', beforeAfterId: id }).subscribe({
         next: (res) => {
           // handle each response if needed
         },

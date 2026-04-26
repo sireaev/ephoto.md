@@ -26,7 +26,8 @@ export const routes: Routes = [
           { path: 'clients',  loadComponent: () => import('./dashboard/clients/clients').then((m) => m.Clients), },
           { path: 'reviews',  loadComponent: () => import('./dashboard/reviews/reviews').then((m) => m.Reviews), },
           { path: 'prices',  loadComponent: () => import('./dashboard/prices/prices').then((m) => m.Prices), },
-          { path: 'pages',  loadComponent: () => import('./dashboard/pages/pages').then((m) => m.Pages), }
+          { path: 'pages',  loadComponent: () => import('./dashboard/pages/pages').then((m) => m.Pages), },
+          { path: 'before-after',  loadComponent: () => import('./dashboard/before-after/before-after').then((m) => m.BeforeAfter), }
         ]
       },
     ]
