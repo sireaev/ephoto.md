@@ -15,7 +15,7 @@
                 <i class="far fa-file-excel"></i>Export
             </button>
             <button class="btn-nebula gap-2" (click)="openUploadPreviewModal()">
-                <i class="fas fa-plus"></i>Adaugă before-after
+                <i class="fas fa-plus"></i>Adaugă before
             </button>
         </div>
     </div>
@@ -51,7 +51,7 @@
                             <td class="d-flex gap-2">
                                 <i placement="top" ngbTooltip="Editează" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-pen text-primary fs-6"></i>
                                 <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(beforeAfter.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
-                                <i placement="top" ngbTooltip="Foto" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-camera-retro text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Adaugă after" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-camera-retro text-primary fs-6"></i>
                             </td>
                         </tr>
                     }

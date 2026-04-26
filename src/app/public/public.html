@@ -142,8 +142,73 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-between">
-                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
+            @if (beforeAfterList() && beforeAfterList().data.length > 0) {
+                @for(item of beforeAfterRow1(); track item.id) {
+                    <div class="row justify-content-between" [ngClass]="{'mb-30' : beforeAfterRow2().length || beforeAfterRow3().length}">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6"
+                            [ngClass]="{
+                                'col-xl-3 col-lg-3 col-md-6 col-sm-6': item.width === 4,
+                                'col-xl-4 col-lg-4 col-md-6 col-sm-6': item.width === 3,
+                                'col-xl-6 col-lg-6 col-md-6 col-sm-6': item.width === 2,
+                                'col-xl-12 col-lg-12 col-md-6 col-sm-6': item.width === 1,
+                            }"
+                        >
+                        <div class="snake mb-30">
+                            <div class="gallery-img small-img">
+                                <img-comparison-slider>
+                                    <img slot="first"  [src]="item.before" />
+                                    <img slot="second"  [src]="item.after" />
+                                </img-comparison-slider>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                }
+
+                @for(item of beforeAfterRow2(); track item.id) {
+                    <div class="row justify-content-between" [ngClass]="{'mb-30' : beforeAfterRow3().length}">
+                        <div [ngClass]="{
+                                'col-xl-3 col-lg-3 col-md-6 col-sm-6': item.width === 4,
+                                'col-xl-4 col-lg-4 col-md-6 col-sm-6': item.width === 3,
+                                'col-xl-6 col-lg-6 col-md-6 col-sm-6': item.width === 2,
+                                'col-xl-12 col-lg-12 col-md-6 col-sm-6': item.width === 1,
+                            }">
+                        <div class="snake mb-30">
+                            <div class="gallery-img small-img">
+                                <img-comparison-slider>
+                                    <img slot="first"  [src]="item.before" />
+                                    <img slot="second"  [src]="item.after" />
+                                </img-comparison-slider>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                }
+
+                @for(item of beforeAfterRow3(); track item.id) {
+                    <div class="row justify-content-between">
+                        <div [ngClass]="{
+                                'col-xl-3 col-lg-3 col-md-6 col-sm-6': item.width === 4,
+                                'col-xl-4 col-lg-4 col-md-6 col-sm-6': item.width === 3,
+                                'col-xl-6 col-lg-6 col-md-6 col-sm-6': item.width === 2,
+                                'col-xl-12 col-lg-12 col-md-6 col-sm-6': item.width === 1,
+                            }">
+                        <div class="snake mb-30">
+                            <div class="gallery-img small-img">
+                                <img-comparison-slider>
+                                    <img slot="first"  [src]="item.before" />
+                                    <img slot="second"  [src]="item.after" />
+                                </img-comparison-slider>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                }
+            }
+                <!-- <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
                             <img-comparison-slider>
@@ -195,7 +260,7 @@
                         </img-comparison-slider>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                     <div class="snake mb-30">
                         <div class="gallery-img small-img">
@@ -206,7 +271,7 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
+            
         </div>
     </div>
     <!-- Gallery Area End -->

@@ -15,7 +15,7 @@ import { ToastService } from '../dashboard/services/toast.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { fromNgbDate } from '../shared/date.util';
 import { IMail } from '../dashboard/interfaces/mail.interface';
-import { tap } from 'rxjs';
+import { startWith, tap } from 'rxjs';
 
 type IHover = {
   [key: string]: boolean
@@ -53,6 +53,9 @@ export class Public {
   testimonialPage = signal<any>(null);
   aboutPage = signal<any>(null);
   contactPage = signal<any>(null);
+  beforeAfterRow1 = signal<any[]>([]);
+  beforeAfterRow2 = signal<any[]>([]);
+  beforeAfterRow3 = signal<any[]>([]);
   pages = toSignal(
     this.publicService.pages().pipe(
       tap((response) => {
@@ -88,6 +91,25 @@ export class Public {
       })
     ),
     { initialValue: { data: [], pagination: {}, success: true } }
+  );
+
+  beforeAfterList = toSignal(
+    this.publicService.beforeAfterList().pipe(
+      tap((response) => {
+        console.log('response', response.data);
+        const row1 = response.data.filter((item) => item.row === 1);
+        const row2 = response.data.filter((item) => item.row === 2);
+        const row3 = response.data.filter((item) => item.row === 3);
+        console.log('row1', row1);
+        this.beforeAfterRow1.set(row1);
+        this.beforeAfterRow2.set(row2);
+        this.beforeAfterRow3.set(row3);
+      })
+    )
+    ,
+    { initialValue: { 
+      data: [], 
+      pagination: {}, success: true } }
   );
   currentReview = signal({[this.reviews().data.length > 1 ? 'slide2' : 'slide1']: true});
   

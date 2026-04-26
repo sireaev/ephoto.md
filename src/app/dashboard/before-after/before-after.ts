@@ -50,6 +50,7 @@ export class BeforeAfter {
           this.toast.isLoading.set(false);
         },
         complete: () => {
+          this.reload();
           this.toast.isLoading.set(false);
           this.toast.success('Success', 'Fișiere încărcate cu succces!')
         }
