@@ -13,8 +13,8 @@ export class Login {
   auth = inject(AuthService);
   router = inject(Router);
   user = {
-    email: 'admin@gmail.com',
-    password: 'password',
+    email: '',
+    password: '',
   };
   
   login() {

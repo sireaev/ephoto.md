@@ -6,7 +6,6 @@ export interface IEventFile {
     eventId: number;
     type: string;
     event?: IEvent;
-    originalUrl: string;
     webUrl: string;
     mobileUrl: string;
     mimeType: string;

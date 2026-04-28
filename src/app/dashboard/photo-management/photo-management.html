@@ -40,15 +40,15 @@
               
               <!-- Image -->
               <img
-                [src]="file.originalUrl"
-                [alt]="file.originalUrl"
+                [src]="file.mobileUrl"
+                [alt]="file.mobileUrl"
                 class="card-img-top"
                 style="height: 180px; object-fit: cover;"
               />
 
               <!-- Body -->
               <div class="card-body d-flex flex-column">
-                <h6 class="card-title text-truncate d-flex justify-content-between" [title]="file.originalUrl">
+                <h6 class="card-title text-truncate d-flex justify-content-between" [title]="file.webUrl">
                     <span>
                         {{ (file.size | getMB )+ ' MB'}}
                     </span>
