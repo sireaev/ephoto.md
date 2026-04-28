@@ -11,7 +11,7 @@ export const routes: Routes = [
     title: 'Home Page',
   },
   {
-    path: 'admin',
+    path: 'd58f83fe-e7a8-4b80-a2e5-46ff902af576',
     children: [
       { path: 'login', loadComponent: () => import('./dashboard/login/login').then((m) => m.Login) },
       {
