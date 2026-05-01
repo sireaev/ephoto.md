@@ -11,6 +11,7 @@ import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { UploadPhotoModal } from '../upload-photo-modal/upload-photo-modal';
 import { FileService } from '../services/file.service';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-categories',
@@ -22,6 +23,7 @@ export class Categories {
   categoryService = inject(CategoryService);
   toast = inject(ToastService);
   fileService = inject(FileService);
+  adminPath = environment.path;
 
   private refresh$ = new Subject<void>();
 

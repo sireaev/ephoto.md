@@ -5,7 +5,7 @@
             <h1 class="page-title">Before-After</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a routerLink="/admin">Acasă</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="'/'+adminPath">Acasă</a></li>
                     <li class="breadcrumb-item active">Before-After</li>
                 </ol>
             </nav>
@@ -34,6 +34,7 @@
                         <th>BeforeFileId</th>
                         <th>AfterFileId</th>
                         <th>Rand</th>
+                        <th>Lățimea</th>
                         <th>Ordinea</th>
                         <th>Acțiuni</th>
                     </tr>
@@ -41,15 +42,19 @@
                 <tbody>
                     @for(beforeAfter of beforeAfter()?.data; track beforeAfter.id) {
                         <tr>
-                            <td class="text-muted">{{ beforeAfter.id }}</td>
+                            <td class="text-muted">
+                                {{ beforeAfter.id }}</td>
                             <td>
-                               {{ beforeAfter.beforeFileId }}
+                                <span class="badge text-bg-info">FILE ID: {{ beforeAfter.beforeFileId }}</span>
                             </td>
-                            <td>{{ beforeAfter.afterFileId }}</td>
+                            <td>
+                                 <span class="badge text-bg-info">FILE ID: {{ beforeAfter.afterFileId }}</span>
+                            </td>
                             <td>{{ beforeAfter.row }}</td>
+                            <td>{{ beforeAfter.width }}</td>
                             <td>{{ beforeAfter.order }}</td>
                             <td class="d-flex gap-2">
-                                <i placement="top" ngbTooltip="Editează" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Editează" (click)="openBeforeAfterModal(beforeAfter)" role="button" class="fas fa-pen text-primary fs-6"></i>
                                 <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(beforeAfter.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
                                 <i placement="top" ngbTooltip="Adaugă after" (click)="openUploadPreviewModal(beforeAfter.id!)" role="button" class="fas fa-camera-retro text-primary fs-6"></i>
                             </td>

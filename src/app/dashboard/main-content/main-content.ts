@@ -1,6 +1,7 @@
 import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-main-content',
@@ -9,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './main-content.scss',
 })
 export class MainContent {
+  adminPath = environment.path;
   kpis = [
     { label: 'Total Revenue', value: '$84,200', change: '+12.4% vs last month', trend: 1, icon: 'bi-currency-dollar', bg: '#e9f5ff', color: '#0095ff' },
     { label: 'New Orders', value: '1,430', change: '+8.2% vs last month', trend: 1, icon: 'bi-bag-fill', bg: '#e8fdf5', color: '#00d68f' },

@@ -9,6 +9,7 @@ import { IClient } from '../interfaces/client.interface';
 import { AddClientModal } from '../add-client-modal/add-client-modal';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-clients',
@@ -19,6 +20,7 @@ import { RouterLink } from '@angular/router';
 export class Clients {
   clientService = inject(ClientService);
   toast = inject(ToastService);
+  adminPath = environment.path;
 
   private refresh$ = new Subject<void>();
 

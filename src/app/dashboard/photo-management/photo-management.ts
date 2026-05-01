@@ -7,14 +7,15 @@ import { FileService } from '../services/file.service';
 import { combineLatest, concatMap, from, map, of, startWith, Subject, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../services/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { IEvent } from '../interfaces/event.interface';
 import { GetMBPipe } from '../pipes/get-mb-pipe';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-photo-management',
-  imports: [CommonModule, NgbTooltip, GetMBPipe],
+  imports: [CommonModule, NgbTooltip, GetMBPipe, RouterLink],
   templateUrl: './photo-management.html',
   styleUrl: './photo-management.scss',
 })
@@ -24,6 +25,7 @@ export class PhotoManagement {
   toast = inject(ToastService);
   fileService = inject(FileService);
   eventService = inject(EventService);
+  adminPath = environment.path;
 
   private refresh$ = new Subject<void>();
 

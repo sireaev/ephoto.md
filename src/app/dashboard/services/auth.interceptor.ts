@@ -6,6 +6,7 @@ import {
 import { catchError, switchMap, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
     if (req.url.includes('/auth/login') || req.url.includes('/auth/refresh')) {
@@ -42,7 +43,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                     catchError(err => {
                         // Refresh failed → logout
                         auth.logout();
-                        router.navigate(['/admin/login']);
+                        router.navigate([environment.path + '/login']);
                         return throwError(() => err);
                     })
                 );

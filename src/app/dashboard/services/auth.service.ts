@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, filter, take, tap } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+
 import { LoginTokenEnum } from '../enums/auth.enum';
 import { ILogin, ILoginResponse } from '../interfaces/auth.interface';
 import { Response } from '../interfaces/response.interface';
@@ -27,8 +29,34 @@ export class AuthService {
     localStorage.setItem(LoginTokenEnum.REFRESH_TOKEN, refresh);
   }
 
+  // ✅ NEW: decode token
+  decodeToken(token: string | null): any | null {
+    if (!token) return null;
+
+    try {
+      return jwtDecode(token);
+    } catch {
+      return null;
+    }
+  }
+
+  // ✅ NEW: get current user payload
+  get user() {
+    return this.decodeToken(this.accessToken);
+  }
+
+  // ✅ NEW: check expiration
+  isTokenExpired(token: string | null): boolean {
+    const decoded: any = this.decodeToken(token);
+    if (!decoded?.exp) return true;
+
+    const now = Math.floor(Date.now() / 1000);
+    return decoded.exp < now;
+  }
+
   login(data: ILogin) {
     this.refreshInProgress = true;
+
     return this.http.post<Response<ILoginResponse>>(`${this.API}/login`, data)
       .pipe(
         tap((res: Response<ILoginResponse>) => {

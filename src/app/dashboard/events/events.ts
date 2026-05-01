@@ -16,6 +16,7 @@ import { CategoryService } from '../services/category.service';
 import { ClientService } from '../services/client.service';
 import { fromNgbDate } from '../../shared/date.util';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-events',
@@ -26,6 +27,7 @@ import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 export class Events {
   toast = inject(ToastService);
   private refresh$ = new Subject<void>();
+  adminPath = environment.path;
   eventService = inject(EventService);
   categoryService = inject(CategoryService);
   clientService = inject(ClientService);

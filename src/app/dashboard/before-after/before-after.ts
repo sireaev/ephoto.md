@@ -9,6 +9,9 @@ import { BeforeAfterService } from '../services/before-after.service';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
+import { UpdateBeforeAfterModal } from '../update-before-after-modal/update-before-after-modal';
+import { IBeforeAfter } from '../interfaces/before-after.interface';
 
 @Component({
   selector: 'app-before-after',
@@ -21,6 +24,7 @@ export class BeforeAfter {
   toast = inject(ToastService);
   fileService = inject(FileService);
   beforeAfterService = inject(BeforeAfterService);
+  adminPath = environment.path;
 
     private refresh$ = new Subject<void>();
 
@@ -36,6 +40,26 @@ export class BeforeAfter {
     const modalRef = this.modalService.open(UploadPhotoModal);
     modalRef.closed.subscribe((response) => {
       this.uploadFile(response, id);
+    })
+  }
+
+  openBeforeAfterModal(beforeAfter: IBeforeAfter): void {
+    const modalRef = this.modalService.open(UpdateBeforeAfterModal);
+    modalRef.componentInstance.initialData = beforeAfter;
+    modalRef.closed.subscribe((response) => {
+      this.updateBeforeAfter(response, beforeAfter.id);
+    })
+  }
+
+  updateBeforeAfter(beforeAfter: any, id?: number): void {
+    this.beforeAfterService.update(beforeAfter, id).subscribe({
+      next: () => {
+        this.reload();
+        this.toast.success('Before-After', 'Actualizat cu succes!');
+      },
+      error: () => {
+        this.toast.error('Before-After', 'Eroare la actualizare!');
+      }
     })
   }
 

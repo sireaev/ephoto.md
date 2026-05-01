@@ -9,6 +9,7 @@ import { AddPageModal } from '../add-page-modal/add-page-modal';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-pages',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class Pages {
   pageService = inject(PageService);
   toast = inject(ToastService);
+  adminPath = environment.path;
 
   private refresh$ = new Subject<void>();
 

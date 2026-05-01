@@ -6,6 +6,7 @@ export interface IBeforeAfter {
   afterFile?: File;
   row?: number;
   order?: number;
+  width?: number;
   before?: string;
   after?: string;
 }

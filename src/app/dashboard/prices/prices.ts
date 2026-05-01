@@ -9,6 +9,8 @@ import { AddPriceModal } from '../add-price-modal/add-price-modal';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-prices',
@@ -18,6 +20,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Prices {
   priceService = inject(PriceService);
+  adminPath = environment.path;
   toast = inject(ToastService);
 
   private refresh$ = new Subject<void>();

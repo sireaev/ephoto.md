@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class Login {
   login() {
     this.auth.login(this.user).subscribe({
       next: () => {
-        this.router.navigate(['../admin']);
+        this.router.navigate([`../${environment.path}`]);
       },
       error: () => {
         

@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ initialData ? 'Actualizează' : 'Creează' }} categorie</h4>
+</div>
+
+<div class="modal-body">
+  <form
+  [formGroup]="beforeAfterForm"
+  (ngSubmit)="submit()"
+  class="needs-validation"
+  [class.was-validated]="submitted()"
+  novalidate
+>
+
+  <!-- ROW -->
+  <div class="mb-3">
+    <label class="form-label">Rând (1, 2 sau 3)</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="row"
+      [ngClass]="controlClasses(f.row)"
+    />
+
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Ordinea (1, 2, 3 sau 4)</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="order"
+      [ngClass]="controlClasses(f.order)"
+    />
+
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+  <!-- NAME -->
+  <div class="mb-3">
+    <label class="form-label">Lățime (1, 2, 3 sau 4)</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="width"
+      [ngClass]="controlClasses(f.width)"
+    />
+
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+</form>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn-nebula"
+    (click)="submit()"
+  >
+    {{ initialData ? 'Actualizează' : 'Creează' }}
+  </button>
+</div>

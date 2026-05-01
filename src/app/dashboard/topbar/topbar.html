@@ -13,19 +13,19 @@
     </div>
 
     <nav class="topbar-nav">
-        <a class="nav-item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-item" routerLink="/{{ adminPath }}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <i class="fas fa-th-large"></i>
             <span>Bord</span>
         </a>
-        <a class="nav-item" routerLink="/admin/categories" routerLinkActive="active">
+        <a class="nav-item" routerLink="/{{ adminPath }}/categories" routerLinkActive="active">
             <i class="far fa-folder"></i>
             <span>Categorii</span>
         </a>
-        <a class="nav-item" routerLink="/admin/events" routerLinkActive="active">
+        <a class="nav-item" routerLink="/{{ adminPath }}/events" routerLinkActive="active">
             <i class="fas fa-calendar-alt"></i>
             <span>Evenimente</span>
         </a>
-        <a class="nav-item" routerLink="/admin/clients" routerLinkActive="active">
+        <a class="nav-item" routerLink="/{{ adminPath }}/clients" routerLinkActive="active">
             <i class="far fa-user"></i>
             <span>Clienti</span>
         </a>
@@ -34,25 +34,25 @@
             <span ngbDropdownToggle>Pagini</span>
             <div class="dropdown-menu" ngbDropdownMenu style="transition:none;">
                 <button ngbDropdownItem class="px-0">
-                    <a class="nav-item w-100" routerLink="/admin/reviews">
+                    <a class="nav-item w-100" routerLink="/{{ adminPath }}/reviews">
                         <i class="far fa-comment-dots"></i>
                         <span>Recenzii</span>
                     </a>
                 </button>
                 <button ngbDropdownItem class="px-0">
-                    <a class="nav-item w-100" routerLink="/admin/prices">
+                    <a class="nav-item w-100" routerLink="/{{ adminPath }}/prices">
                         <i class="fas fa-dollar-sign"></i>
                         <span>Preturi</span>
                     </a>
                 </button>
                 <button ngbDropdownItem class="px-0">
-                    <a class="nav-item w-100" routerLink="/admin/before-after">
+                    <a class="nav-item w-100" routerLink="/{{ adminPath }}/before-after">
                         <i class="fas fa-file-alt"></i>
                         <span>Before-after</span>
                     </a>
                 </button>
                 <button ngbDropdownItem class="px-0">
-                    <a class="nav-item w-100" routerLink="/admin/pages">
+                    <a class="nav-item w-100" routerLink="/{{ adminPath }}/pages">
                         <i class="fas fa-file-alt"></i>
                         <span>Pagini statice</span>
                     </a>
@@ -84,10 +84,10 @@
             <i class="far fa-user"></i>
         </button>
         <div class="user-avatar">
-            <img src="https://i.pravatar.cc/36?img=3" alt="User avatar" />
+            <img src="https://i.pravatar.cc/36?img=20" alt="User avatar" />
             <div class="user-info">
-                <span class="user-name">Evelyn Harper</span>
-                <span class="user-role">Admin</span>
+                <span class="user-name">{{user?.firstName}} {{user?.lastName}}</span>
+                <span class="user-role">{{user?.role | titlecase  }}</span>
             </div>
             <i class="bi bi-chevron-down ms-1 chevron"></i>
         </div>

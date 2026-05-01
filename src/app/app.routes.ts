@@ -3,6 +3,7 @@ import { Public } from './public/public';
 import { authGuard } from './dashboard/auth-guard';
 import { CategoryEvents } from './public/category-events/category-events';
 import { Event } from './public/event/event';
+import { environment } from '../environments/environment';
 
 export const routes: Routes = [
   {
@@ -11,7 +12,7 @@ export const routes: Routes = [
     title: 'Home Page',
   },
   {
-    path: 'd58f83fe-e7a8-4b80-a2e5-46ff902af576',
+    path: environment.path,
     children: [
       { path: 'login', loadComponent: () => import('./dashboard/login/login').then((m) => m.Login) },
       {

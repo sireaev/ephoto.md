@@ -28,6 +28,10 @@ export class BeforeAfterService {
     return this.http.post<Response<IBeforeAfter>>(`${this.API}`, form);
   }
 
+  update(beforeAfter: any, id?: number): Observable<Response<IBeforeAfter>> {
+    return this.http.patch<Response<IBeforeAfter>>(`${this.API}/${id}`, beforeAfter);
+  }
+
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.API}/${id}`);
   }

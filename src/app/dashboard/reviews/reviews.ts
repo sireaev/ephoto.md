@@ -15,6 +15,7 @@ import { ReviewStatusPipe } from '../pipes/review-status-pipe';
 import { PropByIdPipe } from '../pipes/prop-by-id-pipe';
 import { ApproveReviewModal } from '../approve-review-modal/approve-review-modal';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-reviews',
@@ -24,6 +25,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Reviews {
   reviewService = inject(ReviewService);
+  adminPath = environment.path;
   toast = inject(ToastService);
   eventService = inject(EventService);
   categoryService = inject(CategoryService);
