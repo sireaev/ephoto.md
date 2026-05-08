@@ -985,7 +985,7 @@ nav.nav-menu-show {
   background-image: url('/assets/images/homepage.jpg');
   background-repeat: no-repeat;
   background-position: right top;
-  background-size: cover;
+  background-size: contain;
 }
 
 .slider-area {
@@ -1092,6 +1092,7 @@ nav.nav-menu-show {
   p,
   h4 span {
     font-size: 1.5rem;
+    @media (max-width: 1200px) { font-size: 1.1rem; }
     @media (max-width: 720px) { font-size: 1rem; }
   }
 
@@ -1113,10 +1114,10 @@ nav.nav-menu-show {
     z-index: -1;
     background-repeat: no-repeat;
     /* gradient overlay */
-    background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 62, 62, 0) 27%,
-      rgba(29, 37, 71, 0.56) 100%);
+    // background: linear-gradient(to bottom,
+    //   rgba(0, 0, 0, 0) 0%,
+    //   rgba(0, 62, 62, 0) 27%,
+    //   rgba(29, 37, 71, 0.56) 100%);
   }
 }
 

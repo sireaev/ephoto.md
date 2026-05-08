@@ -42,11 +42,20 @@
         <!-- Bar Chart Placeholder -->
         <div class="card-nebula flex-2">
             <div class="card-header-nebula">
-                <h5 class="card-title-nebula">Revenue Overview</h5>
+                <h5 class="card-title-nebula">Vizitatori unici</h5>
                 <div class="card-actions">
-                    <button class="chip active">Monthly</button>
-                    <button class="chip">Weekly</button>
-                    <button class="chip">Daily</button>
+                    <button class="chip"
+                    (click)="view.set('monthly')"
+                    [class.active]="view() === 'monthly'"
+                    >Lunar</button>
+                    <button class="chip"
+                    (click)="view.set('weekly')"
+                    [class.active]="view() === 'weekly'"
+                    >Saptămânal</button>
+                    <button class="chip"
+                    (click)="view.set('daily')"
+                    [class.active]="view() === 'daily'"
+                    >Zilnic</button>
                 </div>
             </div>
             <div class="chart-area">
@@ -62,28 +71,58 @@
                         </linearGradient>
                     </defs>
                     <!-- Grid lines -->
-                    <line x1="40" y1="20" x2="540" y2="20" stroke="#e4e9f2" stroke-width="1" />
+                    <!-- <line x1="40" y1="20" x2="540" y2="20" stroke="#e4e9f2" stroke-width="1" />
                     <line x1="40" y1="60" x2="540" y2="60" stroke="#e4e9f2" stroke-width="1" />
                     <line x1="40" y1="100" x2="540" y2="100" stroke="#e4e9f2" stroke-width="1" />
-                    <line x1="40" y1="140" x2="540" y2="140" stroke="#e4e9f2" stroke-width="1" />
+                    <line x1="40" y1="140" x2="540" y2="140" stroke="#e4e9f2" stroke-width="1" /> -->
+                    @for (tick of yAxis(); track $index) {
+                    <line
+                        x1="40"
+                        [attr.y1]="tick.y"
+                        x2="540"
+                        [attr.y2]="tick.y"
+                        stroke="#e4e9f2"
+                        stroke-width="1"
+                    />
+                    }
                     <!-- Y Labels -->
-                    <text x="35" y="24" text-anchor="end" fill="#8f9bb3" font-size="10">80k</text>
+                    <!-- <text x="35" y="24" text-anchor="end" fill="#8f9bb3" font-size="10">80k</text>
                     <text x="35" y="64" text-anchor="end" fill="#8f9bb3" font-size="10">60k</text>
                     <text x="35" y="104" text-anchor="end" fill="#8f9bb3" font-size="10">40k</text>
-                    <text x="35" y="144" text-anchor="end" fill="#8f9bb3" font-size="10">20k</text>
+                    <text x="35" y="144" text-anchor="end" fill="#8f9bb3" font-size="10">20k</text> -->
+                    @for (tick of yAxis(); track $index) {
+                    <text
+                        x="35"
+                        [attr.y]="tick.y"
+                        text-anchor="end"
+                        fill="#8f9bb3"
+                        font-size="10"
+                    >
+                        {{ tick.value }}
+                    </text>
+                    }
                     <!-- Bars -->
-                    <g *ngFor="let bar of bars; let i = index">
-                        <rect [attr.x]="40 + i*70 + 6" [attr.y]="140 - bar.v1" width="22" [attr.height]="bar.v1"
-                            fill="url(#barGrad)" rx="4" />
-                        <rect [attr.x]="40 + i*70 + 32" [attr.y]="140 - bar.v2" width="22" [attr.height]="bar.v2"
-                            fill="url(#barGrad2)" rx="4" />
-                        <text [attr.x]="40 + i*70 + 27" y="158" text-anchor="middle" fill="#8f9bb3" font-size="10">{{
-                            bar.label }}</text>
-                    </g>
+                     @for (bar of bars()?.data; track $index; let i = $index) {
+                        <g>
+                            <rect [attr.x]="40 + i*70 + 6" [attr.y]="140 - bar.v1"
+                                width="22" [attr.height]="bar.v1"
+                                fill="url(#barGrad)" rx="4" />
+
+                            <rect [attr.x]="40 + i*70 + 32" [attr.y]="140 - bar.v2"
+                                width="22" [attr.height]="bar.v2"
+                                fill="url(#barGrad2)" rx="4" />
+
+                            <text [attr.x]="40 + i*70 + 27" y="158"
+                                text-anchor="middle"
+                                fill="#8f9bb3" font-size="10">
+                            {{ bar.label }}
+                            </text>
+                        </g>
+                        }
                 </svg>
                 <div class="chart-legend">
-                    <span class="legend-dot blue"></span><span class="legend-label">Revenue</span>
-                    <span class="legend-dot green ms-3"></span><span class="legend-label">Profit</span>
+                    <span class="legend-dot blue"></span><span class="legend-label">{{ 2025 }}</span>
+                    <span class="legend-dot green ms-3"></span><span class="legend-label">{{ 2026 }}</span>
                 </div>
             </div>
         </div>
@@ -91,7 +130,7 @@
         <!-- Donut Chart -->
         <div class="card-nebula flex-1">
             <div class="card-header-nebula">
-                <h5 class="card-title-nebula">Traffic Sources</h5>
+                <h5 class="card-title-nebula">Trafic pe dispozitive</h5>
             </div>
             <div class="donut-wrapper">
                 <svg viewBox="0 0 160 160" class="donut-chart">

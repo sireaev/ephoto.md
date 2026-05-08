@@ -3,7 +3,7 @@
   <div class="masonry-container m-3">
     @for (event of events().data; track event.id) {
     <div class="masonry-item">
-      <div class="image-wrapper" role="button">
+      <div class="image-wrapper" role="button" (click)="openPhoto($index)">
         <img srcset="{{event.mobileUrl}} 1x, {{event.webUrl}} 3x" width="500" height="700"
           class="img-fluid" loading="lazy" priority />
         <div class="overlay"></div>

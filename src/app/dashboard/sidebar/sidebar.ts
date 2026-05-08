@@ -6,6 +6,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith, Subject, switchMap } from 'rxjs';
 import { ParseLogPipe } from '../pipes/parse-log-pipe';
 import { TimeAgoPipe } from '../pipes/time-ago-pipe';
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,6 +18,8 @@ import { TimeAgoPipe } from '../pipes/time-ago-pipe';
 export class Sidebar {
   toast = inject(ToastService);
   logsService = inject(LogsService);
+  userService = inject(UserService);
+  public authService = inject(AuthService);
 
   private refresh$ = new Subject<void>();
 
@@ -25,6 +29,11 @@ export class Sidebar {
       switchMap(() => this.logsService.list())
     ),
     { initialValue: { data: [], pagination: {}, success: true } }
+  );
+
+  users = toSignal(
+    this.userService.list(),
+    { initialValue: { data: [], pagination: {}, success: true }}
   );
 
     activities = [

@@ -27,14 +27,19 @@
     <div class="sidebar-section">
         <h6 class="section-label">Utilizatori</h6>
         <div class="team-list">
-            <div class="team-member" *ngFor="let member of team">
-                <img [src]="member.avatar" [alt]="member.name" class="member-avatar" />
-                <div class="member-info">
-                    <span class="member-name">{{ member.name }}</span>
-                    <span class="member-status" [ngClass]="member.status">{{ member.statusLabel }}</span>
+            @for(user of users().data; track user.id) {
+                <div class="team-member">
+                    <img src="//i.pravatar.cc" [alt]="user.firstName" class="member-avatar" />
+                    <div class="member-info">
+                        <span class="member-name">{{ user.firstName }} {{user.lastName}}</span>
+                        <span class="member-status" [ngClass]="{
+                            'online': user.id === authService?.user?.id,
+                            'offline': user.id !== authService?.user?.id
+            }               ">{{ user.id === authService?.user?.id ? 'Online' : 'Offline'}}</span>
+                    </div>
+                    <!-- <div class="member-badge" [ngClass]="member.status"></div> -->
                 </div>
-                <div class="member-badge" [ngClass]="member.status"></div>
-            </div>
+            }
         </div>
     </div>
 

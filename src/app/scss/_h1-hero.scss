@@ -1,16 +1,16 @@
 .slider-height {
-    height: 890px;
+    height: 600px;
     @media #{$lg}{
-        height: 600px;
+        height: 450px;
     }
     @media #{$md}{
-        height: 650px;
+        height: 400px;
     }
     @media #{$sm}{
-        height: 600px;
+        height: 350px;
     }
     @media #{$xs}{
-        height: 600px;
+        height: 350px;
     }
 }
 
@@ -172,7 +172,7 @@
         position: absolute;
         content: "";
         // background-color: rgba(1, 10, 28,  0.3);
-        @extend %overlay2;
+        // @extend %overlay2;
         width: 100%;
         height: 100%;
         left: 0;

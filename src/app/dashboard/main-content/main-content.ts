@@ -1,7 +1,10 @@
 import { CommonModule, NgClass, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { LogsService } from '../services/logs.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-main-content',
@@ -12,21 +15,61 @@ import { environment } from '../../../environments/environment';
 export class MainContent {
   adminPath = environment.path;
   kpis = [
-    { label: 'Total Revenue', value: '$84,200', change: '+12.4% vs last month', trend: 1, icon: 'bi-currency-dollar', bg: '#e9f5ff', color: '#0095ff' },
-    { label: 'New Orders', value: '1,430', change: '+8.2% vs last month', trend: 1, icon: 'bi-bag-fill', bg: '#e8fdf5', color: '#00d68f' },
+    { label: 'Total Utilizatori', value: '1', change: '+12.4% vs last month', trend: 1, icon: 'bi-currency-dollar', bg: '#e9f5ff', color: '#0095ff' },
+    { label: 'Utilizatori noi', value: '0', change: '+8.2% vs last month', trend: 1, icon: 'bi-bag-fill', bg: '#e8fdf5', color: '#00d68f' },
     { label: 'Active Users', value: '9,621', change: '+3.7% vs last week', trend: 1, icon: 'bi-people-fill', bg: '#f0f4ff', color: '#3366ff' },
     { label: 'Churn Rate', value: '2.14%', change: '+0.3% vs last month', trend: -1, icon: 'bi-graph-down-arrow', bg: '#fff2f2', color: '#ff3d71' },
   ];
 
-  bars = [
-    { label: 'Jan', v1: 80, v2: 55 },
-    { label: 'Feb', v1: 110, v2: 70 },
-    { label: 'Mar', v1: 90, v2: 60 },
-    { label: 'Apr', v1: 130, v2: 90 },
-    { label: 'May', v1: 100, v2: 75 },
-    { label: 'Jun', v1: 120, v2: 85 },
-    { label: 'Jul', v1: 140, v2: 95 },
-  ];
+  // bars = [
+  //   { label: 'Jan', v1: 80, v2: 10 },
+  //   { label: 'Feb', v1: 110, v2: 70 },
+  //   { label: 'Mar', v1: 90, v2: 60 },
+  //   { label: 'Apr', v1: 130, v2: 90 },
+  //   { label: 'May', v1: 100, v2: 75 },
+  //   { label: 'Jun', v1: 120, v2: 85 },
+  //   { label: 'Jul', v1: 140, v2: 95 },
+  // ];
+  logsService = inject(LogsService);
+
+  view = signal<'monthly' | 'weekly' | 'daily'>('monthly');
+  bars = toSignal(
+    toObservable(this.view).pipe(
+      switchMap((view) => this.logsService.barStats(view))
+    ),
+    { initialValue: { data: [], labels: [] } }
+  )
+
+  maxValue = computed(() => {
+    const bars = this.bars()?.data || [];
+
+    return Math.max(
+      ...bars.flatMap(b => [b.v1, b.v2]),
+      0
+    );
+  });
+
+  chartTop = 20;
+  chartBottom = 140;
+  chartHeight = this.chartBottom - this.chartTop;
+
+  yAxis = computed(() => {
+    const max = this.maxValue();
+    if (!max) return [];
+
+    const steps = 4;
+    const stepValue = Math.ceil(max / steps);
+
+    return Array.from({ length: steps }, (_, i) => {
+      const value = stepValue * (steps - i);
+
+      const y =
+        this.chartBottom -
+        (value / (stepValue * steps)) * this.chartHeight;
+
+      return { value, y };
+    });
+  });
 
   trafficSources = [
     { label: 'Organic Search', pct: '66%', color: '#3366ff' },
