@@ -197,16 +197,6 @@
 
 
 
-// transition
-// @include transition(.4s);
-@mixin transition($time) {
-	-webkit-transition: all $time ease-out 0s;
-	-moz-transition: all $time ease-out 0s;
-	-ms-transition: all $time ease-out 0s;
-	-o-transition: all $time ease-out 0s;
-	transition: all $time ease-out 0s;
-}
-
 // transform
 @mixin transform($value) {
   -webkit-transform: $value;
@@ -276,13 +266,6 @@
       @content;
 }
 }
-@mixin transition($args: all 0.6s ease 0s) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -o-transition: $args;
-  transition: $args;
-}
-
 @mixin keyframes ($animation-name) {
     @-webkit-keyframes #{$animation-name} {
       @content;

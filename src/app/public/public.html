@@ -15,12 +15,26 @@
         <div class="slider-item-active">
             <!-- Single -->
             <div class="slider-item">
-                <div class="slider-bg1 slider-height hero-overly slider-bg1 d-flex align-items-center ">
+                <div class="slider-bg1 slider-height hero-overly slider-bg1 d-flex align-items-center">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl col-lg-10">
                                 <div class="slide-content">
-                                    <h4 [class]="homepage()?.headerTextClass">{{homepage()?.headerText}}</h4>
+                                    <h4 [class]="'mb-lg-5 mb-0'+homepage()?.headerTextClass">{{homepage()?.headerText}}</h4>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-12">
+                                                <div class="slide-content2">
+                                                    <p [class]="'m-0 p-0 d-flex justify-content-between'+homepage()?.paragraph1Class">{{homepage()?.paragraph1}}</p>
+                                                    <p [class]="'m-0'+homepage()?.paragraph2Class">{{homepage()?.paragraph2}}</p>
+                                                    <a [href]="homepage()?.buttonLink" class="border-btn border-0 border-btn2 px-lg-4 px-2 rounded-3 text-nowrap">
+                                                        <i class="fas fa-phone"></i>
+                                                            {{homepage()?.buttonText}}
+                                                        </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -32,32 +46,6 @@
                                 </a>
                             </div>
                         </div> -->
-                    </div>
-                </div>
-                <!-- Footer Content -->
-                <div class="slider-caption2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-4 col-md-7 col-sm-8">
-                                <div class="slide-content2">
-                                    <h4 [class]="'d-flex justify-content-between'+homepage()?.paragraph1Class">
-                                        <span>{{homepage()?.paragraph1}}</span> 
-                                    </h4>
-                                    <p [class]="'m-0'+homepage()?.paragraph2Class">{{homepage()?.paragraph2}}</p>
-                                    <a [href]="homepage()?.buttonLink" class="border-btn border-0 border-btn2 px-4 rounded-3">
-                                        <i class="fas fa-phone"></i>
-                                            {{homepage()?.buttonText}}
-                                        </a>
-                                </div>
-                            </div>
-                            <!-- <div class="col-xl-8 col-lg-6 col-md-3 col-sm-4 col">
-                                <div class="row justify-content-center slide-content2">
-                                    <div class="col-auto">
-                                        
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -131,7 +119,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="section-btn text-center">
-                        <a href="#" class="border-btn rounded-3">{{galleryPage()?.buttonText}}</a>
+                        <a [href]="galleryPage()?.buttonLink" class="border-btn rounded-3">{{galleryPage()?.buttonText}}</a>
                     </div>
                 </div>
             </div>

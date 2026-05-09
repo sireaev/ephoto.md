@@ -165,7 +165,7 @@ export class Public {
   isMobile;
   private fb = inject(FormBuilder);
   requestForm = this.fb.nonNullable.group({
-    altcha: [],
+    altcha: [''],
     name: ['', [Validators.required]],
     slug: [null, [Validators.required]],
     eventDate: ['', [Validators.required]],
