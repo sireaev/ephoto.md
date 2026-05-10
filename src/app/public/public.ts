@@ -220,7 +220,7 @@ export class Public {
     const body: IMail = {
       name: form.name.trim(),
       slug: `${form.slug}`,
-      eventDate: fromNgbDate(form.eventDate as any),
+      eventDate: fromNgbDate(form.eventDate as any) as any,
       contact: form.contact.trim(),
       location: form.location.trim(),
       notices: form.notices.trim()
