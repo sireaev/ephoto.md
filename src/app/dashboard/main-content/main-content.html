@@ -22,7 +22,7 @@
 
     <!-- KPI Cards -->
     <div class="kpi-grid">
-        <div class="kpi-card" *ngFor="let kpi of kpis">
+        <div class="kpi-card" *ngFor="let kpi of kpis()">
             <div class="kpi-icon" [ngStyle]="{'background': kpi.bg, 'color': kpi.color}">
                 <i class="bi" [ngClass]="kpi.icon"></i>
             </div>
@@ -59,71 +59,10 @@
                 </div>
             </div>
             <div class="chart-area">
-                <svg viewBox="0 0 560 180" class="bar-chart">
-                    <defs>
-                        <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#3366ff" />
-                            <stop offset="100%" stop-color="#598bff" />
-                        </linearGradient>
-                        <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#00d68f" />
-                            <stop offset="100%" stop-color="#00b887" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Grid lines -->
-                    <!-- <line x1="40" y1="20" x2="540" y2="20" stroke="#e4e9f2" stroke-width="1" />
-                    <line x1="40" y1="60" x2="540" y2="60" stroke="#e4e9f2" stroke-width="1" />
-                    <line x1="40" y1="100" x2="540" y2="100" stroke="#e4e9f2" stroke-width="1" />
-                    <line x1="40" y1="140" x2="540" y2="140" stroke="#e4e9f2" stroke-width="1" /> -->
-                    @for (tick of yAxis(); track $index) {
-                    <line
-                        x1="40"
-                        [attr.y1]="tick.y"
-                        x2="540"
-                        [attr.y2]="tick.y"
-                        stroke="#e4e9f2"
-                        stroke-width="1"
-                    />
-                    }
-                    <!-- Y Labels -->
-                    <!-- <text x="35" y="24" text-anchor="end" fill="#8f9bb3" font-size="10">80k</text>
-                    <text x="35" y="64" text-anchor="end" fill="#8f9bb3" font-size="10">60k</text>
-                    <text x="35" y="104" text-anchor="end" fill="#8f9bb3" font-size="10">40k</text>
-                    <text x="35" y="144" text-anchor="end" fill="#8f9bb3" font-size="10">20k</text> -->
-                    @for (tick of yAxis(); track $index) {
-                    <text
-                        x="35"
-                        [attr.y]="tick.y"
-                        text-anchor="end"
-                        fill="#8f9bb3"
-                        font-size="10"
-                    >
-                        {{ tick.value }}
-                    </text>
-                    }
-                    <!-- Bars -->
-                     @for (bar of bars()?.data; track $index; let i = $index) {
-                        <g>
-                            <rect [attr.x]="40 + i*70 + 6" [attr.y]="140 - bar.v1"
-                                width="22" [attr.height]="bar.v1"
-                                fill="url(#barGrad)" rx="4" />
-
-                            <rect [attr.x]="40 + i*70 + 32" [attr.y]="140 - bar.v2"
-                                width="22" [attr.height]="bar.v2"
-                                fill="url(#barGrad2)" rx="4" />
-
-                            <text [attr.x]="40 + i*70 + 27" y="158"
-                                text-anchor="middle"
-                                fill="#8f9bb3" font-size="10">
-                            {{ bar.label }}
-                            </text>
-                        </g>
-                        }
-                </svg>
-                <div class="chart-legend">
-                    <span class="legend-dot blue"></span><span class="legend-label">{{ 2025 }}</span>
-                    <span class="legend-dot green ms-3"></span><span class="legend-label">{{ 2026 }}</span>
-                </div>
+                <highcharts-chart
+                    class="bar-chart"
+                    [options]="chartOptions()"
+                />
             </div>
         </div>
 
@@ -132,25 +71,11 @@
             <div class="card-header-nebula">
                 <h5 class="card-title-nebula">Trafic pe dispozitive</h5>
             </div>
-            <div class="donut-wrapper">
-                <svg viewBox="0 0 160 160" class="donut-chart">
-                    <circle cx="80" cy="80" r="60" fill="none" stroke="#e4e9f2" stroke-width="22" />
-                    <circle cx="80" cy="80" r="60" fill="none" stroke="#3366ff" stroke-width="22"
-                        stroke-dasharray="150 227" stroke-dashoffset="0" stroke-linecap="round" />
-                    <circle cx="80" cy="80" r="60" fill="none" stroke="#00d68f" stroke-width="22"
-                        stroke-dasharray="80 227" stroke-dashoffset="-150" stroke-linecap="round" />
-                    <circle cx="80" cy="80" r="60" fill="none" stroke="#ffaa00" stroke-width="22"
-                        stroke-dasharray="50 227" stroke-dashoffset="-230" stroke-linecap="round" />
-                    <text x="80" y="75" text-anchor="middle" fill="#222b45" font-size="20" font-weight="700">68%</text>
-                    <text x="80" y="92" text-anchor="middle" fill="#8f9bb3" font-size="10">Organic</text>
-                </svg>
-                <div class="donut-legend">
-                    <div class="donut-legend-item" *ngFor="let src of trafficSources">
-                        <span class="legend-dot" [ngStyle]="{'background': src.color}"></span>
-                        <span class="donut-legend-label">{{ src.label }}</span>
-                        <span class="donut-legend-pct">{{ src.pct }}</span>
-                    </div>
-                </div>
+            <div class="chart-area">
+                <highcharts-chart
+                    class="donut-chart"
+                    [options]="donutChartOptions()"
+                />
             </div>
         </div>
     </div>

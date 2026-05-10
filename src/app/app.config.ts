@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './dashboard/services/auth.interceptor';
 import { errorInterceptor } from './dashboard/services/error.interceptor';
+import { provideHighcharts } from 'highcharts-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,9 +16,10 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(BrowserModule),
     provideHttpClient(
       withInterceptors([
-        authInterceptor, 
+        authInterceptor,
         errorInterceptor
       ])
     ),
+    provideHighcharts(),
   ],
 };

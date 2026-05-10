@@ -225,7 +225,9 @@
 }
 
 .bar-chart {
+    display: block;
     width: 100%;
+    height: 280px;
 }
 
 .chart-legend {
@@ -265,7 +267,9 @@
 }
 
 .donut-chart {
-    width: 140px;
+    display: block;
+    width: 100%;
+    height: 280px;
 }
 
 .donut-legend {

@@ -5,21 +5,17 @@ import { environment } from '../../../environments/environment';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { LogsService } from '../services/logs.service';
 import { switchMap } from 'rxjs';
+import { HighchartsChartComponent } from 'highcharts-angular';
+import type Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-main-content',
-  imports: [NgClass, NgStyle, CommonModule, RouterLink],
+  imports: [NgClass, NgStyle, CommonModule, RouterLink, HighchartsChartComponent],
   templateUrl: './main-content.html',
   styleUrl: './main-content.scss',
 })
 export class MainContent {
   adminPath = environment.path;
-  kpis = [
-    { label: 'Total Utilizatori', value: '1', change: '+12.4% vs last month', trend: 1, icon: 'bi-currency-dollar', bg: '#e9f5ff', color: '#0095ff' },
-    { label: 'Utilizatori noi', value: '0', change: '+8.2% vs last month', trend: 1, icon: 'bi-bag-fill', bg: '#e8fdf5', color: '#00d68f' },
-    { label: 'Active Users', value: '9,621', change: '+3.7% vs last week', trend: 1, icon: 'bi-people-fill', bg: '#f0f4ff', color: '#3366ff' },
-    { label: 'Churn Rate', value: '2.14%', change: '+0.3% vs last month', trend: -1, icon: 'bi-graph-down-arrow', bg: '#fff2f2', color: '#ff3d71' },
-  ];
 
   // bars = [
   //   { label: 'Jan', v1: 80, v2: 10 },
@@ -40,35 +36,186 @@ export class MainContent {
     { initialValue: { data: [], labels: [] } }
   )
 
-  maxValue = computed(() => {
-    const bars = this.bars()?.data || [];
+  browserStats = toSignal(
+    this.logsService.browserStats(),
+    { initialValue: { data: { labels: [] as string[], data: [] as number[] }, success: true } }
+   );
 
-    return Math.max(
-      ...bars.flatMap(b => [b.v1, b.v2]),
-      0
-    );
+  donutChartOptions = computed<Highcharts.Options>(() => {
+    const labels = this.browserStats()?.data?.labels || [];
+    const data = this.browserStats()?.data?.data || [];
+
+    const total = data.reduce((sum: any, n: any) => sum + (n || 0), 0);
+    const maxIdx = data.reduce((bestIdx: any, n: any, i: any, arr: any) => (n > arr[bestIdx] ? i : bestIdx), 0);
+    const topPct = total > 0 ? Math.round((data[maxIdx] / total) * 100) : 0;
+    const topLabel = labels[maxIdx] ?? '';
+
+    return {
+      chart: {
+        type: 'pie',
+        backgroundColor: 'transparent',
+        spacing: [8, 8, 8, 8],
+      },
+      title: {
+        text: total > 0 ? `${topPct}%` : '',
+        align: 'center',
+        verticalAlign: 'middle',
+        floating: true,
+        y: -8,
+        style: { color: '#222b45', fontSize: '20px', fontWeight: '700' },
+      },
+      subtitle: {
+        text: topLabel,
+        align: 'center',
+        verticalAlign: 'middle',
+        floating: true,
+        y: 14,
+        style: { color: '#8f9bb3', fontSize: '10px' },
+      },
+      credits: { enabled: false },
+      legend: {
+        align: 'center',
+        itemStyle: { color: '#8f9bb3', fontSize: '12px', fontWeight: '400' },
+      },
+      tooltip: {
+        pointFormat: '<b>{point.y}</b> ({point.percentage:.1f}%)',
+      },
+      plotOptions: {
+        pie: {
+          size: '85%',
+          innerSize: '65%',
+          borderWidth: 0,
+          showInLegend: true,
+          dataLabels: { enabled: false },
+        },
+      },
+      series: [
+        {
+          type: 'pie',
+          name: 'Vizitatori',
+          colors: ['#3366ff', '#00d68f', '#ffaa00', '#ff3d71'],
+          data: labels.map((label: any, i: any) => ({ name: label, y: data[i] ?? 0 })),
+        },
+      ],
+    };
   });
 
-  chartTop = 20;
-  chartBottom = 140;
-  chartHeight = this.chartBottom - this.chartTop;
+  chartOptions = computed<Highcharts.Options>(() => {
+    const data = this.bars()?.data || [];
+    const labels = this.bars()?.labels || [];
 
-  yAxis = computed(() => {
-    const max = this.maxValue();
-    if (!max) return [];
+    return {
+      chart: {
+        type: 'column',
+        backgroundColor: 'transparent',
+        spacing: [8, 0, 0, 0],
+      },
+      title: { text: '' },
+      credits: { enabled: false },
+      legend: {
+        align: 'left',
+        itemStyle: { color: '#8f9bb3', fontSize: '12px', fontWeight: '400' },
+      },
+      xAxis: {
+        categories: labels,
+        lineColor: '#e4e9f2',
+        tickColor: '#e4e9f2',
+        labels: { style: { color: '#8f9bb3', fontSize: '10px' } },
+      },
+      yAxis: {
+        title: { text: '' },
+        gridLineColor: '#e4e9f2',
+        labels: { style: { color: '#8f9bb3', fontSize: '10px' } },
+      },
+      tooltip: { shared: true },
+      plotOptions: {
+        column: {
+          borderRadius: 4,
+          borderWidth: 0,
+          pointPadding: 0.1,
+          groupPadding: 0.15,
+        },
+      },
+      series: [
+        {
+          type: 'column',
+          name: '2025',
+          data: data.map((b) => b.v1),
+          color: {
+            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+            stops: [
+              [0, '#3366ff'],
+              [1, '#598bff'],
+            ],
+          },
+        },
+        {
+          type: 'column',
+          name: '2026',
+          data: data.map((b) => b.v2),
+          color: {
+            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+            stops: [
+              [0, '#00d68f'],
+              [1, '#00b887'],
+            ],
+          },
+        },
+      ],
+    };
+  });
 
-    const steps = 4;
-    const stepValue = Math.ceil(max / steps);
+  audienceStats = toSignal(
+    this.logsService.audienceStats(),
+    { initialValue: { data: {  }, success: true } }
+   );
 
-    return Array.from({ length: steps }, (_, i) => {
-      const value = stepValue * (steps - i);
+  kpis = computed(() => {
+    const stats: any = this.audienceStats()?.data || {};
+    const views = stats.views || { current: 0, previous: 0, difference: 0 };
+    const newUsers = stats.newUsers || { current: 0, previous: 0 };
+    const activeUsers = stats.activeUsers || { current: 0, previous: 0 };
+    const disappearing = stats.disappearing || { currentRate: 0, lastMonthLostUsers: 0 };
 
-      const y =
-        this.chartBottom -
-        (value / (stepValue * steps)) * this.chartHeight;
+    const formatChange = (current: number, previous: number, period: string) => {
+      const diff = current - previous;
+      if (previous > 0) {
+        const pct = (diff / previous) * 100;
+        return `${pct >= 0 ? '+' : ''}${pct.toFixed(1)}% vs ${period}`;
+      }
+      return `${diff >= 0 ? '+' : ''}${diff} vs ${period}`;
+    };
 
-      return { value, y };
-    });
+    return [
+      {
+        label: 'Total Utilizatori',
+        value: String(views.current ?? 0),
+        change: formatChange(views.current ?? 0, views.previous ?? 0, 'ultima lună'),
+        trend: (views.difference ?? (views.current - views.previous)) >= 0 ? 1 : -1,
+        icon: 'bi-currency-dollar', bg: '#e9f5ff', color: '#0095ff',
+      },
+      {
+        label: 'Utilizatori noi',
+        value: String(newUsers.current ?? 0),
+        change: formatChange(newUsers.current ?? 0, newUsers.previous ?? 0, 'ultima lună'),
+        trend: (newUsers.current - newUsers.previous) >= 0 ? 1 : -1,
+        icon: 'bi-bag-fill', bg: '#e8fdf5', color: '#00d68f',
+      },
+      {
+        label: 'Utilizatori activi',
+        value: String(activeUsers.current ?? 0),
+        change: formatChange(activeUsers.current ?? 0, activeUsers.previous ?? 0, 'ultima lună'),
+        trend: (activeUsers.current - activeUsers.previous) >= 0 ? 1 : -1,
+        icon: 'bi-people-fill', bg: '#f0f4ff', color: '#3366ff',
+      },
+      {
+        label: 'Utilizatori pierduți',
+        value: `${disappearing.currentRate ?? 0}%`,
+        change: `${disappearing.lastMonthLostUsers ?? 0} vs pierduți luna trecută`,
+        trend: (disappearing.currentRate ?? 0) > 0 ? -1 : 1,
+        icon: 'bi-graph-down-arrow', bg: '#fff2f2', color: '#ff3d71',
+      },
+    ];
   });
 
   trafficSources = [

@@ -46,4 +46,12 @@ export class LogsService {
     })
   );
   }
+
+  browserStats(): Observable<any> {
+    return this.http.get<any>(`${this.API}/browser-stats`);
+  }
+
+  audienceStats(): Observable<any> {
+    return this.http.get<any>(`${this.API}/audience-stats`);
+  }
 }

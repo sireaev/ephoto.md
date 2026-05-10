@@ -20,13 +20,13 @@
         .small-img{
             height: 535px;
             @media #{$md}{
-                height: 380px;
+                height: 545px;
             }
             @media #{$sm}{
-                height: 335px;
+                height: 545px;
             }
             @media #{$xs}{
-                height: 335px;
+                height: 545px;
             }
 
         }
