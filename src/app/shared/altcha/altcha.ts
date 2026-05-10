@@ -24,7 +24,7 @@ import type { WidgetAttributes, WidgetMethods } from 'altcha/types';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AltchaComponent {
-    @ViewChild('altchaWidget', { static: true }) altchaWidget!: ElementRef;
+  @ViewChild('altchaWidget', { static: true }) altchaWidget!: ElementRef;
 
   value = '';
   onChange: CallableFunction = () => undefined;
