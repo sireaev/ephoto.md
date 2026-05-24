@@ -10,5 +10,5 @@ export const toNgbDate = (date: Date) => {
 };
 
 export const fromNgbDate = (date: NgbDateStruct) => {
-    return new Date(`${date.year}-${date.month}-${date.day}`);
+    return `${date.year}-${date.month}-${date.day}`;
 };

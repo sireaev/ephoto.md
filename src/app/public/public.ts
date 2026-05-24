@@ -16,6 +16,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { fromNgbDate } from '../shared/date.util';
 import { IMail } from '../dashboard/interfaces/mail.interface';
 import { tap } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 type IHover = {
   [key: string]: boolean
@@ -23,7 +24,7 @@ type IHover = {
 
 @Component({
   selector: 'app-public',
-  imports: [Header, NgbInputDatepicker, Footer, NgClass, CarouselModule, ReactiveFormsModule],
+  imports: [RouterLink, Header, NgbInputDatepicker, Footer, NgClass, CarouselModule, ReactiveFormsModule],
   templateUrl: './public.html',
   styleUrl: './public.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

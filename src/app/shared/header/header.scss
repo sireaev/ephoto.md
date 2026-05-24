@@ -1,0 +1,8 @@
+a.navbar-brand {
+    & > img {
+        height: 50px;
+        @media screen and (max-width: 425px) {
+            height: 40px;
+        }
+    }
+}

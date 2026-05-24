@@ -1,56 +1,54 @@
+.hero {
+  background: url('/assets/images/homepage.jpg') no-repeat center / cover;
+  aspect-ratio: 1280 / 520;
+
+  @media (max-width: 500px) {
+    background-image: url('/assets/images/homepage-mobile.jpg');
+    aspect-ratio: 558 / 837;
+  }
+
+  div.row {
+    @media screen and (max-width: 575px) {
+      margin-bottom: -75px;
+    }
+  }
+
+  .homepage-button {
+    @media screen and (max-width: 575px) {
+      left: 50%;
+      transform: translate(-50%);
+      font-size: 0.7rem;
+    }
+  }
+
+  h4 {
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    @media (max-width: 1200px) { font-size: 3.5rem; }
+    @media (max-width: 991px)  { font-size: 1.75rem; line-height: 1.2; }
+    @media (max-width: 767px)  { font-size: 1.25rem; line-height: 1.2; }
+    @media (max-width: 575px)  { font-size: 1.8rem;    line-height: 1.2; }
+  }
+
+  p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.4;
+
+    @media (max-width: 1200px) { font-size: 1rem;     line-height: 1.3; }
+    @media (max-width: 991px)  { font-size: 0.8125rem; line-height: 1.2; }
+    @media (max-width: 767px)  { font-size: 0.75rem;  line-height: 1.2; }
+    @media (max-width: 575px)  { font-size: 0.775rem;   line-height: 1.4; }
+  }
+}
+
   ::ng-deep {
     img-comparison-slider {
       max-width: 100%;
-    }
-
-    #home .slider-bg1 {
-      @media (min-width: 992px) {
-        height: auto;
-        aspect-ratio: 1280 / 520;
-        background-size: cover;
-        background-position: center;
-      }
-    }
-
-    #home {
-      .slide-content h4 {
-        overflow-wrap: break-word;
-        word-break: break-word;
-
-        @media (min-width: 576px) and (max-width: 767px) {
-          font-size: 1.5rem;
-        }
-
-        @media (max-width: 575px) {
-          font-size: 1.125rem;
-          margin-bottom: 12px;
-          line-height: 1.3;
-          padding: 0 8px;
-        }
-      }
-
-      .slide-content2 {
-        h4 {
-          @media (max-width: 767px) {
-            font-size: 1rem;
-            margin-bottom: 6px;
-          }
-
-          @media (max-width: 575px) {
-            font-size: 0.875rem;
-          }
-        }
-
-        p {
-          @media (max-width: 767px) {
-            font-size: 0.8125rem;
-          }
-
-          @media (max-width: 575px) {
-            font-size: 0.75rem;
-          }
-        }
-      }
     }
 
     // img-comparison-slider {
@@ -67,6 +65,11 @@
         height: 643px;
       }
 
+      // blockquote.carousel-cell::before,
+      // blockquote.carousel-cell::after {
+      //   content: "";
+      // }
+
       blockquote.carousel-cell {
         // min-width: max(425px, 40%);
         // width: 40%;
@@ -81,19 +84,20 @@
       }
 
       blockquote.carousel-cell p {
-        text-align: justify;
-        padding: 50px 50px 50px 100px;
+        text-align: left;
+        padding: 30px;
         border-radius: 10px;
         margin-bottom: 40px;
         transition: background-color .2s ease;
         -webkit-transition: background-color .2s ease;
-        quotes: "\201C" "\201D";
+        // quotes: "\201C" "\201D";
         position: relative;
 
         border-radius: 20px;
 
         transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
         color: #b9b9b9;
+        font-size: 14px;
       }
 
       blockquote.carousel-cell.is-selected {
@@ -110,7 +114,7 @@
         color: white;
         opacity: 0.3;
         font-family: sans-serif;
-        content: open-quote;
+        // content: open-quote;
         font-size: 130px;
         position: absolute;
         left: 29px;

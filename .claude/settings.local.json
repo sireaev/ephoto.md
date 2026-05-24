@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(xargs grep -l \"ApplicationConfig\\\\|provideHttpClient\\\\|appConfig\")",
-      "Bash(npx ng *)"
+      "Bash(npx ng *)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $m=[System.Drawing.Image]::FromFile\\('d:\\\\projects\\\\ephoto.md\\\\src\\\\assets\\\\images\\\\homepage-mobile.jpg'\\); \"mobile $\\($m.Width\\)x$\\($m.Height\\) ratio $\\([math]::Round\\($m.Width/$m.Height,3\\)\\)\"; $m.Dispose\\(\\); $d=[System.Drawing.Image]::FromFile\\('d:\\\\projects\\\\ephoto.md\\\\src\\\\assets\\\\images\\\\homepage.jpg'\\); \"desktop $\\($d.Width\\)x$\\($d.Height\\) ratio $\\([math]::Round\\($d.Width/$d.Height,3\\)\\)\"; $d.Dispose\\(\\))"
     ]
   }
 }
