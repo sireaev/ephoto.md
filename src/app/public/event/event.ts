@@ -29,6 +29,7 @@ export class Event {
       centered: true,
       backdropClass: 'preview-backdrop',
       modalDialogClass: 'preview-modal',
+      
     });
     console.log('index from beginning', index);
     modalRef.componentInstance.startIndex = index; 

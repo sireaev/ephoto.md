@@ -50,7 +50,8 @@
                             <div class="gallery-img small-img" (mouseenter)="addOverlay(category.name)" [routerLink]="'/'+category.slug"
                                 style="background-image: url({{category.previewFile}});"></div>
                             <figcaption>{{category.name}}</figcaption>
-                            <div class="overlay slide-in-top" [ngClass]="{ 
+                            <div class="overlay slide-in-top" [routerLink]="'/'+category.slug"
+                            [ngClass]="{ 
                                 'd-none': !isHovered[category.name]
                                 }" (mouseleave)="removeOverlay(category.name)">
                                 <div class="overlay-content">
