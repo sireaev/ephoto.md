@@ -22,8 +22,5 @@ export class Topbar {
 	adminPath = environment.path;
 	authService = inject(AuthService);
 	user = this.authService.user;
-	constructor(public loadingService: ToastService) {
-		
-		console.log('user', this.user);
-	}
+	constructor(public loadingService: ToastService) {}
 }

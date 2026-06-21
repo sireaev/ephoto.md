@@ -4,7 +4,7 @@ import { NgbModal, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ToastService } from '../services/toast.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FileService } from '../services/file.service';
-import { combineLatest, concatMap, from, map, of, startWith, Subject, switchMap, tap } from 'rxjs';
+import { combineLatest, concatMap, from, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../services/event.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -91,12 +91,8 @@ export class PhotoManagement {
     this.toast.isLoading.set(true);
     from(files)
       .pipe(
-        concatMap((file, index) =>
-          this.fileService.upload(this.route.snapshot.params['eventId'], file).pipe(
-            tap(() => {
-              console.log(`Uploaded ${index + 1}/${files.length}`);
-            })
-          )
+        concatMap((file) =>
+          this.fileService.upload(this.route.snapshot.params['eventId'], file)
         )
       )
       .subscribe({

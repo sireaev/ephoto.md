@@ -6,7 +6,7 @@ import { AddCategoryModal } from '../add-category-modal/add-category-modal';
 import { CommonModule } from '@angular/common';
 import { ICategory } from '../interfaces/category.interface';
 import { ToastService } from '../services/toast.service';
-import { concatMap, from, startWith, Subject, switchMap, tap } from 'rxjs';
+import { concatMap, from, startWith, Subject, switchMap } from 'rxjs';
 import { DeleteModal } from '../../shared/delete-modal/delete-modal';
 import { UploadPhotoModal } from '../upload-photo-modal/upload-photo-modal';
 import { FileService } from '../services/file.service';
@@ -60,12 +60,8 @@ export class Categories {
     this.toast.isLoading.set(true);
     from(files)
       .pipe(
-        concatMap((file, index) =>
-          this.fileService.uploadCategoryPreview(id, file).pipe(
-            tap(() => {
-              console.log(`Uploaded ${index + 1}/${files.length}`);
-            })
-          )
+        concatMap((file) =>
+          this.fileService.uploadCategoryPreview(id, file)
         )
       )
       .subscribe({

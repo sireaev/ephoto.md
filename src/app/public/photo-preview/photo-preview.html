@@ -1,19 +1,22 @@
 <div class="modal-body">
   <div class="close-btn" (click)="close()">&times;</div>
 
-  <owl-carousel-o
-    [options]="carouselOptions">
+  @if (images.length) {
+    <owl-carousel-o
+      [options]="carouselOptions"
+      (translated)="onTranslated($event)">
 
-    @for (image of images; track i; let i = $index) {
-      <ng-template carouselSlide [id]="i.toString()">
-        <div class="slide">
-          <img
-            [src]="image"
-            alt="Preview image"
-            draggable="false" />
-        </div>
-      </ng-template>
-    }
+      @for (image of images; track i; let i = $index) {
+        <ng-template carouselSlide [id]="i.toString()">
+          <div class="slide">
+            <img
+              [src]="image"
+              alt="Preview image"
+              draggable="false" />
+          </div>
+        </ng-template>
+      }
 
-  </owl-carousel-o>
+    </owl-carousel-o>
+  }
 </div>

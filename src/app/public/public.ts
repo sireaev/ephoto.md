@@ -97,11 +97,9 @@ export class Public {
   beforeAfterList = toSignal(
     this.publicService.beforeAfterList().pipe(
       tap((response) => {
-        console.log('response', response.data);
         const row1 = response.data.filter((item) => item.row === 1);
         const row2 = response.data.filter((item) => item.row === 2);
         const row3 = response.data.filter((item) => item.row === 3);
-        console.log('row1', row1);
         this.beforeAfterRow1.set(row1);
         this.beforeAfterRow2.set(row2);
         this.beforeAfterRow3.set(row3);

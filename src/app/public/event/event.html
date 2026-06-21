@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main class="full-container">
   <div class="masonry-container m-3">
-    @for (event of events().data; track event.id) {
+    @for (event of events().data; track event.webUrl) {
     <div class="masonry-item">
       <div class="image-wrapper" role="button" (click)="openPhoto($index)">
         <img srcset="{{event.mobileUrl}} 1x, {{event.webUrl}} 3x" width="500" height="700"
