@@ -4,7 +4,19 @@
       "Bash(xargs grep -l \"ApplicationConfig\\\\|provideHttpClient\\\\|appConfig\")",
       "Bash(npx ng *)",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $m=[System.Drawing.Image]::FromFile\\('d:\\\\projects\\\\ephoto.md\\\\src\\\\assets\\\\images\\\\homepage-mobile.jpg'\\); \"mobile $\\($m.Width\\)x$\\($m.Height\\) ratio $\\([math]::Round\\($m.Width/$m.Height,3\\)\\)\"; $m.Dispose\\(\\); $d=[System.Drawing.Image]::FromFile\\('d:\\\\projects\\\\ephoto.md\\\\src\\\\assets\\\\images\\\\homepage.jpg'\\); \"desktop $\\($d.Width\\)x$\\($d.Height\\) ratio $\\([math]::Round\\($d.Width/$d.Height,3\\)\\)\"; $d.Dispose\\(\\))",
-      "Bash(awk NR>=355 && NR<=375 *)"
+      "Bash(awk NR>=355 && NR<=375 *)",
+      "Bash(xargs grep -l \"privacy\\\\|terms\\\\|cookie\\\\|disclaimer\")",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"D:\\\\projects\\\\ephoto.md\\\\law.pdf\"\\); $header = [System.Text.Encoding]::ASCII.GetString\\($bytes[0..20]\\); Write-Output \"Header: $header\"; Write-Output \"File size: $\\($bytes.Length\\) bytes\")",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"D:\\\\projects\\\\ephoto.md\\\\law.pdf\"\\); $text = [System.Text.Encoding]::Latin1.GetString\\($bytes\\); $lines = $text -split \"`n\" | Select-Object -First 50; $lines | ForEach-Object { Write-Output $_ })",
+      "PowerShell($content = Get-Content -Path \"D:\\\\projects\\\\ephoto.md\\\\law.pdf\" -Encoding Default -TotalCount 80; $content | ForEach-Object { Write-Output $_ })",
+      "WebSearch",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "PowerShell($result = & { Set-Location \"D:\\\\projects\\\\ephoto.md_backend\"; & npx tsc --noEmit } 2>&1; $result | Select-Object -First 60)",
+      "PowerShell(Push-Location \"D:\\\\projects\\\\ephoto.md_backend\"; npx tsc --noEmit; $exitCode = $LASTEXITCODE; Pop-Location; Write-Host \"Exit: $exitCode\")",
+      "PowerShell(Push-Location \"D:\\\\projects\\\\ephoto.md\"; npx tsc --noEmit -p tsconfig.app.json 2>&1 | Select-Object -First 30; $exitCode = $LASTEXITCODE; Pop-Location; Write-Host \"Exit: $exitCode\")",
+      "PowerShell(Push-Location \"D:\\\\projects\\\\ephoto.md_backend\"; npx tsc --noEmit 2>&1 | Select-Object -First 20; $exitCode = $LASTEXITCODE; Pop-Location; Write-Host \"Exit: $exitCode\")",
+      "PowerShell(Push-Location \"D:\\\\projects\\\\ephoto.md\"; npx tsc --noEmit -p tsconfig.app.json 2>&1 | Select-Object -First 20; $exitCode = $LASTEXITCODE; Pop-Location; Write-Host \"Exit: $exitCode\")"
     ]
   }
 }

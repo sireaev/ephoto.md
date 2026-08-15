@@ -100,6 +100,27 @@
     </div>
   </div>
 
+  <!-- CONSENT -->
+  <div class="mb-3">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="reviewConsent"
+        formControlName="consent"
+        [ngClass]="controlClasses(f.consent)"
+      >
+      <label class="form-check-label text-dark small" for="reviewConsent">
+        Sunt de acord cu publicarea numelui și recenziei mele pe site, conform
+        <a href="/privacy-policy" target="_blank" class="text-dark fw-bold">Politicii de Confidențialitate</a>.
+        <sup class="text-danger">*</sup>
+      </label>
+    </div>
+    @if (submitted() && f.consent.invalid) {
+      <div class="text-danger small mt-1">Acordul este obligatoriu pentru a trimite recenzia.</div>
+    }
+  </div>
+
 </form>
 </div>
 

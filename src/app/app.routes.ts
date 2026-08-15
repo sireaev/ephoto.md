@@ -33,6 +33,8 @@ export const routes: Routes = [
       },
     ]
   },
+  { path: 'privacy-policy', loadComponent: () => import('./public/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy), title: 'Politica de Confidențialitate' },
+  { path: 'terms', loadComponent: () => import('./public/terms/terms').then((m) => m.Terms), title: 'Termeni și Condiții' },
   { path: ':slug', component: CategoryEvents },
   { path: ':slug/:eventId', component: Event },
 ];

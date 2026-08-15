@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raport de Conformitate – Legea nr. 195/2024 – ephoto.md</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 11pt;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 0;
+    }
+
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 20mm 25mm;
+    }
+
+    /* Cover */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 30mm;
+      border-bottom: 3px solid #1a1a1a;
+      margin-bottom: 20mm;
+    }
+
+    .cover-logo {
+      font-size: 9pt;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cover-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30mm 0 20mm;
+    }
+
+    .cover-tag {
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .cover-title {
+      font-size: 26pt;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .cover-subtitle {
+      font-size: 14pt;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .cover-divider {
+      width: 60px;
+      height: 3px;
+      background: #1a1a1a;
+      margin-bottom: 30px;
+    }
+
+    .cover-meta {
+      font-size: 10pt;
+      color: #444;
+      line-height: 2;
+    }
+
+    .cover-footer {
+      font-size: 9pt;
+      color: #888;
+    }
+
+    /* Section structure */
+    h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      margin: 14mm 0 6mm;
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 4px;
+      page-break-after: avoid;
+    }
+
+    h2 {
+      font-size: 12pt;
+      font-weight: bold;
+      margin: 8mm 0 4mm;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10.5pt;
+      font-weight: bold;
+      margin: 6mm 0 3mm;
+      color: #333;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 5mm;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin: 3mm 0 5mm 8mm;
+    }
+
+    li {
+      margin-bottom: 2mm;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 5mm 0 8mm;
+      font-size: 9.5pt;
+      page-break-inside: avoid;
+    }
+
+    thead tr {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    th {
+      padding: 5px 8px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background: #f8f8f8; }
+
+    /* Callout boxes */
+    .box {
+      border-left: 4px solid #1a1a1a;
+      padding: 6px 12px;
+      background: #f5f5f5;
+      margin: 5mm 0;
+      font-size: 10pt;
+    }
+
+    .box.ok { border-color: #2e7d32; background: #f1f8f1; }
+    .box.warn { border-color: #e65100; background: #fff8f5; }
+    .box.info { border-color: #1565c0; background: #f0f4ff; }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-size: 8pt;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+    .badge-ok  { background: #c8e6c9; color: #1b5e20; }
+    .badge-na  { background: #e0e0e0; color: #555; }
+    .badge-art { background: #e3f2fd; color: #0d47a1; }
+
+    /* Print */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body { padding: 0; }
+      .page { padding: 18mm 20mm 18mm 22mm; }
+      .cover { page-break-after: always; min-height: auto; padding-bottom: 20mm; }
+      h1 { page-break-before: auto; }
+      .no-break { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════════════════════════════════════════════════
+       COPERTĂ
+  ═══════════════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-logo">ephoto.md &nbsp;·&nbsp; Elena Photo Stories</div>
+
+    <div class="cover-body">
+      <div class="cover-tag">Document de conformitate</div>
+      <div class="cover-title">Raport privind<br>Protecția Datelor<br>cu Caracter Personal</div>
+      <div class="cover-subtitle">Conformitate cu Legea Republicii Moldova<br>nr. 195/2024</div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta">
+        <strong>Operator de date:</strong> Elena Photo Stories<br>
+        <strong>Site web:</strong> ephoto.md<br>
+        <strong>Adresă:</strong> mun. Chișinău, Republica Moldova<br>
+        <strong>Contact:</strong> +373 68 035 084 &nbsp;|&nbsp; ephoto.md@gmail.com<br>
+        <strong>Data raportului:</strong> august 2026<br>
+        <strong>Versiunea documentului:</strong> 1.0
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      Prezentul document a fost elaborat în vederea demonstrării conformității cu Legea nr. 195/2024
+      privind protecția datelor cu caracter personal, act normativ ce transpune Regulamentul (UE)
+      2016/679 (GDPR) în legislația Republicii Moldova, cu aplicabilitate de la 23 august 2026.
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       1. PREZENTAREA OPERATORULUI
+  ═══════════════════════════════════════════════════════ -->
+  <h1>1. Prezentarea Operatorului de Date</h1>
+
+  <h2>1.1 Identitate</h2>
+  <table>
+    <thead><tr><th>Câmp</th><th>Detalii</th></tr></thead>
+    <tbody>
+      <tr><td>Denumire</td><td>Elena Photo Stories</td></tr>
+      <tr><td>Activitate</td><td>Servicii fotografice profesionale (nunți, botezuri, ședințe foto, cununii)</td></tr>
+      <tr><td>Formă juridică</td><td>Persoană fizică / Întreprinzător individual</td></tr>
+      <tr><td>Sediu</td><td>mun. Chișinău, Republica Moldova</td></tr>
+      <tr><td>Site web</td><td>https://ephoto.md</td></tr>
+      <tr><td>Telefon / WhatsApp</td><td>+373 68 035 084</td></tr>
+      <tr><td>Instagram</td><td>@elena.photostories</td></tr>
+      <tr><td>Facebook</td><td>Elena Photo Stories</td></tr>
+    </tbody>
+  </table>
+
+  <h2>1.2 Responsabil cu protecția datelor (DPO)</h2>
+  <div class="box na">
+    <strong>Neaplicabil.</strong> Conform art. 37 din Legea nr. 195/2024, desemnarea unui
+    responsabil cu protecția datelor (DPO) nu este obligatorie pentru operatorii care nu
+    prelucrează date la scară largă și nu desfășoară activități de monitorizare sistematică
+    a persoanelor vizate. Elena Photo Stories este o microîntreprindere cu personal redus,
+    care nu efectuează prelucrări de date cu caracter personal la scară largă.
+  </div>
+
+  <h2>1.3 Registrul activităților de prelucrare (Art. 30)</h2>
+  <div class="box na">
+    <strong>Neaplicabil.</strong> Conform art. 30 alin. (5) din Legea nr. 195/2024, obligația
+    de a menține un registru al activităților de prelucrare nu revine operatorilor cu mai
+    puțin de 250 de angajați, cu excepția cazurilor în care prelucrarea este susceptibilă
+    să genereze un risc pentru drepturile și libertățile persoanelor vizate sau prelucrează
+    categorii speciale de date. Niciuna dintre aceste condiții nu se aplică în cazul de față.
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       2. DATE COLECTATE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>2. Datele cu Caracter Personal Colectate</h1>
+
+  <h2>2.1 Inventarul complet al datelor prelucrate</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Sursă / Formular</th>
+        <th>Date colectate</th>
+        <th>Stocare</th>
+        <th>Temei juridic</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Formular de contact<br>(solicitare ofertă)</strong></td>
+        <td>Nume și prenume, tip eveniment, data evenimentului, locație, date de contact (telefon/email), notițe suplimentare</td>
+        <td>Transmis prin e-mail. Nu se stochează în baza de date a site-ului.</td>
+        <td>Art. 6 alin. (1) lit. a – Consimțământ explicit bifat în formular</td>
+      </tr>
+      <tr>
+        <td><strong>Formular de recenzii</strong></td>
+        <td>Nume (sau pseudonim), mesaj recenzie, evaluare (1–5 stele), categoria serviciului</td>
+        <td>Baza de date MySQL (tabela <em>reviews</em>). Afișate public după aprobare.</td>
+        <td>Art. 6 alin. (1) lit. a – Consimțământ explicit bifat în formular</td>
+      </tr>
+      <tr>
+        <td><strong>Jurnale tehnice (logs)</strong></td>
+        <td>Adresă IP, User-Agent (browser + sistem de operare), dată și oră acces, pagina accesată</td>
+        <td>Baza de date MySQL (tabela <em>logs</em>). IP și User-Agent sunt anonimizate automat după 2 luni.</td>
+        <td>Art. 6 alin. (1) lit. f – Interes legitim (securitate sistem și statistici agregate)</td>
+      </tr>
+      <tr>
+        <td><strong>Conturi de administrare</strong></td>
+        <td>Adresă e-mail, prenume, nume, parolă (hash bcrypt), token de reîmprospătare (hash bcrypt), rol</td>
+        <td>Baza de date MySQL (tabela <em>users</em>). Accesibil exclusiv membrilor autorizați ai echipei.</td>
+        <td>Art. 6 alin. (1) lit. b – Executarea unui contract (relație de muncă/colaborare)</td>
+      </tr>
+      <tr>
+        <td><strong>Fonturi externe<br>(Google Fonts)</strong></td>
+        <td>Adresă IP (transmisă serverelor Google la încărcarea paginii)</td>
+        <td>Nu se stochează local. Gestionat de Google LLC conform propriei politici de confidențialitate.</td>
+        <td>Art. 6 alin. (1) lit. f – Interes legitim (afișare corectă a conținutului vizual)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2.2 Date care NU sunt colectate</h2>
+  <ul>
+    <li>Cookie-uri de urmărire sau publicitate — site-ul public nu utilizează niciun cookie.</li>
+    <li>Platforme de analiză externă (Google Analytics, Facebook Pixel, Hotjar etc.).</li>
+    <li>Categorii speciale de date (art. 9): date de sănătate, date biometrice, convingeri religioase etc.</li>
+    <li>Date ale persoanelor sub 14 ani (art. 8) — serviciile se adresează adulților.</li>
+    <li>Date financiare sau bancare.</li>
+  </ul>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       3. TEMEIUL JURIDIC
+  ═══════════════════════════════════════════════════════ -->
+  <h1>3. Temeiul Juridic al Prelucrărilor</h1>
+
+  <p>Toate activitățile de prelucrare a datelor cu caracter personal desfășurate de Elena
+  Photo Stories se încadrează în cel puțin unul dintre temeiurile juridice prevăzute la
+  art. 6 alin. (1) din Legea nr. 195/2024:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Activitate de prelucrare</th>
+        <th>Temei juridic (Art. 6)</th>
+        <th>Detalii</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Recepționarea solicitărilor de ofertă via formular de contact</td>
+        <td><span class="badge badge-art">Art. 6(1)(a)</span> Consimțământ</td>
+        <td>Checkbox obligatoriu bifat de utilizator înainte de trimiterea formularului. Consimțământul este liber, specific, informat și neechivoc.</td>
+      </tr>
+      <tr>
+        <td>Publicarea recenziilor pe site</td>
+        <td><span class="badge badge-art">Art. 6(1)(a)</span> Consimțământ</td>
+        <td>Checkbox obligatoriu bifat de utilizator. Recenziile nu sunt publicate fără acordul explicit.</td>
+      </tr>
+      <tr>
+        <td>Jurnalizare IP/User-Agent (vizitatori)</td>
+        <td><span class="badge badge-art">Art. 6(1)(f)</span> Interes legitim</td>
+        <td>Necesar pentru securitatea sistemului și generarea statisticilor agregate de audiență. Datele sunt anonimizate după 2 luni.</td>
+      </tr>
+      <tr>
+        <td>Gestionarea conturilor de administrare</td>
+        <td><span class="badge badge-art">Art. 6(1)(b)</span> Contract</td>
+        <td>Necesar pentru executarea raportului contractual cu membrii echipei care administrează site-ul.</td>
+      </tr>
+      <tr>
+        <td>Transmiterea IP către Google Fonts</td>
+        <td><span class="badge badge-art">Art. 6(1)(f)</span> Interes legitim</td>
+        <td>Afișarea corectă a fonturilor tipografice pe site. Menționat în Politica de Confidențialitate.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3.1 Conformitatea consimțământului cu Art. 7</h2>
+  <div class="box ok">
+    Consimțămintele colectate prin formularele site-ului respectă cerințele art. 7 din Legea
+    nr. 195/2024: sunt obținute înainte de prelucrare (checkbox obligatoriu validat tehnic),
+    sunt separate față de alte clauze contractuale, sunt retractabile oricând la cerere și sunt
+    demonstrate prin implementarea tehnică a câmpului <em>consent: boolean</em> validat pe server
+    (Joi schema, backend Express.js).
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       4. MĂSURI TEHNICE IMPLEMENTATE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>4. Măsuri Tehnice și Organizatorice Implementate</h1>
+
+  <h2>4.1 Securitatea datelor (Art. 32)</h2>
+  <table>
+    <thead>
+      <tr><th>Măsură</th><th>Detalii de implementare</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Criptarea parolelor</td>
+        <td>Algoritmul bcrypt cu factor de cost 10. Parolele nu sunt niciodată stocate în clar.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Token-uri de reîmprospătare securizate</td>
+        <td>Token-urile JWT de tip refresh sunt stocate în baza de date sub formă de hash bcrypt. La utilizare se compară hash-ul, nu valoarea în clar.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Autentificare JWT cu expirare</td>
+        <td>Access token cu durată scurtă de viață. Refresh token cu durată mai lungă, invalidat la logout.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Anteturi de securitate HTTP</td>
+        <td>Biblioteca <em>Helmet.js</em> activată pe serverul Express: X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security (HSTS), Referrer-Policy, X-Permitted-Cross-Domain-Policies.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Protecție XSS în e-mailuri</td>
+        <td>Toate datele introduse de utilizatori în formularul de contact sunt escapate HTML (<code>escapeHtml()</code>) înainte de interpolarea în template-ul de e-mail.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Validare și sanitizare input</td>
+        <td>Toate endpoint-urile publice (<em>POST /review</em>, <em>POST /mail</em>) validează datele primite prin scheme Joi cu câmpuri și tipuri stricte. Câmpurile necunoscute sunt eliminate automat (<em>stripUnknown: true</em>).</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>CORS restricționat</td>
+        <td>Serverul acceptă cereri exclusiv de la originea <em>FRONTEND_BASE_URL</em> configurată prin variabile de mediu.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Acces restricționat la panoul de administrare</td>
+        <td>Toate endpoint-urile administrative sunt protejate prin middleware de autentificare JWT și autorizare bazată pe roluri (admin / editor).</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Protecție împotriva modificării statusului recenziilor</td>
+        <td>Endpoint-ul public <em>POST /review</em> forțează întotdeauna <em>status = 'pending'</em>, indiferent de datele trimise de client. Statusul nu poate fi manipulat din exterior.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4.2 Minimizarea datelor și limitarea stocării (Art. 5)</h2>
+  <table>
+    <thead>
+      <tr><th>Principiu</th><th>Implementare</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anonimizare automată IP/User-Agent</td>
+        <td>Funcția <em>deleteOldLogs()</em> din serviciul de jurnalizare anulează câmpurile <em>ip</em> și <em>agent</em> pentru toate înregistrările mai vechi de 2 luni (câmpuri setate la NULL). Rândurile sunt păstrate pentru statistici agregate anonime. Procesul rulează la pornirea serverului și zilnic la interval de 24 ore.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Datele formularului de contact nu se stochează</td>
+        <td>Datele trimise prin formularul de contact sunt transmise exclusiv prin e-mail către fotograf și nu sunt persistate în baza de date.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td>Câmp consent validat pe server</td>
+        <td>Câmpul <em>consent: boolean</em> este validat prin Joi (<em>valid(true).required()</em>) pe toate endpoint-urile publice. Cererile fără consimțământ explicit sunt respinse cu codul HTTP 400.</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4.3 Infrastructura tehnică</h2>
+  <ul>
+    <li><strong>Frontend:</strong> Angular 21, aplicație SPA compilată static, servită de Express.js</li>
+    <li><strong>Backend:</strong> Node.js + Express.js 5, TypeORM, MySQL</li>
+    <li><strong>Hosting:</strong> Server dedicat, stocare locală a fișierelor media</li>
+    <li><strong>Transport:</strong> HTTPS (TLS) pe toate comunicațiile publice</li>
+    <li><strong>E-mail:</strong> Nodemailer via SMTP pentru notificări interne</li>
+  </ul>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       5. DREPTURILE PERSOANELOR VIZATE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>5. Drepturile Persoanelor Vizate (Art. 15–22)</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Drept (Art.)</th>
+        <th>Modalitate de exercitare</th>
+        <th>Termen de răspuns</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Dreptul de acces</strong><br><span style="font-size:8pt;color:#555">Art. 15</span></td>
+        <td>Cerere prin WhatsApp, e-mail sau telefon. Pentru clienți înregistrați: endpoint <em>GET /admin/gdpr/export/:clientId</em> (acces admin).</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dreptul la rectificare</strong><br><span style="font-size:8pt;color:#555">Art. 16</span></td>
+        <td>Cerere prin WhatsApp, e-mail sau telefon. Operatorul modifică manual datele eronate.</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dreptul la ștergere</strong><br><span style="font-size:8pt;color:#555">Art. 17</span></td>
+        <td>Cerere prin contact direct. Endpoint dedicat: <em>DELETE /admin/gdpr/client/:id</em> — anonimizează recenziile (name = "Utilizator șters") și șterge înregistrarea clientului.</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dreptul la restricționare</strong><br><span style="font-size:8pt;color:#555">Art. 18</span></td>
+        <td>Cerere prin contact direct. Operatorul poate suspenda prelucrarea recenziilor prin sistemul de moderare (status = rejected).</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dreptul la portabilitate</strong><br><span style="font-size:8pt;color:#555">Art. 20</span></td>
+        <td>Export JSON via endpoint <em>GET /admin/gdpr/export/:clientId</em>, conținând toate datele deținute despre persoana vizată în format structurat și lizibil automat.</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dreptul de opoziție</strong><br><span style="font-size:8pt;color:#555">Art. 21</span></td>
+        <td>Cerere prin contact direct. Aplicabil pentru prelucrările bazate pe interes legitim (jurnale IP). Operatorul evaluează fiecare caz și, dacă nu există motive legitime imperioase, încetează prelucrarea.</td>
+        <td>30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Retragerea consimțământului</strong><br><span style="font-size:8pt;color:#555">Art. 7(3)</span></td>
+        <td>Oricând, prin contact direct. Retragerea nu afectează legalitatea prelucrărilor anterioare. Recenziile pot fi șterse la cerere.</td>
+        <td>Imediat / 30 zile</td>
+        <td><span class="badge badge-ok">Implementat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box info">
+    <strong>Contactul pentru exercitarea drepturilor:</strong><br>
+    WhatsApp / Telefon: +373 68 035 084<br>
+    E-mail: ephoto.md@gmail.com<br>
+    Timp de răspuns: maximum 30 de zile calendaristice de la primirea cererii.
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       6. PERIOADA DE STOCARE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>6. Perioadele de Stocare a Datelor</h1>
+
+  <table>
+    <thead>
+      <tr><th>Categoria de date</th><th>Perioadă de stocare</th><th>Mecanism</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Date formular de contact (nume, telefon, locație, data evenimentului)</td>
+        <td>Nu se stochează în baza de date. E-mailul primit este păstrat în căsuța poștală atât cât este necesar pentru relația comercială.</td>
+        <td>Tranzit e-mail, fără stocare pe server</td>
+      </tr>
+      <tr>
+        <td>Recenzii publicate (nume, mesaj, rating)</td>
+        <td>Nedeterminate, până la retragerea consimțământului sau solicitarea ștergerii de către persoana vizată.</td>
+        <td>Manual, la cerere; endpoint <em>DELETE /admin/gdpr/client/:id</em></td>
+      </tr>
+      <tr>
+        <td>Adresă IP și User-Agent (jurnale vizitatori)</td>
+        <td><strong>2 luni</strong> de la data înregistrării. După expirare, câmpurile <em>ip</em> și <em>agent</em> sunt setate la NULL. Rândul de jurnal (timestamp, pagina) este păstrat pentru statistici anonime.</td>
+        <td>Automat, zilnic, funcția <em>deleteOldLogs()</em></td>
+      </tr>
+      <tr>
+        <td>Conturi de administrare</td>
+        <td>Pe durata relației contractuale cu membrul echipei. Șterse la încetarea colaborării.</td>
+        <td>Manual de către administratorul principal</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       7. TRANSFERURI DE DATE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>7. Transferuri de Date către Terți</h1>
+
+  <table>
+    <thead>
+      <tr><th>Destinatar</th><th>Date transferate</th><th>Scopul</th><th>Temeiul</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Furnizor SMTP (e-mail)</td>
+        <td>Conținutul formularului de contact (nume, telefon, detalii eveniment)</td>
+        <td>Transmiterea notificărilor interne către fotograf</td>
+        <td>Art. 6(1)(a) – Consimțământ</td>
+      </tr>
+      <tr>
+        <td>Google LLC (Google Fonts)</td>
+        <td>Adresă IP la încărcarea paginii</td>
+        <td>Servirea fonturilor tipografice</td>
+        <td>Art. 6(1)(f) – Interes legitim</td>
+      </tr>
+      <tr>
+        <td>Furnizor hosting / server</td>
+        <td>Toate datele stocate în baza de date și fișierele media</td>
+        <td>Găzduirea infrastructurii tehnice</td>
+        <td>Art. 6(1)(b) – Contract de prestări servicii</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <strong>Notă privind Google Fonts:</strong> Google LLC are sediul în SUA. Transferul de date
+    (adresă IP) către Google se efectuează în baza Deciziei de adecvare EU–SUA (Data Privacy
+    Framework) sau a clauzelor contractuale standard ale Google. Utilizatorul este informat
+    prin Notificarea privind cookie-urile afișată la prima vizitare a site-ului și prin Politica
+    de Confidențialitate publicată la <em>ephoto.md/privacy-policy</em>.
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       8. COOKIE-URI ȘI TEHNOLOGII SIMILARE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>8. Cookie-uri și Tehnologii Similare</h1>
+
+  <p>Site-ul public <strong>ephoto.md nu utilizează cookie-uri</strong> de urmărire, publicitate
+  sau analiză comportamentală. Nu este integrat niciun instrument de tracking terț.</p>
+
+  <table>
+    <thead>
+      <tr><th>Tehnologie</th><th>Utilizare</th><th>Necesită consimțământ?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cookie-uri de urmărire / marketing</td>
+        <td>Neutilizate</td>
+        <td><span class="badge badge-na">N/A</span></td>
+      </tr>
+      <tr>
+        <td>Google Analytics / Facebook Pixel</td>
+        <td>Neutilizate</td>
+        <td><span class="badge badge-na">N/A</span></td>
+      </tr>
+      <tr>
+        <td>localStorage – token JWT admin</td>
+        <td>Strict necesar pentru autentificarea în panoul de administrare. Inaccesibil vizitatorilor publici.</td>
+        <td>Nu (strict necesar)</td>
+      </tr>
+      <tr>
+        <td>localStorage – cookie-notice-dismissed</td>
+        <td>Reținerea preferinței de închidere a bannerului de informare privind cookie-urile.</td>
+        <td>Nu (preferință UI, fără date personale)</td>
+      </tr>
+      <tr>
+        <td>Altcha (CAPTCHA)</td>
+        <td>Verificare proof-of-work client-side. Fără cookie-uri, fără date transmise terților.</td>
+        <td>Nu</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box ok">
+    Un banner informativ privind cookie-urile este afișat la prima vizitare a site-ului,
+    informând utilizatorul cu privire la absența cookie-urilor de urmărire și la utilizarea
+    Google Fonts. Preferința utilizatorului este reținută local (localStorage) fără a implica
+    prelucrarea datelor cu caracter personal.
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       9. DOCUMENTE DE TRANSPARENȚĂ
+  ═══════════════════════════════════════════════════════ -->
+  <h1>9. Documente de Transparență Publicate</h1>
+
+  <h2>9.1 Politica de Confidențialitate</h2>
+  <p>Publicată la: <strong>ephoto.md/privacy-policy</strong></p>
+  <p>Conține: identitatea operatorului, categoriile de date colectate, temeiul juridic al
+  fiecărei prelucrări, perioadele de stocare, drepturile persoanelor vizate, informații privind
+  CNPDCP, măsuri de securitate, vârsta minimă (14 ani, art. 8), procedura de notificare a
+  încălcărilor de securitate (72 ore, art. 33), informații privind Google Fonts.</p>
+
+  <h2>9.2 Termeni și Condiții</h2>
+  <p>Publicați la: <strong>ephoto.md/terms</strong></p>
+  <p>Conțin: descrierea serviciilor fotografice, procesul de rezervare și confirmare, politica
+  de anulare și rambursare, termene de livrare a fotografiilor, drepturile de autor (fotograful
+  păstrează drepturile de proprietate intelectuală; clientul primește licență personală
+  neexclusivă), regulile privind galeria publică și recenziile, limitarea răspunderii, legea
+  aplicabilă (legislația Republicii Moldova).</p>
+
+  <h2>9.3 Notificare cookie-uri</h2>
+  <p>Banner fix afișat la baza paginii la prima vizitare, cu acces direct la Politica de
+  Confidențialitate. Utilizatorul poate accepta sau refuza (ambele opțiuni închid banner-ul,
+  deoarece nu există cookie-uri de dezactivat).</p>
+
+  <div class="box ok">
+    Ambele documente sunt redactate în limba română, accesibile din subsolul oricărei pagini
+    a site-ului și actualizate conform cerințelor Legii nr. 195/2024 (ultima actualizare: august 2026).
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       10. NOTIFICAREA ÎNCĂLCĂRILOR (ART. 33–34)
+  ═══════════════════════════════════════════════════════ -->
+  <h1>10. Procedura de Notificare a Încălcărilor de Securitate</h1>
+
+  <p>Operatorul a implementat o procedură internă de răspuns la incidente de securitate, în
+  conformitate cu art. 33–34 din Legea nr. 195/2024:</p>
+
+  <ol>
+    <li><strong>Detectarea incidentului</strong> — monitorizarea jurnalelor de server și a alertelor de securitate.</li>
+    <li><strong>Evaluarea riscului</strong> — analiza naturii încălcării, categoriile de date afectate, numărul de persoane vizate și probabilitatea unui risc pentru drepturile și libertățile acestora.</li>
+    <li><strong>Notificarea CNPDCP</strong> — în termen de <strong>72 de ore</strong> de la luarea la cunoștință a incidentului (art. 33), dacă încălcarea este susceptibilă să genereze un risc.</li>
+    <li><strong>Notificarea persoanelor vizate</strong> — fără întârziere nejustificată, dacă încălcarea generează un risc ridicat (art. 34).</li>
+    <li><strong>Documentarea incidentului</strong> — înregistrarea internă a tuturor încălcărilor, inclusiv a celor care nu au necesitat notificarea CNPDCP.</li>
+  </ol>
+
+  <div class="box info">
+    <strong>Centrul Național pentru Protecția Datelor cu Caracter Personal (CNPDCP)</strong><br>
+    Str. Serghei Lazo, 48, mun. Chișinău, MD-2004<br>
+    Tel: +373 22 820 801 &nbsp;|&nbsp; Web: datepersonale.md
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       11. EVALUAREA DE IMPACT (ART. 35)
+  ═══════════════════════════════════════════════════════ -->
+  <h1>11. Evaluarea Impactului asupra Protecției Datelor (DPIA)</h1>
+
+  <div class="box na">
+    <strong>Neaplicabil.</strong> Conform art. 35 din Legea nr. 195/2024, efectuarea unei
+    evaluări de impact (DPIA) este obligatorie doar în cazul prelucrărilor susceptibile să
+    genereze un risc ridicat pentru drepturile și libertățile persoanelor fizice (ex.: prelucrare
+    la scară largă de categorii speciale de date, monitorizare sistematică a spațiilor publice,
+    profilare automatizată cu efecte juridice). Activitățile de prelucrare ale Elena Photo Stories
+    nu se încadrează în niciuna dintre aceste categorii.
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       12. SANCȚIUNI APLICABILE ȘI NIVELUL DE RISC
+  ═══════════════════════════════════════════════════════ -->
+  <h1>12. Cadrul Sancționator și Evaluarea Riscului</h1>
+
+  <p>Legea nr. 195/2024 prevede, la art. 88, amenzi de până la <strong>2.000.000 MDL</strong>
+  sau 2% din cifra de afaceri anuală globală pentru încălcări privind consimțământul, drepturile
+  persoanelor vizate și principiile de bază ale prelucrării.</p>
+
+  <p>Conform art. 90 alin. (4), regimul tranzitoriu prevede aplicarea procentuală a amenzilor
+  în funcție de durata de la intrarea în vigoare a legii: 10% în primul an, 40% în al doilea
+  an, 100% începând cu al treilea an.</p>
+
+  <div class="box ok">
+    <strong>Evaluarea nivelului de risc pentru Elena Photo Stories: SCĂZUT</strong><br><br>
+    Argumentare:
+    <ul style="margin-top:6px">
+      <li>Volumul de date prelucrate este redus (microîntreprindere, public limitat).</li>
+      <li>Nu se prelucrează categorii speciale de date (art. 9).</li>
+      <li>Toate prelucrările au temei juridic explicit și documentat.</li>
+      <li>Consimțămintele sunt colectate și validate tehnic.</li>
+      <li>Perioadele de stocare sunt limitate și implementate automat.</li>
+      <li>Drepturile persoanelor vizate sunt exercitabile prin mecanisme tehnice și proceduri clare.</li>
+      <li>Documentele de transparență sunt publicate și accesibile publicului.</li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       13. CONCLUZIE
+  ═══════════════════════════════════════════════════════ -->
+  <h1>13. Concluzie</h1>
+
+  <p>Elena Photo Stories a implementat un set cuprinzător de măsuri tehnice și organizatorice
+  pentru a asigura conformitatea site-ului <strong>ephoto.md</strong> cu prevederile Legii
+  Republicii Moldova nr. 195/2024 privind protecția datelor cu caracter personal, act normativ
+  ce transpune Regulamentul (UE) 2016/679 (GDPR).</p>
+
+  <p>Principalele realizări documentate în prezentul raport includ:</p>
+
+  <ul>
+    <li>Colectarea consimțământului explicit pentru toate prelucrările bazate pe art. 6(1)(a), validat tehnic atât pe frontend (Angular, <em>Validators.requiredTrue</em>), cât și pe backend (Joi schema, <em>consent: valid(true).required()</em>).</li>
+    <li>Publicarea Politicii de Confidențialitate și a Termenilor și Condițiilor în limba română, cu conținut complet conform cerințelor de transparență.</li>
+    <li>Implementarea mecanismelor tehnice pentru exercitarea drepturilor persoanelor vizate (export date, ștergere/anonimizare).</li>
+    <li>Anonimizarea automată a datelor de identificare (IP, User-Agent) din jurnalele tehnice după 2 luni.</li>
+    <li>Aplicarea măsurilor de securitate: bcrypt, JWT, Helmet.js, validare input, escapare HTML.</li>
+    <li>Informarea utilizatorilor prin banner de cookie-uri și mențiunea privind Google Fonts.</li>
+  </ul>
+
+  <p>Operatorul se angajează să actualizeze periodic prezentul document și măsurile implementate
+  în conformitate cu evoluțiile legislative, deciziile CNPDCP și bunele practici în domeniu.</p>
+
+  <div class="box ok" style="margin-top:10mm">
+    <strong>Declarație de conformitate</strong><br><br>
+    Subsemnata Elena Caras, în calitate de operator de date în sensul Legii nr. 195/2024,
+    declar că informațiile cuprinse în prezentul raport sunt complete, corecte și reflectă
+    starea reală a măsurilor implementate la data elaborării documentului (august 2026).
+    <br><br>
+    <div style="margin-top:20mm; display:flex; justify-content:space-between; font-size:10pt;">
+      <div>
+        <div style="border-top:1px solid #333; width:200px; padding-top:4px;">Semnătura operatorului</div>
+      </div>
+      <div>
+        <div style="border-top:1px solid #333; width:200px; padding-top:4px;">Data</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20mm; padding-top: 6mm; border-top: 1px solid #ccc; font-size: 8.5pt; color: #888; text-align:center;">
+    ephoto.md &nbsp;·&nbsp; Elena Photo Stories &nbsp;·&nbsp; mun. Chișinău, Republica Moldova<br>
+    Raport de conformitate Legea nr. 195/2024 &nbsp;·&nbsp; Versiunea 1.0 &nbsp;·&nbsp; August 2026
+  </div>
+
+</div>
+</body>
+</html>

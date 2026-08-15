@@ -1,0 +1,16 @@
+@if (visible()) {
+  <div class="cookie-banner">
+    <div class="cookie-banner__content">
+      <span class="cookie-banner__icon">🍪</span>
+      <p class="cookie-banner__text">
+        Acest site <strong>nu folosește cookie-uri de urmărire</strong>. Folosim fonturi externe (Google Fonts),
+        care pot transmite adresa IP a dispozitivului dvs. către Google.
+        <a href="/privacy-policy" class="cookie-banner__link">Politica de Confidențialitate</a>
+      </p>
+      <div class="cookie-banner__actions">
+        <button class="cookie-banner__btn cookie-banner__btn--deny" (click)="dismiss()">Refuz</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" (click)="dismiss()">Acceptă</button>
+      </div>
+    </div>
+  </div>
+}

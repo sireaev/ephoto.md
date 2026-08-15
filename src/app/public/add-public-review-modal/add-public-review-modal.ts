@@ -25,6 +25,7 @@ export class AddPublicReviewModal {
     name: ['', [Validators.required]],
     message: ['', [Validators.required]],
     rating: [null, []],
+    consent: [false, [Validators.requiredTrue]],
   });
 
   get f() {

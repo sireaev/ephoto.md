@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
+import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { Header } from '../shared/header/header';
 import { Footer } from '../shared/footer/footer';
 import { NgClass } from '@angular/common'; 
@@ -112,55 +112,46 @@ export class Public {
   );
   currentReview = signal({[this.reviews().data.length > 1 ? 'slide2' : 'slide1']: true});
   
-  pricingCarousel: OwlOptions = {
-    loop: false,
-    margin: 20,
-    autoplay: true,
-    smartSpeed: 800,
-    nav: true,
-    items: 3,
-    navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
-    dots: false,
-    responsive : {
-        0 : {
-            items: 1
-        },
-        480 : {
-            items: 1,
-        },
-        768 : {
-            items: 3,
-        },
-        992 : {
-            items: 3,
-        }
-    }
-  }
+  pricingCarousel = computed<OwlOptions>(() => {
+    const count = this.prices()?.data?.length ?? 0;
+    const desktop = Math.min(3, Math.max(1, count));
+    return {
+      loop: false,
+      margin: 20,
+      autoplay: false,
+      smartSpeed: 800,
+      nav: count > desktop,
+      items: desktop,
+      navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
+      dots: false,
+      responsive: {
+        0: { items: 1 },
+        480: { items: 1 },
+        768: { items: desktop },
+        992: { items: desktop },
+      }
+    };
+  });
 
-  testimonialCarousel: OwlOptions = {
-    loop: true,
-    margin: 0,
-    autoplay: false,
-    // smartSpeed: 800,
-    nav: false,
-    items: 3 ,
-    navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
-    dots: false,
-    responsive : {
-        0 : {
-            items: 1
-        },
-        480 : {
-            items: 1,
-        },
-        768 : {
-            items: 3,
-        },
-        992 : {
-            items: 3,
-        }
-    }
-  }
+  testimonialCarousel = computed<OwlOptions>(() => {
+    const count = this.reviews()?.data?.length ?? 0;
+    const desktop = Math.min(3, Math.max(1, count));
+    return {
+      loop: count > desktop,
+      margin: 0,
+      autoplay: false,
+      nav: false,
+      items: desktop,
+      navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
+      dots: false,
+      responsive: {
+        0: { items: 1 },
+        480: { items: 1 },
+        768: { items: desktop },
+        992: { items: desktop },
+      }
+    };
+  });
   isMobile;
   private fb = inject(FormBuilder);
   requestForm = this.fb.nonNullable.group({
@@ -171,6 +162,7 @@ export class Public {
     location: ['', [Validators.required]],
     contact: ['', [Validators.required]],
     notices: ['', [Validators.required]],
+    consent: [false, [Validators.requiredTrue]],
   });
 
   constructor(private screenSizeService: ScreenSizeService) {

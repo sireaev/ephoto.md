@@ -251,7 +251,7 @@
                     </div>
                 </div>
             </div>
-            <owl-carousel-o [options]="pricingCarousel">
+            <owl-carousel-o [options]="pricingCarousel()">
                 @for(price of prices().data; track price.id) {
                     <ng-template carouselSlide >
                         <div class="single-card text-center mb-30 bg-white">
@@ -413,7 +413,7 @@
                     </div>
                 </div>
             </div>
-            <owl-carousel-o [options]="testimonialCarousel" (translated)="onTranslated($event)">
+            <owl-carousel-o [options]="testimonialCarousel()" (translated)="onTranslated($event)">
                 @for(review of reviews().data; track review.name; let i = $index) {
                     <ng-template carouselSlide [id]="'slide'+(i+1)">
                         <blockquote class="carousel-cell" [ngClass]="{'is-selected': $any(currentReview)()['slide'+(i+1)] ||  $any(currentReview)()['slide'+(i+1)+'-append']}">  
@@ -520,6 +520,23 @@
                             <fieldset class="mt-4 mx-auto" style="max-width: 270px;">
                                 <app-altcha formControlName="altcha" />
                             </fieldset>
+
+                            <div class="mt-4 text-start">
+                                <div class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        class="form-check-input"
+                                        id="contactConsent"
+                                        formControlName="consent"
+                                    >
+                                    <label class="form-check-label text-dark small" for="contactConsent">
+                                        Am citit și accept
+                                        <a href="/privacy-policy" target="_blank" class="text-dark fw-bold">Politica de Confidențialitate</a>.
+                                        Sunt de acord cu prelucrarea datelor mele cu caracter personal în scopul primirii unui răspuns la solicitare.
+                                        <sup class="text-danger">*</sup>
+                                    </label>
+                                </div>
+                            </div>
 
                             <div class="row mt-4">
                                 <div class="col-lg-12">
