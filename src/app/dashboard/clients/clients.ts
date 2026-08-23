@@ -88,6 +88,41 @@ export class Clients {
     })
   }
 
+  exportClientData(clientId: number): void {
+    this.clientService.exportData(clientId).subscribe({
+      next: (data) => {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `gdpr-export-client-${clientId}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      },
+      error: () => {}
+    });
+  }
+
+  openGdprEraseModal(id: number): void {
+    const modalRef = this.modalService.open(DeleteModal);
+    modalRef.componentInstance.modul = 'datele GDPR ale clientului';
+    modalRef.componentInstance.id = id;
+    modalRef.closed.subscribe(() => {
+      this.eraseClientGdpr(id);
+    });
+  }
+
+  eraseClientGdpr(id: number): void {
+    this.clientService.list$.next(null);
+    this.clientService.eraseClient(id).subscribe({
+      next: () => {
+        this.reload();
+        this.toast.success('Date GDPR șterse', 'Success');
+      },
+      error: () => {}
+    });
+  }
+
   reload() {
     this.refresh$.next();
   }

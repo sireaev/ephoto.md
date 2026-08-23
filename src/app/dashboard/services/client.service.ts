@@ -24,6 +24,14 @@ export class ClientService {
     return this.http.delete(`${this.API}/${id}`);
   }
 
+  exportData(clientId: number): Observable<any> {
+    return this.http.get(`/api/admin/gdpr/export/${clientId}`);
+  }
+
+  eraseClient(id: number): Observable<any> {
+    return this.http.delete(`/api/admin/gdpr/client/${id}`);
+  }
+
   list(): Observable<ResponseArray<IClient>> {
     if (this.list$.getValue() !== null) {
       return of(<ResponseArray<IClient>>this.list$.getValue());

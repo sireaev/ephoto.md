@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseArray } from '../../dashboard/interfaces/response.interface';
-import { IMail } from '../../dashboard/interfaces/mail.interface';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +12,6 @@ export class PublicService {
   private categoryAPI = '/api/categories';
   private categoryEventsAPI = '/api/events';
   private eventAPI = '/api/event';
-  private mailAPI = '/api/mail';
   private pagesAPI = '/api/pages';
   private beforeAfterAPI = '/api/before-after';
 
@@ -50,7 +47,4 @@ export class PublicService {
     return this.http.get<ResponseArray<any>>(`${this.eventAPI}/${eventId}`);
   }
 
-  sendEmail(body: IMail): Observable<any> {
-    return this.http.post(`${this.mailAPI}`, body);
-  }
 }

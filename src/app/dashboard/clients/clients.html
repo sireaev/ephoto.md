@@ -11,9 +11,7 @@
             </nav>
         </div>
         <div class="page-header-actions">
-            <button class="btn-outline-nebula gap-2">
-                <i class="far fa-file-excel"></i>Export
-            </button>
+            <!-- Export button intentionally omitted: per-client export is available via the row action -->
             <button class="btn-nebula gap-2" (click)="openClientModal()">
                 <i class="fas fa-plus"></i>Adaugă client
             </button>
@@ -44,6 +42,8 @@
                             <td>{{ client.externalId }}</td>
                             <td class="d-flex gap-2">
                                 <i placement="top" ngbTooltip="Editează" (click)="openClientModal(client)" role="button" class="fas fa-pen text-primary fs-6"></i>
+                                <i placement="top" ngbTooltip="Export GDPR" (click)="exportClientData(client.id!)" role="button" class="fas fa-file-export text-success fs-6"></i>
+                                <i placement="top" ngbTooltip="Ștergere GDPR" (click)="openGdprEraseModal(client.id!)" role="button" class="fas fa-user-slash text-warning fs-6"></i>
                                 <i placement="top" ngbTooltip="Șterge" (click)="openDeleteModal(client.id!)" role="button" class="fas fa-trash text-danger fs-6"></i>
                             </td>
                         </tr>
