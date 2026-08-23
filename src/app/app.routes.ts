@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: '',
     component: Public,
-    title: 'Home Page',
+    title: 'Ephoto.md - Servicii foto-video profesionale',
   },
   {
     path: environment.path,

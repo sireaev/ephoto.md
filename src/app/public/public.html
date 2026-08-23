@@ -451,7 +451,7 @@
         <div class="starups-img"></div>
     </div>
     <!--All startups End -->
-        <!--? Form Area Start -->
+        <!--? Contact Area Start -->
     <div class="categories-area" id="form">
         <div class="container">
             <div class="row justify-content-center">
@@ -460,97 +460,24 @@
                         <h2 [class]="contactPage()?.headerTextClass">{{contactPage()?.headerText}}</h2>
                         <p [class]="contactPage()?.paragraph1Class">{{contactPage()?.paragraph1}}</p>
                         <p [class]="contactPage()?.paragraph2Class">{{contactPage()?.paragraph2}}</p>
-                        <form [formGroup]="requestForm" (ngSubmit)="submitRequest()">
-                            <div class="input-group-icon mt-10">
-                                <!-- <i class="fas fa-glass-cheers"></i> -->
-                                <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                                <input type="text" name="name" placeholder="Nume Prenume"
-                                formControlName="name"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nume Prenume'"
-                                class="single-input">
-                            </div>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
-                                <!-- <input type="text" name="slug" formControlName="slug" placeholder="Tipul Evenimentului"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tipul Evenimentului'" required
-                                class="single-input"> -->
-                                <select name="slug" formControlName="slug" class="form-select single-input">
-                                    <option [value]="null">Alege tipul evenimentului</option>
-                                    @for(category of categories()?.data; track category.name;) {
-                                        <option [value]="category.slug">{{category.name}}</option>
+                        <div class="phone-display mt-5" #phoneDisplay>
+                            <a href="https://wa.me/+37368035084" class="phone-link text-decoration-none">
+                                @for(seg of phoneSegments; track seg.index) {
+                                    @if(seg.type === 'digit') {
+                                        <span class="phone-digit-block">{{ phoneDisplayValues()[seg.index] }}</span>
+                                    } @else if(seg.type === 'space') {
+                                        <span class="phone-space"></span>
+                                    } @else {
+                                        <span class="phone-symbol">{{ seg.char }}</span>
                                     }
-                                </select>
-                            </div>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-                                <input 
-                                type="text"
-                                onfocus="this.placeholder = ''" 
-                                onblur="this.placeholder = 'yyyy-mm-dd'" 
-                                ngbDatepicker
-                                formControlName="eventDate"
-                                placeholder="yyyy-mm-dd"
-                                #d="ngbDatepicker"
-                                (click)="d.toggle()"
-                                class="single-input">
-                            </div>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                                <input type="text" formControlName="location"
-                                name="location" placeholder="Locatia evenimentului"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Locatia evenimentului'"
-                                class="single-input">
-                            </div>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                                <input type="text" name="contact" placeholder="Contact"
-                                formControlName="contact"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact'"
-                                class="single-input">
-                            </div>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                                <textarea maxlength="250" 
-                                class="single-textarea homepage-contact" 
-                                formControlName="notices"
-                                placeholder="Notite" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Notite'" required></textarea>
-                            </div>
-
-                            <fieldset class="mt-4 mx-auto" style="max-width: 270px;">
-                                <app-altcha formControlName="altcha" />
-                            </fieldset>
-
-                            <div class="mt-4 text-start">
-                                <div class="form-check">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check-input"
-                                        id="contactConsent"
-                                        formControlName="consent"
-                                    >
-                                    <label class="form-check-label text-dark small" for="contactConsent">
-                                        Am citit și accept
-                                        <a href="/privacy-policy" target="_blank" class="text-dark fw-bold">Politica de Confidențialitate</a>.
-                                        Sunt de acord cu prelucrarea datelor mele cu caracter personal în scopul primirii unui răspuns la solicitare.
-                                        <sup class="text-danger">*</sup>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <div class="col-lg-12">
-                                    <div class="section-btn text-center">
-                                        <button type="submit" [disabled]="requestForm.invalid || isSent()" class="border-btn btn rounded-3">{{contactPage()?.buttonText}}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                                }
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Form Area End -->
+    <!-- Contact Area End -->
 </main>
 <app-footer></app-footer>

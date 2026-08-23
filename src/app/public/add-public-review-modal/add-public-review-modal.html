@@ -33,18 +33,18 @@
 
   <!-- NAME -->
   <div class="mb-3">
-    <label class="form-label">Nume<sup class="text-danger">*</sup></label>
+    <label class="form-label">Pseudonim<sup class="text-danger">*</sup></label>
     <input
       type="text"
       class="form-control"
       formControlName="name"
-      placeholder="Nume"
+      placeholder="Pseudonim"
       [ngClass]="controlClasses(f.name)"
     />
 
     <div class="valid-feedback">Validat!</div>
     <div class="invalid-feedback">
-      <span *ngIf="f.name.errors?.['required']">Nume este obligatoriu</span>
+      <span *ngIf="f.name.errors?.['required']">Pseudonimul este obligatoriu</span>
     </div>
   </div>
 
